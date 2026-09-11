@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Automated CAD–CFD optimization pipeline — Kármán Street</title>
+  <meta name="description" content="Paper · Master&#x27;s thesis, Ch. 4">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/">Theory</a><a href="/projects/">Projects</a><a href="/papers/" aria-current="page">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/papers/">← All papers</a>
+      <article>
+        <h1 class="page-title">Automated CAD–CFD optimization pipeline</h1>
+        <p class="article-meta">Paper · Master&#x27;s thesis, Ch. 4</p>
+        <p>This paper describes the automated CAD–CFD pipeline at the heart of the F1 front-wing thesis: the machinery that lets an expensive, geometry-heavy optimisation run without a human in the loop.</p>
+        <h2>Parametric CAD</h2>
+        <p>The wing is fully parametrised in CATIA V5 and driven programmatically through its scripting interface. A Python routine reads the active parameters and their physical ranges from a spreadsheet, draws a Latin Hypercube of designs over the resulting high-dimensional cube, and for each sample writes the parameters into the CATIA template, regenerates the geometry and exports it — twice per design, once for each aerodynamic mode.</p>
+        <h2>Automated CFD reduction</h2>
+        <p>Once meshed and solved, each run's force-coefficient history is reduced automatically: a routine reads the exported CSVs, finds where the oscillating signal settles within a ±2% band, and averages the tail to a single Cl or Cd value written straight back to the design database — leaving the surrogate ready to train. The result is a reproducible, seed-controlled pipeline from parameters to coefficients.</p>
+        <p style="margin-top:1.5rem;"><a href="/projects/surrogate-based-bayesian-optimization-of-an-f1-front-wing.html">← See the project</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

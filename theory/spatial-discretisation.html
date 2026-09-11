@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spatial discretisation — Kármán Street</title>
+  <meta name="description" content="Theory · Thesis §2.1.2">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← All theory</a>
+      <article>
+        <h1 class="page-title">Spatial discretisation</h1>
+        <p class="article-meta">Theory · Thesis §2.1.2</p>
+        <p>A CFD solver cannot work with continuous fields; it works with numbers at discrete locations. <strong>Spatial discretisation</strong> is the process of chopping the flow domain into a mesh of cells and rewriting the governing equations as algebraic relationships between neighbouring cell values.</p>
+        <p>The dominant approach in engineering CFD is the <strong>finite-volume method</strong>: the domain is divided into control volumes, and conservation of mass, momentum and energy is enforced exactly over each one by balancing fluxes across its faces. Because it is built on flux balances, it conserves the transported quantities by construction — a key reason it is trusted for aerodynamics.</p>
+        <p>Choices made here — cell type, mesh density, and the scheme used to interpolate face values (first vs second order) — directly set the accuracy and stability of the result. Coarse or skewed meshes and low-order schemes add <em>numerical diffusion</em> that can smear the very features you are trying to capture.</p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

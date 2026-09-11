@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surrogate-based Bayesian optimization of an F1 front wing — Kármán Street</title>
+  <meta name="description" content="Project · Master&#x27;s thesis">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/">Theory</a><a href="/projects/" aria-current="page">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/projects/">← All projects</a>
+      <article>
+        <h1 class="page-title">Surrogate-based Bayesian optimization of an F1 front wing</h1>
+        <p class="article-meta">Project · Master&#x27;s thesis</p>
+        <p>My Master's thesis: an end-to-end aerodynamic design and optimisation pipeline for a parametrised Formula 1 front wing and nose assembly compliant with the 2026 FIA regulations, integrating CAD automation, CFD and data-driven optimisation.</p>
+        <p>The geometry is fully parametrised in CATIA V5 and driven from Python, so designs regenerate automatically across a 26-dimensional parameter space. A Latin Hypercube of designs seeds a Gaussian-process surrogate, which is refined by active learning and then frozen and searched with an NSGA-II genetic algorithm to produce a Pareto front of downforce-versus-drag optima — from which specific geometries are chosen per circuit using each track's DRS time fraction. High-resolution CFD in OpenFOAM and wind-tunnel testing of a 32.4%-scale 3D-printed model close the loop with experimental validation.</p>
+        <p>The methodology and results are broken out across several papers, starting with the automated CAD–CFD pipeline linked below.</p>
+        <p style="margin-top:1.5rem;"><a href="/papers/automated-cad-cfd-optimization-pipeline.html">Read the paper →</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finite-volume Euler solver from first principles — Kármán Street</title>
+  <meta name="description" content="Project · Project 49">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/">Theory</a><a href="/projects/" aria-current="page">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/projects/">← All projects</a>
+      <article>
+        <h1 class="page-title">Finite-volume Euler solver from first principles</h1>
+        <p class="article-meta">Project · Project 49</p>
+        <p>A finite-volume CFD solver written from scratch to simulate compressible flow in a 2-D channel with a geometric perturbation, solving the Euler equations with a cell-centred formulation.</p>
+        <p>The solver used central differencing for the fluxes with artificial dissipation, and a four-stage Runge–Kutta time integration with adaptive, CFL-based time stepping. I implemented full boundary-condition handling for subsonic inlet and outlet, ensuring the correct characteristic behaviour, and validated against Hirsch's reference data — matching the pressure-coefficient distribution and confirming mesh independence at a 75×25 grid.</p>
+        <p>Parametric studies over freestream Mach number (0.3–0.7) captured the onset of compressibility effects and shock formation at the higher end, alongside analyses of entropy variation, outlet-pressure sensitivity and convergence via residual reduction and mass-flow balance.</p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Genetic algorithms and Pareto fronts — Kármán Street</title>
+  <meta name="description" content="Theory · Thesis §2.1.4">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← All theory</a>
+      <article>
+        <h1 class="page-title">Genetic algorithms and Pareto fronts</h1>
+        <p class="article-meta">Theory · Thesis §2.1.4</p>
+        <p>Real designs rarely have a single objective. An F1 front wing wants maximum downforce <em>and</em> minimum drag, and those pull in opposite directions. <strong>Multi-objective optimization</strong> is about mapping the trade-off rather than pretending there is one best answer.</p>
+        <h2>Genetic algorithms</h2>
+        <p>A <strong>genetic algorithm</strong> borrows from evolution: it maintains a population of candidate designs, evaluates their fitness, and breeds the next generation by combining and mutating the best. It needs no gradients and copes well with rugged, high-dimensional design spaces — which is why it pairs naturally with a cheap surrogate that it can call thousands of times.</p>
+        <h2>The Pareto front</h2>
+        <p>The output is not one design but a <strong>Pareto front</strong>: the set of designs for which you cannot improve one objective without sacrificing another. Every point on it is an optimal compromise; choosing among them is an engineering decision. In the thesis, NSGA-II produces the front, and specific points are then picked per circuit using how much of each lap is spent with DRS open.</p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

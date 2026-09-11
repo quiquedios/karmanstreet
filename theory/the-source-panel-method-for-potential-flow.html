@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The source panel method for potential flow — Kármán Street</title>
+  <meta name="description" content="Theory · Project 13">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← All theory</a>
+      <article>
+        <h1 class="page-title">The source panel method for potential flow</h1>
+        <p class="article-meta">Theory · Project 13</p>
+        <p>The <strong>source panel method</strong> is a classic way to compute inviscid, incompressible flow around a body without meshing the whole domain — you only discretise the surface.</p>
+        <p>The body's surface is broken into straight <strong>panels</strong>, each carrying an unknown source strength. Enforcing the boundary condition that no flow crosses the surface at each panel turns the problem into a linear system for those strengths. Solve it, and you can reconstruct the surface velocity and the pressure coefficient everywhere.</p>
+        <p>Because it is a boundary method it is cheap and illuminating, and it is an ideal setting to study <strong>convergence</strong>: as the panel count rises the solution approaches the exact answer, with residuals falling monotonically. The accompanying project demonstrated exactly this on a circular geometry, reaching near-zero residuals and physically consistent pressure distributions while exposing the cancellation errors that appear at very high panel counts.</p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

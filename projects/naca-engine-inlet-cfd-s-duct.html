@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NACA engine inlet CFD (S-duct) — Kármán Street</title>
+  <meta name="description" content="Project · Project 17">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/">Theory</a><a href="/projects/" aria-current="page">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/projects/">← All projects</a>
+      <article>
+        <h1 class="page-title">NACA engine inlet CFD (S-duct)</h1>
+        <p class="article-meta">Project · Project 17</p>
+        <p>A comprehensive CFD study of a NACA-type engine inlet in STAR-CCM+, evaluating total-pressure recovery, compressor-face distortion and mass-flow efficiency across angles of attack of 0°, 15° and 30°. The flow was compressible and turbulent (Mach 0.21) through an S-duct geometry.</p>
+        <p>Setting it up meant a full physics definition — RANS with both k-ε and k-ω SST closures, boundary conditions and ideal-gas properties — plus custom field functions to compute pressure recovery and distortion directly from the solution. The mesh used trimmed cells and prism layers with quality validation (skewness, aspect ratio, y+) and refinement studies for numerical stability.</p>
+        <p>Results showed inlet performance degrading with angle of attack — falling pressure recovery and rising distortion at the compressor face — consistent with expectations, and a turbulence-model comparison in which k-ω SST agreed best with experiment.</p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

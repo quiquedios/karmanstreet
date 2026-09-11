@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wall treatment and y+ — Kármán Street</title>
+  <meta name="description" content="Theory · Thesis §2.1.2">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← All theory</a>
+      <article>
+        <h1 class="page-title">Wall treatment and y+</h1>
+        <p class="article-meta">Theory · Thesis §2.1.2</p>
+        <p>Near a wall the turbulent boundary layer has a well-known layered structure. The dimensionless wall distance <strong>y+</strong> measures how far the first mesh point sits from the wall in viscous units, and it decides how you must treat that region.</p>
+        <h2>The law of the wall</h2>
+        <p>The <em>law of the wall</em> says the near-wall velocity profile collapses onto a universal shape when plotted in these units: a linear viscous sublayer very close to the wall, a logarithmic region further out, and a buffer layer between. Turbulence models rely on this structure.</p>
+        <h2>Two strategies</h2>
+        <p>Either you <strong>resolve</strong> the sublayer — placing the first cell at y+ of order 1 and meshing right down to the wall — or you use a <strong>wall function</strong> that models the near-wall region and expects the first cell in the log layer (y+ roughly 30–300). Landing y+ in the buffer layer, between the two, is the worst of both worlds. Getting y+ right is one of the most consequential meshing decisions in a CFD study.</p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>
