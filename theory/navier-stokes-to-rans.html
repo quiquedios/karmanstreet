@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Navier–Stokes to RANS — Kármán Street</title>
-  <meta name="description" content="Theory · Thesis §2.1.2">
+  <meta name="description" content="Foundations">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -35,10 +35,11 @@
 
   <main>
     <div class="wrap">
-      <a class="back" href="/theory/">← All theory</a>
+      <a class="back" href="/theory/">← Theory roadmap</a>
       <article>
         <h1 class="page-title">Navier–Stokes to RANS</h1>
-        <p class="article-meta">Theory · Thesis §2.1.2</p>
+        <p class="article-meta">Foundations</p>
+
         <p>Computational Fluid Dynamics is the numerical resolution of the equations that govern fluid motion. Since the aerodynamic forces on a geometry as complex as a multi-element front wing cannot be obtained analytically, CFD is the tool used to quantify downforce and drag for every candidate design.</p>
         <h2>The governing equations</h2>
         <p>The governing set are the Navier–Stokes equations, expressing conservation of mass and momentum for a viscous fluid. For the incompressible regime found in motorsport (M &lt; 0.3) they read:</p>
@@ -54,9 +55,9 @@
         <p>Physically, it accounts for the fact that turbulent eddies continuously exchange momentum between adjacent layers of fluid — an effect entirely absent from the mean-field description, but one that dominates the behaviour of the flow.</p>
         <p>The appearance of these six new unknowns without any additional equations to determine them is the <strong>closure problem</strong> of turbulence. The averaging procedure has introduced more unknowns than equations, so the system cannot be solved as it stands. Bridging that gap is precisely the role of a turbulence model, which supplies the missing relations between the Reynolds stresses and the mean flow — at the cost of introducing empirical values.</p>
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
-          <a href="/theory/finite-difference-schemes-and-numerical-stability.html">‹ Finite-difference schemes and numerical stability</a><a href="/theory/turbulence-models-an-overview.html" style="margin-left:auto;text-align:right;">Turbulence models: an overview ›</a>
+          <a href="/theory/airfoils-and-finite-wings.html">‹ Airfoils and finite wings</a><a href="/theory/turbulence-models.html" style="margin-left:auto;text-align:right;">Turbulence models ›</a>
         </nav>
-        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · step 15 of 23</a></p>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · chapter 11 of 25</a></p>
       </article>
     </div>
   </main>

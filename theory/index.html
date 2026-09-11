@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Theory — Kármán Street</title>
-  <meta name="description" content="A guided roadmap through aerodynamics and CFD theory.">
+  <meta name="description" content="A complete set of aerodynamics and CFD notes, from fluid fundamentals to applied design.">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -14,27 +14,22 @@
   <style>
     .roadmap { margin: 2rem 0 1rem; }
     .stage { position: relative; padding-left: 2.2rem; padding-bottom: 1.6rem; }
-    .stage:before { /* vertical connector line */
-      content:""; position:absolute; left: 0.7rem; top: 0.2rem; bottom: -0.4rem;
-      width: 2px; background: var(--line);
-    }
-    .stage:last-child:before { bottom: auto; height: 1.4rem; }
-    .stage-dot { position:absolute; left: 0; top: 0.1rem;
-      width: 1.5rem; height: 1.5rem; border-radius: 50%;
-      background: var(--accent); color:#fff; font-family:"Helvetica Neue",Arial,sans-serif;
-      font-size: 0.8rem; font-weight:700; display:flex; align-items:center; justify-content:center; }
-    .stage-title { font-family:"Helvetica Neue",Arial,sans-serif; font-weight:600;
-      font-size: 1.15rem; margin: 0 0 0.6rem; color: var(--ink); }
+    .stage:before { content:""; position:absolute; left:0.7rem; top:0.2rem; bottom:-0.4rem; width:2px; background:var(--line); }
+    .stage:last-child:before { bottom:auto; height:1.4rem; }
+    .stage-dot { position:absolute; left:0; top:0.1rem; width:1.5rem; height:1.5rem; border-radius:50%;
+      background:var(--accent); color:#fff; font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.8rem;
+      font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .stage-title { font-family:"Helvetica Neue",Arial,sans-serif; font-weight:600; font-size:1.15rem; margin:0 0 0.6rem; color:var(--ink); }
     .stage-steps { list-style:none; margin:0; padding:0; }
-    .stage-steps li { margin: 0.15rem 0; }
-    .stage-steps a { display:flex; gap:0.6rem; align-items:baseline;
-      text-decoration:none; color: var(--ink); padding: 0.35rem 0.5rem;
-      border:1px solid transparent; border-radius:6px; }
-    .stage-steps a:hover { background: var(--panel); border-color: var(--line); }
-    .step-num { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.8rem;
-      color: var(--accent); font-weight:700; min-width:1.4rem; }
+    .stage-steps li { margin:0.15rem 0; }
+    .stage-steps a { display:flex; gap:0.6rem; align-items:baseline; text-decoration:none; color:var(--ink);
+      padding:0.35rem 0.5rem; border:1px solid transparent; border-radius:6px; }
+    .stage-steps a:hover { background:var(--panel); border-color:var(--line); }
+    .step-num { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.8rem; color:var(--accent); font-weight:700; min-width:1.6rem; }
     .step-title { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.98rem; }
-    .roadmap-intro { color: var(--ink-soft); }
+    .step-tag { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.7rem; margin-left:auto; padding:0.05rem 0.45rem;
+      border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); white-space:nowrap; }
+    .step-tag.outline { color:var(--accent-2); border-color:var(--accent-2); }
   </style>
 </head>
 <body>
@@ -62,69 +57,67 @@
   <main>
     <div class="wrap">
       <h1 class="page-title">Theory</h1>
+      <p class="section-lead">A complete set of notes, built from the ground up: from the properties of a fluid to the optimization methods used to design a wing. Read top to bottom, or jump to any chapter. Entries marked <em>outline</em> are structured drafts still being written.</p>
+      <div class="roadmap">
       <div class="stage">
         <div class="stage-dot">1</div>
-        <p class="stage-title">Forces and how wings work</p>
+        <p class="stage-title">Fluid fundamentals</p>
         <ul class="stage-steps">
-          <li><a href="/theory/lift-drag-and-downforce.html"><span class="step-num">01</span><span class="step-title">Lift, drag and downforce</span></a></li>
-          <li><a href="/theory/how-lift-is-generated.html"><span class="step-num">02</span><span class="step-title">How lift is generated</span></a></li>
-          <li><a href="/theory/reading-an-airfoil-polar.html"><span class="step-num">03</span><span class="step-title">Reading an airfoil polar</span></a></li>
-          <li><a href="/theory/drag-breakdown.html"><span class="step-num">04</span><span class="step-title">Drag breakdown</span></a></li>
-          <li><a href="/theory/wingtip-vortices-and-induced-drag.html"><span class="step-num">05</span><span class="step-title">Wingtip vortices and induced drag</span></a></li>
+          <li><a href="/theory/properties-of-a-fluid.html"><span class="step-num">01</span><span class="step-title">Properties of a fluid</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/describing-a-flow.html"><span class="step-num">02</span><span class="step-title">Describing a flow</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/the-conservation-laws.html"><span class="step-num">03</span><span class="step-title">The conservation laws</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/bernoulli-s-equation-and-the-pressure-coefficient.html"><span class="step-num">04</span><span class="step-title">Bernoulli&#x27;s equation and the pressure coefficient</span><span class="step-tag">notes</span></a></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">2</div>
-        <p class="stage-title">The boundary layer and viscous effects</p>
+        <p class="stage-title">How aerodynamic forces arise</p>
         <ul class="stage-steps">
-          <li><a href="/theory/laminar-vs-turbulent-boundary-layers.html"><span class="step-num">06</span><span class="step-title">Laminar vs turbulent boundary layers</span></a></li>
-          <li><a href="/theory/boundary-layers-under-pressure-gradients.html"><span class="step-num">07</span><span class="step-title">Boundary layers under pressure gradients</span></a></li>
-          <li><a href="/theory/bluff-body-drag-and-flow-separation.html"><span class="step-num">08</span><span class="step-title">Bluff-body drag and flow separation</span></a></li>
-          <li><a href="/theory/vortex-shedding-and-the-k-rm-n-street.html"><span class="step-num">09</span><span class="step-title">Vortex shedding and the Kármán street</span></a></li>
+          <li><a href="/theory/lift-drag-and-downforce.html"><span class="step-num">05</span><span class="step-title">Lift, drag and downforce</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/how-lift-is-generated.html"><span class="step-num">06</span><span class="step-title">How lift is generated</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/the-boundary-layer.html"><span class="step-num">07</span><span class="step-title">The boundary layer</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/drag-breakdown.html"><span class="step-num">08</span><span class="step-title">Drag breakdown</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/wingtip-vortices-and-induced-drag.html"><span class="step-num">09</span><span class="step-title">Wingtip vortices and induced drag</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/airfoils-and-finite-wings.html"><span class="step-num">10</span><span class="step-title">Airfoils and finite wings</span><span class="step-tag outline">outline</span></a></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">3</div>
-        <p class="stage-title">Wings in practice</p>
+        <p class="stage-title">Computational fluid dynamics</p>
         <ul class="stage-steps">
-          <li><a href="/theory/ground-effect-and-multi-element-wings.html"><span class="step-num">10</span><span class="step-title">Ground effect and multi-element wings</span></a></li>
-          <li><a href="/theory/aeroelastic-divergence-of-a-wing-section.html"><span class="step-num">11</span><span class="step-title">Aeroelastic divergence of a wing section</span></a></li>
+          <li><a href="/theory/navier-stokes-to-rans.html"><span class="step-num">11</span><span class="step-title">Navier–Stokes to RANS</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/turbulence-models.html"><span class="step-num">12</span><span class="step-title">Turbulence models</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/wall-treatment-and-y.html"><span class="step-num">13</span><span class="step-title">Wall treatment and y+</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/discretisation-and-mesh-quality.html"><span class="step-num">14</span><span class="step-title">Discretisation and mesh quality</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/running-and-trusting-a-simulation.html"><span class="step-num">15</span><span class="step-title">Running and trusting a simulation</span><span class="step-tag">notes</span></a></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">4</div>
-        <p class="stage-title">Modelling flow mathematically</p>
+        <p class="stage-title">Experimental methods</p>
         <ul class="stage-steps">
-          <li><a href="/theory/potential-flow-and-the-method-of-images.html"><span class="step-num">12</span><span class="step-title">Potential flow and the method of images</span></a></li>
-          <li><a href="/theory/the-source-panel-method-for-potential-flow.html"><span class="step-num">13</span><span class="step-title">The source panel method for potential flow</span></a></li>
-          <li><a href="/theory/finite-difference-schemes-and-numerical-stability.html"><span class="step-num">14</span><span class="step-title">Finite-difference schemes and numerical stability</span></a></li>
+          <li><a href="/theory/wind-tunnels-and-dynamic-similarity.html"><span class="step-num">16</span><span class="step-title">Wind tunnels and dynamic similarity</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/flow-visualisation-and-measurement.html"><span class="step-num">17</span><span class="step-title">Flow visualisation and measurement</span><span class="step-tag outline">outline</span></a></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">5</div>
-        <p class="stage-title">CFD foundations</p>
+        <p class="stage-title">Applied motorsport aerodynamics</p>
         <ul class="stage-steps">
-          <li><a href="/theory/navier-stokes-to-rans.html"><span class="step-num">15</span><span class="step-title">Navier–Stokes to RANS</span></a></li>
-          <li><a href="/theory/turbulence-models-an-overview.html"><span class="step-num">16</span><span class="step-title">Turbulence models: an overview</span></a></li>
-          <li><a href="/theory/wall-treatment-and-y.html"><span class="step-num">17</span><span class="step-title">Wall treatment and y+</span></a></li>
-          <li><a href="/theory/spatial-discretisation.html"><span class="step-num">18</span><span class="step-title">Spatial discretisation</span></a></li>
-          <li><a href="/theory/mesh-quality-skewness-aspect-ratio-non-orthogonality.html"><span class="step-num">19</span><span class="step-title">Mesh quality: skewness, aspect ratio, non-orthogonality</span></a></li>
+          <li><a href="/theory/wings-in-motorsport.html"><span class="step-num">18</span><span class="step-title">Wings in motorsport</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/ground-effect.html"><span class="step-num">19</span><span class="step-title">Ground effect</span><span class="step-tag outline">outline</span></a></li>
+          <li><a href="/theory/endplates-gurney-flaps-and-vortices.html"><span class="step-num">20</span><span class="step-title">Endplates, Gurney flaps and vortices</span><span class="step-tag outline">outline</span></a></li>
+          <li><a href="/theory/wheels-underbody-and-diffuser.html"><span class="step-num">21</span><span class="step-title">Wheels, underbody and diffuser</span><span class="step-tag outline">outline</span></a></li>
+          <li><a href="/theory/aeromap-and-aerodynamic-balance.html"><span class="step-num">22</span><span class="step-title">Aeromap and aerodynamic balance</span><span class="step-tag outline">outline</span></a></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">6</div>
-        <p class="stage-title">Wind tunnels and validation</p>
+        <p class="stage-title">Design and optimization methods</p>
         <ul class="stage-steps">
-          <li><a href="/theory/dynamic-similarity-and-the-reynolds-number.html"><span class="step-num">20</span><span class="step-title">Dynamic similarity and the Reynolds number</span></a></li>
-        </ul>
-      </div>
-      <div class="stage">
-        <div class="stage-dot">7</div>
-        <p class="stage-title">Design exploration and optimization</p>
-        <ul class="stage-steps">
-          <li><a href="/theory/design-of-experiments-and-latin-hypercube-sampling.html"><span class="step-num">21</span><span class="step-title">Design of Experiments and Latin Hypercube Sampling</span></a></li>
-          <li><a href="/theory/surrogate-models-and-bayesian-optimization.html"><span class="step-num">22</span><span class="step-title">Surrogate models and Bayesian optimization</span></a></li>
-          <li><a href="/theory/genetic-algorithms-and-pareto-fronts.html"><span class="step-num">23</span><span class="step-title">Genetic algorithms and Pareto fronts</span></a></li>
+          <li><a href="/theory/design-of-experiments-and-latin-hypercube-sampling.html"><span class="step-num">23</span><span class="step-title">Design of Experiments and Latin Hypercube Sampling</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/surrogate-models-and-bayesian-optimization.html"><span class="step-num">24</span><span class="step-title">Surrogate models and Bayesian optimization</span><span class="step-tag">notes</span></a></li>
+          <li><a href="/theory/genetic-algorithms-and-pareto-fronts.html"><span class="step-num">25</span><span class="step-title">Genetic algorithms and Pareto fronts</span><span class="step-tag">notes</span></a></li>
         </ul>
       </div>
       </div>

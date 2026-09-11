@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discretisation and mesh quality — Kármán Street</title>
+  <meta name="description" content="Foundations">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Discretisation and mesh quality</h1>
+        <p class="article-meta">Foundations</p>
+        <p>A solver does not manipulate continuous fields; it manipulates numbers stored at discrete locations. Turning the governing equations into something a computer can advance is <strong>discretisation</strong>, and the quality of that step sets a ceiling on the accuracy of everything above it. No turbulence model rescues a solution that its own numerics have already corrupted.</p>
+        <h2>The finite-volume method</h2>
+        <p>The dominant approach in engineering CFD is the <strong>finite-volume method</strong>. The domain is divided into control volumes, and the conservation laws of Part I are enforced over each one by balancing the fluxes crossing its faces. Because it is built on flux balances rather than on differential operators, the transported quantities are conserved exactly and by construction — which is why it is trusted for aerodynamics, where the output of interest is an integrated force.</p>
+        <p>Getting from cell-centred values to the face fluxes requires interpolation, and that choice is where accuracy is won or lost. First-order schemes are stable but add <strong>numerical diffusion</strong> that smears the very gradients being resolved; higher-order schemes are sharper but more prone to oscillation. The supersonic-wedge project on this site is a clean demonstration: the same flow, captured sharply or smeared into a thick band, depending only on the scheme.</p>
+        <h2>Mesh quality</h2>
+        <p>Two meshes with the same cell count can give very different answers. Quality is described by a few standard metrics: <strong>skewness</strong> (how distorted a cell is from its ideal shape), <strong>aspect ratio</strong> (the ratio of its longest to shortest dimension, acceptable when aligned with the flow and harmful when not), and <strong>non-orthogonality</strong> (the angle between the line joining two cell centres and the face they share, which feeds error into every gradient). A good mesh keeps these within bounds, refines where gradients are steep — walls, leading edges, wakes, shear layers — and stays coarse where the flow is uniform.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Mesh quality metrics on representative cells<code>/assets/img/theory/mesh-quality-metrics.png</code></div>
+          <figcaption>Fig. 1 — Skewness, aspect ratio and non-orthogonality.</figcaption>
+        </figure>
+        <div class="note"><strong>To write — sources to merge:</strong><ul><li><strong>Meshing strategy and cell types</strong> in practice — structured vs unstructured, polyhedral and trimmed cells, prism-layer stacks. MSI CFD notes (meshing section).</li><li><strong>Discretisation schemes in detail</strong> — upwind, central, blended; flux limiters. MSI CFD notes; cross-reference the site's <a href='/theory/finite-difference-schemes-and-numerical-stability.html'>Finite-difference schemes</a> note for the stability argument.</li></ul></div>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/wall-treatment-and-y.html">‹ Wall treatment and y+</a><a href="/theory/running-and-trusting-a-simulation.html" style="margin-left:auto;text-align:right;">Running and trusting a simulation ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · chapter 14 of 25</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

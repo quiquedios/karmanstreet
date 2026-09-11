@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Surrogate models and Bayesian optimization — Kármán Street</title>
-  <meta name="description" content="Theory · Thesis §2.1.4">
+  <meta name="description" content="Foundations">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -35,10 +35,11 @@
 
   <main>
     <div class="wrap">
-      <a class="back" href="/theory/">← All theory</a>
+      <a class="back" href="/theory/">← Theory roadmap</a>
       <article>
         <h1 class="page-title">Surrogate models and Bayesian optimization</h1>
-        <p class="article-meta">Theory · Thesis §2.1.4</p>
+        <p class="article-meta">Foundations</p>
+
         <p>Each evaluation of a design — in the thesis, a pair of CFD cases, one for C<sub>L</sub> in the cornering mode and one for C<sub>D</sub> in the straight-line mode — is far too costly to call repeatedly inside an optimizer. A <strong>surrogate model</strong> avoids this: it is a cheap-to-evaluate function fitted to the available data that approximates the true input-output relationship and replaces the simulation during the search. The optimizer can then call the surrogate thousands of times at negligible cost, while the expensive CFD evaluations are reserved exclusively for training it.</p>
         <h2>Gaussian processes</h2>
         <p>The surrogate adopted is a <strong>Gaussian Process</strong>, also known as Kriging. Unlike a model that returns a single predicted value, a GP returns at every unseen input a full predictive distribution with a mean µ(x) and a variance σ²(x):</p>
@@ -56,7 +57,7 @@
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
           <a href="/theory/design-of-experiments-and-latin-hypercube-sampling.html">‹ Design of Experiments and Latin Hypercube Sampling</a><a href="/theory/genetic-algorithms-and-pareto-fronts.html" style="margin-left:auto;text-align:right;">Genetic algorithms and Pareto fronts ›</a>
         </nav>
-        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · step 22 of 23</a></p>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · chapter 24 of 25</a></p>
       </article>
     </div>
   </main>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bernoulli&#x27;s equation and the pressure coefficient — Kármán Street</title>
+  <meta name="description" content="Foundations">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Bernoulli&#x27;s equation and the pressure coefficient</h1>
+        <p class="article-meta">Foundations</p>
+        <p>Along a streamline in a steady, incompressible, frictionless flow, the energy balance of the previous chapter reduces to one of the most quoted — and most misapplied — relations in the subject.</p>
+        <div class="eq">p + ½ ρ v² + ρ g h = constant</div>
+        <p>For air over the small height changes of a wing the gravitational term is negligible, leaving p + ½ρv² constant along the streamline. The direct reading is that where the flow is fast the pressure is low, and where it is slow the pressure is high. The stagnation region at a leading edge, where the flow is brought to rest, is therefore a region of high pressure — the highest anywhere on the body.</p>
+        <h2>What Bernoulli does not say</h2>
+        <p>The equation relates pressure to velocity; it does <strong>not</strong> explain why the velocity is different in the first place. Treating it as a cause of lift, rather than as a bookkeeping relation between two consequences, is the root of the most common misconception in aerodynamics — one taken apart in detail in the lift-generation chapter. Bernoulli is a true and useful statement about a streamline, and nothing more.</p>
+        <p>It also comes with conditions that are quietly violated more often than not: it holds along a streamline, in steady flow, with no friction and no energy addition. Inside a boundary layer, across a shock, through a fan or a region of separated flow, it simply does not apply.</p>
+        <h2>The pressure coefficient</h2>
+        <p>Aerodynamic results are almost never reported as raw pressures. They are non-dimensionalised into the <strong>pressure coefficient</strong>:</p>
+        <div class="eq">C<sub>p</sub> = (p − p<sub>∞</sub>) / (½ ρ U<sub>∞</sub>²)</div>
+        <p>which measures the local pressure relative to the freestream, scaled by the dynamic pressure. Its value is bounded above by 1 at a stagnation point — where, by Bernoulli, all the dynamic pressure has been recovered — and goes negative wherever the flow runs faster than freestream, which is to say over every working suction surface. C<sub>p</sub> is the natural language of the field precisely because it collapses the pressure field onto a scale that is independent of speed and size, and it is the quantity plotted on nearly every result in these notes.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Pressure coefficient distribution over an airfoil<code>/assets/img/theory/cp-distribution.png</code></div>
+          <figcaption>Fig. 1 — Typical C<sub>p</sub> distribution, with the stagnation peak at C<sub>p</sub> = 1 and suction over the upper surface.</figcaption>
+        </figure>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/the-conservation-laws.html">‹ The conservation laws</a><a href="/theory/lift-drag-and-downforce.html" style="margin-left:auto;text-align:right;">Lift, drag and downforce ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · chapter 4 of 25</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

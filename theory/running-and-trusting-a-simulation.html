@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Running and trusting a simulation — Kármán Street</title>
+  <meta name="description" content="Foundations">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Running and trusting a simulation</h1>
+        <p class="article-meta">Foundations</p>
+        <p>A converged-looking simulation is not the same as a correct one. Two disciplines separate a result that can be reported from one that merely exists: confirming the solution has converged, and confirming it no longer depends on the mesh.</p>
+        <h2>Convergence</h2>
+        <p>As the solver iterates, the <strong>residuals</strong> — the degree to which the discretised equations are not yet satisfied — should fall and settle. But residuals are a necessary condition, not a sufficient one. The quantity actually being sought is an integrated force coefficient, and it is entirely possible for residuals to plateau while C<sub>L</sub> or C<sub>D</sub> is still drifting. The rule that follows is simple: monitor the coefficient itself, and treat the run as converged only when the coefficient has settled, not when the residuals look tidy.</p>
+        <p>For an unsteady or marginally stable case the coefficient will oscillate rather than flatten, and convergence then means a statistically stationary signal. The front-wing pipeline on this site handles exactly this by detecting when the oscillation stays within a ±2% band and averaging the tail — a concrete instance of the general principle.</p>
+        <h2>Mesh independence</h2>
+        <p>Because the answer depends on the mesh, demonstrating that it has <em>stopped</em> depending on the mesh is mandatory, not optional. The procedure is to refine systematically — typically three levels — and track the coefficients until successive refinements no longer change them meaningfully. Done formally, this is a <strong>grid-convergence study</strong>: the discretisation error is estimated from the differences between levels and the observed order of convergence, which is what lets you state a number with an error bar rather than a hopeful single value.</p>
+        <div class="note">In an optimization context this matters even more than in a one-off simulation. If the discretisation error is comparable to the performance differences between candidate designs, the optimizer is chasing numerical noise rather than aerodynamics. The grid-convergence study is therefore what licenses the whole design loop, not a formality tacked on at the end.</div>
+        <div class="note"><strong>To write — sources to merge:</strong><ul><li><strong>Solver settings and best practice</strong> — relaxation, courant number control, boundary-condition selection. MSI CFD notes.</li><li><strong>Verification and validation framework</strong> — the distinction between the two, and where experiment enters. MSI CFD notes; ties to Part IV.</li></ul></div>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/discretisation-and-mesh-quality.html">‹ Discretisation and mesh quality</a><a href="/theory/wind-tunnels-and-dynamic-similarity.html" style="margin-left:auto;text-align:right;">Wind tunnels and dynamic similarity ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · chapter 15 of 25</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

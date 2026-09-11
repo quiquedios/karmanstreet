@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Describing a flow — Kármán Street</title>
+  <meta name="description" content="Foundations">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Describing a flow</h1>
+        <p class="article-meta">Foundations</p>
+        <p>Once the fluid is characterised, the flow through it needs a vocabulary. A handful of distinctions, made early, determine which equations apply and which can be discarded.</p>
+        <h2>Streamlines and stream tubes</h2>
+        <p>A <strong>streamline</strong> is a curve everywhere tangent to the local velocity — the path a massless tracer would trace at one instant. Bundle a set of them and you get a <strong>stream tube</strong>, whose walls no flow crosses by construction. This is the mental picture behind every control-volume argument that follows, because a stream tube turns a messy flow field into something with a clear inside and outside.</p>
+        <h2>Steady versus unsteady, and dimensionality</h2>
+        <p>A flow is <strong>steady</strong> if the field at any fixed point does not change with time. Steadiness is a property of the reference frame, not of the flow in the abstract: the flow over a car is unsteady to a bystander but steady in the frame moving with the car, which is exactly why wind-tunnel and CFD analyses are set in that frame. Independently, a flow may be treated as one, two or three-dimensional depending on how many spatial coordinates its quantities genuinely depend on — a modelling choice that trades fidelity for cost.</p>
+        <h2>Laminar versus turbulent</h2>
+        <p>A <strong>laminar</strong> flow moves in orderly layers that do not mix; a <strong>turbulent</strong> flow is chaotic and three-dimensional, mixing momentum aggressively across those layers. Nearly every flow of interest here is turbulent, and the consequences run through everything downstream — drag, separation, heat transfer, and the entire structure of a CFD turbulence model.</p>
+        <h2>The Reynolds number</h2>
+        <p>The parameter that decides which regime prevails is the <strong>Reynolds number</strong>, the ratio of inertial to viscous forces:</p>
+        <div class="eq">Re = ρ U L / µ = U L / ν</div>
+        <p>Below a critical value viscosity damps disturbances and the flow stays laminar; above it, inertia wins and disturbances grow into turbulence. Re is the single most important dimensionless group in this whole subject: it sets the flow regime, it is the group that must be matched for a scale model to be representative, and it appears again and again in the chapters that follow. Its central role in wind-tunnel scaling is taken up in Part IV.</p>
+        <h2>Circulation</h2>
+        <p><strong>Circulation</strong> Γ is the line integral of velocity around a closed loop — a scalar measure of the net rotation the loop encloses. It reads as an abstract definition on first encounter, but it is the quantity that ties directly to lift through the Kutta–Joukowski relation, and it earns its keep in Part II when lift generation is explained properly.</p>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/properties-of-a-fluid.html">‹ Properties of a fluid</a><a href="/theory/the-conservation-laws.html" style="margin-left:auto;text-align:right;">The conservation laws ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · chapter 2 of 25</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

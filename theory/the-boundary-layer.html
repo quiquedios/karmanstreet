@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The boundary layer — Kármán Street</title>
+  <meta name="description" content="Foundations">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">The boundary layer</h1>
+        <p class="article-meta">Foundations</p>
+        <p>Right against any surface the no-slip condition forces the fluid velocity to zero. It climbs from there to the freestream value across a thin region where viscosity cannot be ignored no matter how large the Reynolds number is: the <strong>boundary layer</strong>. Almost everything that makes real aerodynamics deviate from ideal theory happens inside it.</p>
+        <h2>Growth and the two regimes</h2>
+        <p>The layer begins thin at the leading edge and thickens downstream as more fluid is slowed by the wall. It starts <strong>laminar</strong> — orderly, low-friction, but fragile — and after some distance transitions to <strong>turbulent</strong>: thicker, higher-friction, but far better at mixing high-momentum fluid down towards the wall. The transition point depends on the Reynolds number and on surface disturbances, and it can be forced deliberately, a fact Part IV relies on when tripping a wind-tunnel model.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Laminar, transitional and turbulent boundary-layer development<code>/assets/img/theory/boundary-layer-stages.png</code></div>
+          <figcaption>Fig. 1 — Development of the boundary layer along a surface.</figcaption>
+        </figure>
+        <h2>Why attachment is a balance</h2>
+        <p>Whether the layer stays attached is decided by the pressure gradient it runs into. Near a solid surface the fluid has already lost momentum to viscosity, so it has little to spare. A <strong>favorable</strong> gradient (pressure falling downstream) accelerates it and keeps it attached; an <strong>adverse</strong> gradient (pressure rising) drains what remains, and if it is strong enough the near-wall flow stalls and then reverses — <strong>separation</strong>. A turbulent layer resists this longer than a laminar one precisely because it continually replenishes the near-wall momentum by mixing.</p>
+        <p>Attachment, then, is not a property of the surface but the outcome of a contest between the imposed pressure gradient and the momentum left in the boundary layer. This single idea explains stall, explains bluff-body drag, and sets the ceiling on how hard any wing can be loaded — themes that recur through Parts II and V.</p>
+        <div class="note">Separation is where the cheap models give up. Potential flow ignores the boundary layer entirely and so cannot predict it; the boundary-layer equations themselves break down at the separation point. Capturing it reliably is a large part of why the applied work in these notes leans on RANS CFD with a turbulence model chosen for exactly this behaviour.</div>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/how-lift-is-generated.html">‹ How lift is generated</a><a href="/theory/drag-breakdown.html" style="margin-left:auto;text-align:right;">Drag breakdown ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · chapter 7 of 25</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>
