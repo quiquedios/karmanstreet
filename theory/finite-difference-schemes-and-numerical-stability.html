@@ -42,6 +42,11 @@
         <p>Solving a partial differential equation numerically means replacing derivatives with differences on a grid. The <strong>scheme</strong> you choose — how you form those differences — governs both accuracy and whether the solution stays bounded at all.</p>
         <p>Using the 1-D linear advection equation as a testbed, one can compare first-order backward (upwind), second-order central, and second-order backward schemes. <strong>Von Neumann stability analysis</strong> — tracking how each Fourier mode is amplified per step — reveals that the second-order central scheme is unconditionally unstable for explicit time stepping, while upwind schemes are stable at the cost of numerical diffusion.</p>
         <p>Stability is not automatic: the <strong>Courant number</strong>, linking time step, grid spacing and wave speed, must stay within a scheme-dependent limit. The whole exercise is a concrete illustration of <strong>Godunov's order-barrier theorem</strong> — the fundamental tension that a linear scheme cannot be both monotone and better than first-order accurate — which is why real solvers reach for nonlinear limiters.</p>
+
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/the-source-panel-method-for-potential-flow.html">‹ The source panel method for potential flow</a><a href="/theory/navier-stokes-to-rans.html" style="margin-left:auto;text-align:right;">Navier–Stokes to RANS ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · step 14 of 23</a></p>
       </article>
     </div>
   </main>

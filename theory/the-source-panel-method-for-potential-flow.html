@@ -42,6 +42,11 @@
         <p>The <strong>source panel method</strong> is a classic way to compute inviscid, incompressible flow around a body without meshing the whole domain — you only discretise the surface.</p>
         <p>The body's surface is broken into straight <strong>panels</strong>, each carrying an unknown source strength. Enforcing the boundary condition that no flow crosses the surface at each panel turns the problem into a linear system for those strengths. Solve it, and you can reconstruct the surface velocity and the pressure coefficient everywhere.</p>
         <p>Because it is a boundary method it is cheap and illuminating, and it is an ideal setting to study <strong>convergence</strong>: as the panel count rises the solution approaches the exact answer, with residuals falling monotonically. The accompanying project demonstrated exactly this on a circular geometry, reaching near-zero residuals and physically consistent pressure distributions while exposing the cancellation errors that appear at very high panel counts.</p>
+
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/potential-flow-and-the-method-of-images.html">‹ Potential flow and the method of images</a><a href="/theory/finite-difference-schemes-and-numerical-stability.html" style="margin-left:auto;text-align:right;">Finite-difference schemes and numerical stability ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · step 13 of 23</a></p>
       </article>
     </div>
   </main>

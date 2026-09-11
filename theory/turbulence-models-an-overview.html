@@ -42,6 +42,11 @@
         <p>A turbulence model supplies the missing relationship between the Reynolds stresses and the mean flow. The most common engineering family uses <strong>Boussinesq's hypothesis</strong>, which assumes the Reynolds stresses behave like an extra, turbulence-generated viscosity.</p>
         <p>The workhorse two-equation models — <strong>k-ε</strong> and <strong>k-ω</strong> — solve transport equations for turbulent kinetic energy and a second scale (dissipation or specific dissipation). k-ε is robust in the free stream but weak near walls; k-ω is the reverse. The widely used <strong>k-ω SST</strong> model blends the two, using k-ω near the wall and k-ε away from it, and is a sensible default for aerodynamic flows with adverse pressure gradients and mild separation.</p>
         <p>No RANS model is universal; each encodes assumptions that hold well for some flows and poorly for others. Knowing which model suits the flow at hand — and validating it — is part of the craft.</p>
+
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/navier-stokes-to-rans.html">‹ Navier–Stokes to RANS</a><a href="/theory/wall-treatment-and-y.html" style="margin-left:auto;text-align:right;">Wall treatment and y+ ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · step 16 of 23</a></p>
       </article>
     </div>
   </main>

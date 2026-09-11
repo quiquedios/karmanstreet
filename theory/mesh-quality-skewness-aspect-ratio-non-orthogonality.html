@@ -42,6 +42,11 @@
         <p>Two meshes with the same cell count can give very different answers. What separates them is <strong>quality</strong>, quantified by a few standard metrics.</p>
         <p><strong>Skewness</strong> measures how distorted a cell is from its ideal shape; highly skewed cells degrade accuracy and can destabilise the solver. <strong>Aspect ratio</strong> is the ratio of a cell's longest to shortest dimension — very stretched cells are fine aligned with the flow but harmful across it. <strong>Non-orthogonality</strong> measures the angle between the line joining two cell centres and their shared face; large angles introduce error into gradient calculations.</p>
         <p>A good mesh keeps these within accepted bounds, refines where gradients are steep (near walls, in the wake), and stays coarse where the flow is uniform. Because results depend on the mesh, a <em>mesh-independence study</em> — refining until the answer stops changing — is a standard and non-negotiable step, and one this site's projects return to repeatedly.</p>
+
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/spatial-discretisation.html">‹ Spatial discretisation</a><a href="/theory/dynamic-similarity-and-the-reynolds-number.html" style="margin-left:auto;text-align:right;">Dynamic similarity and the Reynolds number ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · step 19 of 23</a></p>
       </article>
     </div>
   </main>

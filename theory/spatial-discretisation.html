@@ -42,6 +42,11 @@
         <p>A CFD solver cannot work with continuous fields; it works with numbers at discrete locations. <strong>Spatial discretisation</strong> is the process of chopping the flow domain into a mesh of cells and rewriting the governing equations as algebraic relationships between neighbouring cell values.</p>
         <p>The dominant approach in engineering CFD is the <strong>finite-volume method</strong>: the domain is divided into control volumes, and conservation of mass, momentum and energy is enforced exactly over each one by balancing fluxes across its faces. Because it is built on flux balances, it conserves the transported quantities by construction — a key reason it is trusted for aerodynamics.</p>
         <p>Choices made here — cell type, mesh density, and the scheme used to interpolate face values (first vs second order) — directly set the accuracy and stability of the result. Coarse or skewed meshes and low-order schemes add <em>numerical diffusion</em> that can smear the very features you are trying to capture.</p>
+
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/wall-treatment-and-y.html">‹ Wall treatment and y+</a><a href="/theory/mesh-quality-skewness-aspect-ratio-non-orthogonality.html" style="margin-left:auto;text-align:right;">Mesh quality: skewness, aspect ratio, non-orthogonality ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · step 18 of 23</a></p>
       </article>
     </div>
   </main>

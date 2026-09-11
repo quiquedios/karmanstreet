@@ -4,12 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Theory — Kármán Street</title>
-  <meta name="description" content="Concept and theory posts on aerodynamics and CFD.">
+  <meta name="description" content="A guided roadmap through aerodynamics and CFD theory.">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+
+  <style>
+    .roadmap { margin: 2rem 0 1rem; }
+    .stage { position: relative; padding-left: 2.2rem; padding-bottom: 1.6rem; }
+    .stage:before { /* vertical connector line */
+      content:""; position:absolute; left: 0.7rem; top: 0.2rem; bottom: -0.4rem;
+      width: 2px; background: var(--line);
+    }
+    .stage:last-child:before { bottom: auto; height: 1.4rem; }
+    .stage-dot { position:absolute; left: 0; top: 0.1rem;
+      width: 1.5rem; height: 1.5rem; border-radius: 50%;
+      background: var(--accent); color:#fff; font-family:"Helvetica Neue",Arial,sans-serif;
+      font-size: 0.8rem; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .stage-title { font-family:"Helvetica Neue",Arial,sans-serif; font-weight:600;
+      font-size: 1.15rem; margin: 0 0 0.6rem; color: var(--ink); }
+    .stage-steps { list-style:none; margin:0; padding:0; }
+    .stage-steps li { margin: 0.15rem 0; }
+    .stage-steps a { display:flex; gap:0.6rem; align-items:baseline;
+      text-decoration:none; color: var(--ink); padding: 0.35rem 0.5rem;
+      border:1px solid transparent; border-radius:6px; }
+    .stage-steps a:hover { background: var(--panel); border-color: var(--line); }
+    .step-num { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.8rem;
+      color: var(--accent); font-weight:700; min-width:1.4rem; }
+    .step-title { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.98rem; }
+    .roadmap-intro { color: var(--ink-soft); }
+  </style>
 </head>
 <body>
   <header class="masthead">
@@ -36,170 +62,74 @@
   <main>
     <div class="wrap">
       <h1 class="page-title">Theory</h1>
-      <p class="section-lead">Aerodynamics and CFD concepts, explained one idea at a time.</p>
-      <ul class="post-list">
-        <li>
-          <a href="/theory/lift-drag-and-downforce.html">
-            <p class="post-h">Lift, drag and downforce</p>
-            <span class="post-meta">Thesis §2.1.1</span>
-            <p class="post-excerpt">Decomposing the net aerodynamic force on a wing, sign conventions, and why downforce is negative lift.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/how-lift-is-generated.html">
-            <p class="post-h">How lift is generated</p>
-            <span class="post-meta">Thesis §2.1.1 · Project 27</span>
-            <p class="post-excerpt">Angle of attack, flow turning, Bernoulli, the Kutta condition and Kelvin&#x27;s circulation theorem — and why the equal-transit-time story is wrong.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/drag-breakdown.html">
-            <p class="post-h">Drag breakdown</p>
-            <span class="post-meta">Thesis §2.1.1</span>
-            <p class="post-excerpt">Skin-friction vs pressure drag, and form vs induced drag.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/ground-effect-and-multi-element-wings.html">
-            <p class="post-h">Ground effect and multi-element wings</p>
-            <span class="post-meta">Thesis §2.1.1</span>
-            <p class="post-excerpt">Downforce vs ride height, airfoil cascades, and how F1 front wings actually work.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/laminar-vs-turbulent-boundary-layers.html">
-            <p class="post-h">Laminar vs turbulent boundary layers</p>
-            <span class="post-meta">Thesis §2.1.1</span>
-            <p class="post-excerpt">What distinguishes the two regimes and why it matters for drag and separation.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/wingtip-vortices-and-induced-drag.html">
-            <p class="post-h">Wingtip vortices and induced drag</p>
-            <span class="post-meta">Thesis §2.1.1</span>
-            <p class="post-excerpt">How finite wings shed tip vortices and pay for lift with induced drag.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/navier-stokes-to-rans.html">
-            <p class="post-h">Navier–Stokes to RANS</p>
-            <span class="post-meta">Thesis §2.1.2</span>
-            <p class="post-excerpt">Reynolds-averaging, the closure problem, and Boussinesq&#x27;s hypothesis.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/turbulence-models-an-overview.html">
-            <p class="post-h">Turbulence models: an overview</p>
-            <span class="post-meta">Thesis §2.1.2</span>
-            <p class="post-excerpt">The common RANS closures and where k-ω SST fits.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/wall-treatment-and-y.html">
-            <p class="post-h">Wall treatment and y+</p>
-            <span class="post-meta">Thesis §2.1.2</span>
-            <p class="post-excerpt">The law of the wall and why near-wall meshing decides your results.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/spatial-discretisation.html">
-            <p class="post-h">Spatial discretisation</p>
-            <span class="post-meta">Thesis §2.1.2</span>
-            <p class="post-excerpt">How a continuous flow domain becomes a solvable algebraic system.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/mesh-quality-skewness-aspect-ratio-non-orthogonality.html">
-            <p class="post-h">Mesh quality: skewness, aspect ratio, non-orthogonality</p>
-            <span class="post-meta">Thesis §2.1.2 · Projects 15, 28</span>
-            <p class="post-excerpt">What makes a mesh good, and how quality metrics affect accuracy and stability.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/dynamic-similarity-and-the-reynolds-number.html">
-            <p class="post-h">Dynamic similarity and the Reynolds number</p>
-            <span class="post-meta">Thesis §2.1.3</span>
-            <p class="post-excerpt">Scaling a wind-tunnel model correctly, and what similarity really requires.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/design-of-experiments-and-latin-hypercube-sampling.html">
-            <p class="post-h">Design of Experiments and Latin Hypercube Sampling</p>
-            <span class="post-meta">Thesis §2.1.4</span>
-            <p class="post-excerpt">Space-filling sampling of a design space and why it beats random or grid sampling.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/surrogate-models-and-bayesian-optimization.html">
-            <p class="post-h">Surrogate models and Bayesian optimization</p>
-            <span class="post-meta">Thesis §2.1.4</span>
-            <p class="post-excerpt">Gaussian-process surrogates, acquisition functions, and active learning.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/genetic-algorithms-and-pareto-fronts.html">
-            <p class="post-h">Genetic algorithms and Pareto fronts</p>
-            <span class="post-meta">Thesis §2.1.4</span>
-            <p class="post-excerpt">Multi-objective optimization with NSGA-II and how to read a Pareto front.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/reading-an-airfoil-polar.html">
-            <p class="post-h">Reading an airfoil polar</p>
-            <span class="post-meta">Project 12</span>
-            <p class="post-excerpt">Lift-to-drag ratio, angle of attack, force coefficients and centre of pressure — how to pick a profile.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/the-source-panel-method-for-potential-flow.html">
-            <p class="post-h">The source panel method for potential flow</p>
-            <span class="post-meta">Project 13</span>
-            <p class="post-excerpt">Discretising a surface into panels, solving for source strengths, and reconstructing the pressure coefficient.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/finite-difference-schemes-and-numerical-stability.html">
-            <p class="post-h">Finite-difference schemes and numerical stability</p>
-            <span class="post-meta">Project 18</span>
-            <p class="post-excerpt">First and second-order schemes, Von Neumann analysis, the Courant number and Godunov&#x27;s order barrier.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/potential-flow-and-the-method-of-images.html">
-            <p class="post-h">Potential flow and the method of images</p>
-            <span class="post-meta">Project 27</span>
-            <p class="post-excerpt">Laplace&#x27;s equation, superposing elementary solutions, and the Milne-Thomson circle theorem.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/vortex-shedding-and-the-k-rm-n-street.html">
-            <p class="post-h">Vortex shedding and the Kármán street</p>
-            <span class="post-meta">Project 28</span>
-            <p class="post-excerpt">Flow past a cylinder, separation, shedding frequency and the Strouhal number — this site&#x27;s namesake.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/bluff-body-drag-and-flow-separation.html">
-            <p class="post-h">Bluff-body drag and flow separation</p>
-            <span class="post-meta">Project 30</span>
-            <p class="post-excerpt">Pressure distribution on a cylinder, integrating for drag, and separation vs inviscid theory.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/aeroelastic-divergence-of-a-wing-section.html">
-            <p class="post-h">Aeroelastic divergence of a wing section</p>
-            <span class="post-meta">Project 10</span>
-            <p class="post-excerpt">Coupling aerodynamic lift to torsional stiffness and deriving the divergence speed.</p>
-          </a>
-        </li>
-        <li>
-          <a href="/theory/boundary-layers-under-pressure-gradients.html">
-            <p class="post-h">Boundary layers under pressure gradients</p>
-            <span class="post-meta">Project 50</span>
-            <p class="post-excerpt">Boundary-layer growth under favorable and adverse gradients, wall shear, and the onset of separation.</p>
-          </a>
-        </li>
-      </ul>
+      <p class="section-lead roadmap-intro">A roadmap through the fundamentals — read top to bottom, or jump to any step. It builds from the forces on a wing up to the methods used to optimize one.</p>
+      <div class="roadmap">
+      <div class="stage">
+        <div class="stage-dot">1</div>
+        <p class="stage-title">Forces and how wings work</p>
+        <ul class="stage-steps">
+          <li><a href="/theory/lift-drag-and-downforce.html"><span class="step-num">01</span><span class="step-title">Lift, drag and downforce</span></a></li>
+          <li><a href="/theory/how-lift-is-generated.html"><span class="step-num">02</span><span class="step-title">How lift is generated</span></a></li>
+          <li><a href="/theory/reading-an-airfoil-polar.html"><span class="step-num">03</span><span class="step-title">Reading an airfoil polar</span></a></li>
+          <li><a href="/theory/drag-breakdown.html"><span class="step-num">04</span><span class="step-title">Drag breakdown</span></a></li>
+          <li><a href="/theory/wingtip-vortices-and-induced-drag.html"><span class="step-num">05</span><span class="step-title">Wingtip vortices and induced drag</span></a></li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">2</div>
+        <p class="stage-title">The boundary layer and viscous effects</p>
+        <ul class="stage-steps">
+          <li><a href="/theory/laminar-vs-turbulent-boundary-layers.html"><span class="step-num">06</span><span class="step-title">Laminar vs turbulent boundary layers</span></a></li>
+          <li><a href="/theory/boundary-layers-under-pressure-gradients.html"><span class="step-num">07</span><span class="step-title">Boundary layers under pressure gradients</span></a></li>
+          <li><a href="/theory/bluff-body-drag-and-flow-separation.html"><span class="step-num">08</span><span class="step-title">Bluff-body drag and flow separation</span></a></li>
+          <li><a href="/theory/vortex-shedding-and-the-k-rm-n-street.html"><span class="step-num">09</span><span class="step-title">Vortex shedding and the Kármán street</span></a></li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">3</div>
+        <p class="stage-title">Wings in practice</p>
+        <ul class="stage-steps">
+          <li><a href="/theory/ground-effect-and-multi-element-wings.html"><span class="step-num">10</span><span class="step-title">Ground effect and multi-element wings</span></a></li>
+          <li><a href="/theory/aeroelastic-divergence-of-a-wing-section.html"><span class="step-num">11</span><span class="step-title">Aeroelastic divergence of a wing section</span></a></li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">4</div>
+        <p class="stage-title">Modelling flow mathematically</p>
+        <ul class="stage-steps">
+          <li><a href="/theory/potential-flow-and-the-method-of-images.html"><span class="step-num">12</span><span class="step-title">Potential flow and the method of images</span></a></li>
+          <li><a href="/theory/the-source-panel-method-for-potential-flow.html"><span class="step-num">13</span><span class="step-title">The source panel method for potential flow</span></a></li>
+          <li><a href="/theory/finite-difference-schemes-and-numerical-stability.html"><span class="step-num">14</span><span class="step-title">Finite-difference schemes and numerical stability</span></a></li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">5</div>
+        <p class="stage-title">CFD foundations</p>
+        <ul class="stage-steps">
+          <li><a href="/theory/navier-stokes-to-rans.html"><span class="step-num">15</span><span class="step-title">Navier–Stokes to RANS</span></a></li>
+          <li><a href="/theory/turbulence-models-an-overview.html"><span class="step-num">16</span><span class="step-title">Turbulence models: an overview</span></a></li>
+          <li><a href="/theory/wall-treatment-and-y.html"><span class="step-num">17</span><span class="step-title">Wall treatment and y+</span></a></li>
+          <li><a href="/theory/spatial-discretisation.html"><span class="step-num">18</span><span class="step-title">Spatial discretisation</span></a></li>
+          <li><a href="/theory/mesh-quality-skewness-aspect-ratio-non-orthogonality.html"><span class="step-num">19</span><span class="step-title">Mesh quality: skewness, aspect ratio, non-orthogonality</span></a></li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">6</div>
+        <p class="stage-title">Wind tunnels and validation</p>
+        <ul class="stage-steps">
+          <li><a href="/theory/dynamic-similarity-and-the-reynolds-number.html"><span class="step-num">20</span><span class="step-title">Dynamic similarity and the Reynolds number</span></a></li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">7</div>
+        <p class="stage-title">Design exploration and optimization</p>
+        <ul class="stage-steps">
+          <li><a href="/theory/design-of-experiments-and-latin-hypercube-sampling.html"><span class="step-num">21</span><span class="step-title">Design of Experiments and Latin Hypercube Sampling</span></a></li>
+          <li><a href="/theory/surrogate-models-and-bayesian-optimization.html"><span class="step-num">22</span><span class="step-title">Surrogate models and Bayesian optimization</span></a></li>
+          <li><a href="/theory/genetic-algorithms-and-pareto-fronts.html"><span class="step-num">23</span><span class="step-title">Genetic algorithms and Pareto fronts</span></a></li>
+        </ul>
+      </div>
+      </div>
     </div>
   </main>
   <footer class="foot">
