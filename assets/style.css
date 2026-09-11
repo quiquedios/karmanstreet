@@ -234,3 +234,50 @@ blockquote {
 @media (prefers-reduced-motion: no-preference) {
   .nav a { transition: color 0.15s, border-color 0.15s; }
 }
+
+/* ---- figure placeholders (replace the .fig-box with your image) -------- */
+figure.fig-ph { margin: 2rem 0; }
+.fig-box {
+  border: 1px dashed var(--line);
+  background: #f4f2ec;
+  border-radius: 4px;
+  padding: 2.2rem 1.2rem;
+  text-align: center;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.fig-box code {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--accent);
+  word-break: break-all;
+}
+figure.fig-ph figcaption {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 0.5rem;
+}
+
+/* ---- equations / key expressions -------------------------------------- */
+.eq {
+  background: var(--panel);
+  border-left: 3px solid var(--accent);
+  padding: 0.8rem 1rem;
+  margin: 1.3rem 0;
+  font-family: "Charter", Georgia, serif;
+  font-style: italic;
+  overflow-x: auto;
+}
+
+/* ---- callout for asides / notes ---------------------------------------- */
+.note {
+  border-left: 3px solid var(--line);
+  padding-left: 1rem;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin: 1.4rem 0;
+}

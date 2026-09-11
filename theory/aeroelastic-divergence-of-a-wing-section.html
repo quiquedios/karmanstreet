@@ -39,10 +39,19 @@
       <article>
         <h1 class="page-title">Aeroelastic divergence of a wing section</h1>
         <p class="article-meta">Theory · Project 10</p>
-        <p><strong>Aeroelasticity</strong> is what happens when a structure is flexible enough that aerodynamic loads and structural deformation feed back on each other. <strong>Divergence</strong> is the static instability at the end of that feedback: a twist raises the aerodynamic moment, which raises the twist, and past a critical speed the loop runs away.</p>
-        <p>For a wing section on a torsional spring, coupling the aerodynamic lift to the structural stiffness through moment equilibrium yields a closed-form expression for the <strong>divergence dynamic pressure</strong> and the corresponding critical velocity. The project computed a baseline divergence speed of about 50 m/s for a given configuration.</p>
-        <p>What makes it a design tool is the parametric study that follows: wing area, chord, span and — crucially — the distance between the aerodynamic centre and the elastic axis all move the divergence boundary. The project showed how to redesign a section to be divergence-free up to a required 69 m/s, and extended the model to include the pitching moment, which turns the divergence condition into a singularity in the section's response.</p>
-
+        <p>Aeroelasticity is what happens when a structure is flexible enough that aerodynamic loads and structural deformation feed back into one another. <strong>Divergence</strong> is the static instability at the end of that feedback loop: a twist increases the aerodynamic moment, which increases the twist, and past a critical speed the loop runs away.</p>
+        <h2>Deriving the divergence speed</h2>
+        <p>The model is a rigid wing section supported on an elastic torsional spring. Coupling the aerodynamic lift to the structural stiffness through moment equilibrium — taking moments about the elastic axis, with the lift acting at the aerodynamic centre — gives a closed-form expression for the divergence dynamic pressure and the corresponding critical velocity.</p>
+        <p>For the baseline geometric and structural conditions studied, that comes out at a divergence speed of <strong>49.96 m/s</strong>. The number itself matters less than what it depends on.</p>
+        <h2>What actually drives stability</h2>
+        <p>A parametric design study identifies the key drivers: wing surface area, chord length, wingspan, and — the important one — the relative position of the aerodynamic centre and the elastic axis. The separation between those two points is the moment arm of the whole feedback loop, so moving the elastic axis forward or aft changes the divergence speed more effectively than almost anything else.</p>
+        <p>Quantifying those sensitivities made it possible to propose design modifications meeting a safety-constrained requirement of being divergence-free up to 69 m/s, achieved through geometric redesign and structural reconfiguration: reducing span, modifying the chord and relocating the elastic axis.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Elastic twist as a function of dynamic pressure<code>/assets/img/theory/divergence-twist-vs-q.png</code></div>
+          <figcaption>Fig. 1 — Plot of the elastic twist α<sub>e</sub> as a function of the dynamic pressure q<sub>∞</sub>.</figcaption>
+        </figure>
+        <h2>Divergence as a singularity</h2>
+        <p>Extending the model to include non-zero pitching moment effects gives the nonlinear relationship between elastic twist and dynamic pressure, and makes the nature of the instability explicit: the divergence condition appears as a <strong>singularity</strong> in the system response. The twist does not grow gradually to failure — the denominator of the response goes to zero, and the predicted deflection becomes unbounded at a finite speed.</p>
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
           <a href="/theory/ground-effect-and-multi-element-wings.html">‹ Ground effect and multi-element wings</a><a href="/theory/potential-flow-and-the-method-of-images.html" style="margin-left:auto;text-align:right;">Potential flow and the method of images ›</a>
         </nav>

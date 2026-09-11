@@ -39,11 +39,22 @@
       <article>
         <h1 class="page-title">Time-resolved PIV of a turbulent jet with modal decomposition</h1>
         <p class="article-meta">Paper · Project 66</p>
-        <p>This paper reports time-resolved Particle Image Velocimetry of a turbulent jet (Re = 2500), with a full experimental setup and modal analysis of the resulting fields.</p>
-        <h2>Method</h2>
-        <p>Laser-sheet illumination and high-speed imaging were used, with acquisition parameters (dt = 12.5 ms, 80 Hz) optimised against displacement and confidence criteria. Velocity fields were reconstructed by cross-correlation, and the effect of interrogation-window size (128 vs 32 px) on spatial resolution was assessed.</p>
+        <p>This paper reports time-resolved Particle Image Velocimetry measurements of a turbulent jet (Re = 2500), covering the full experimental setup, data processing, and modal analysis of the resulting fields.</p>
+        <h2>Experimental setup</h2>
+        <p>The setup comprised laser sheet illumination and high-speed imaging. Acquisition parameters were optimised at <strong>dt = 12.5 ms and 80 Hz</strong> based on displacement and confidence criteria, ensuring the measurement is genuinely time-resolved rather than a sequence of uncorrelated snapshots.</p>
+        <h2>Processing</h2>
+        <p>Velocity fields were reconstructed using cross-correlation techniques. The impact of interrogation window size was analysed by comparing <strong>DI = 128 px against 32 px</strong>, demonstrating improved capture of shear-layer structures and turbulent fluctuations with the refined processing.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Horizontal and vertical velocity fields for both window sizes<code>/assets/img/papers/piv-fields-comparison.png</code></div>
+          <figcaption>Fig. 1 — U/U<sub>ref</sub> and V/U<sub>ref</sub> for D<sub>I</sub> = 128 px and 32 px.</figcaption>
+        </figure>
         <h2>Results</h2>
-        <p>Refined processing captured the shear-layer structures and turbulent fluctuations more sharply. Mean fields and Reynolds stresses located peak turbulence production in the shear layer, and a Principal Component Analysis via SVD extracted the coherent structures — dominant large-scale shear-layer modes, antisymmetric flapping and higher-frequency features.</p>
+        <p>Mean flow fields and Reynolds stresses were computed, identifying peak turbulence production in the shear layer and the characteristic jet entrainment behaviour.</p>
+        <p><strong>Principal Component Analysis via SVD</strong> was applied to extract coherent flow structures, identifying the dominant large-scale shear-layer modes, antisymmetric flapping, and higher-frequency turbulent features.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">First five spatial modes of the fluctuating velocity field<code>/assets/img/papers/piv-spatial-modes.png</code></div>
+          <figcaption>Fig. 2 — Spatial modes of the fluctuating velocity field, U and V components.</figcaption>
+        </figure>
         <p style="margin-top:1.5rem;"><a href="/projects/time-resolved-piv-of-a-turbulent-jet.html">← See the project</a></p>
       </article>
     </div>

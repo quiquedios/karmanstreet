@@ -39,10 +39,17 @@
       <article>
         <h1 class="page-title">2024 Formula 1 car parametric CFD</h1>
         <p class="article-meta">Project · Project 46</p>
-        <p>A full parametric aerodynamic design methodology for a 2024-specification Formula 1 car, integrating CAD-based geometry generation in CATIA V5 with high-fidelity CFD validation under FIA regulatory constraints.</p>
-        <p>The car was built from first principles using FIA control volumes, enabling rapid iteration of the front wing (multi-element parametric profiles), the floor with its strakes and diffuser, the rear wing with beam-wing coupling, and full bodywork integration. CFD used a GPU solver (XFlow) in a 98×57×57 m tunnel domain at 50 m/s with near-wall refinement to 4 mm.</p>
-        <p>From the solution I analysed the flow structures — velocity contours, pressure distributions and vorticity fields — identifying the key phenomena of wake upwash, underfloor acceleration and pressure recovery in the diffuser.</p>
-      </article>
+        <p>A full parametric aerodynamic design methodology for a 2024-spec Formula 1 car, integrating CAD-based geometry generation in <strong>CATIA V5</strong> with high-fidelity CFD validation to evaluate aerodynamic performance under FIA regulatory constraints.</p>
+        <h2>Parametric geometry</h2>
+        <p>The vehicle was designed from first principles using the FIA control volumes, enabling rapid iteration of the key aerodynamic components: front wing with multi-element parametric profiles, floor with strakes and diffuser interaction, rear wing with multi-section geometry and beam wing coupling, and full bodywork integration covering sidepods, engine cover and inlet systems.</p>
+        <h2>CFD setup</h2>
+        <p>Simulations were performed using a GPU-based solver (<strong>XFlow</strong>), modelling external aerodynamics in a wind tunnel domain of <strong>98×57×57 m at 50 m/s</strong>, with near-wall refinement down to 4 mm.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Velocity field around the full car<code>/assets/img/projects/f1-2024-velocity.png</code></div>
+          <figcaption>Fig. 1 — Velocity field at t = 2 s.</figcaption>
+        </figure>
+        <h2>Results</h2>
+        <p>Flow structures were analysed through velocity contours, pressure distributions and vorticity fields, identifying the key aerodynamic phenomena: wake upwash, underfloor acceleration, and pressure recovery in the diffuser.</p>      </article>
     </div>
   </main>
   <footer class="foot">

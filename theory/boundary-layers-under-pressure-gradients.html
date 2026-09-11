@@ -39,10 +39,24 @@
       <article>
         <h1 class="page-title">Boundary layers under pressure gradients</h1>
         <p class="article-meta">Theory · Project 50</p>
-        <p>A boundary layer does not develop in isolation; the pressure imposed by the outer flow shapes it profoundly. Whether that pressure is falling or rising along the surface makes the difference between attached flow and separation.</p>
-        <p>Under a <strong>favorable pressure gradient</strong> (pressure falling downstream) the boundary layer is thinned and energised, and stays firmly attached. Under an <strong>adverse pressure gradient</strong> (pressure rising) it thickens, the near-wall flow is decelerated, and if the gradient is strong enough the flow reverses and <strong>separates</strong>.</p>
-        <p>Simulating a flat-plate boundary layer under favorable, zero and adverse gradients with a marching finite-difference scheme reproduces these trends — thickening under zero gradient, thinning under a favorable one — and reveals a hard limit: under a strong adverse gradient the parabolic boundary-layer formulation itself breaks down at separation, signalling the need for a full elliptic treatment. It is a compact lesson in why separation is where simple models stop working.</p>
-
+        <p>A boundary layer never develops in isolation. The pressure imposed by the outer flow shapes it continuously, and whether that pressure is falling or rising along the surface is what separates attached flow from separated flow.</p>
+        <h2>Favorable and adverse</h2>
+        <p>Neglecting viscosity and gravity in the outer airflow, the momentum equation reduces to Dv/Dt = −∇p/ρ, which says plainly that <strong>favorable pressure gradients accelerate the flow, whereas adverse pressure gradients decelerate it</strong>. Inside the boundary layer, where the fluid already has reduced momentum, that deceleration is far more consequential than it is outside.</p>
+        <p>Under a favorable gradient the layer is thinned and energised and stays firmly attached. Under an adverse gradient it thickens, the near-wall flow decelerates, and if the gradient is strong enough the flow first stagnates and then reverses — separation.</p>
+        <h2>What a numerical study shows</h2>
+        <p>Simulating a flat-plate boundary layer under favorable, zero and adverse gradients with finite differences reproduces this behaviour directly. The governing equations are reformulated and discretized with a marching scheme in the streamwise direction, combining backward differences in x with centered schemes in y and iterative relaxation to resolve the nonlinear terms.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Boundary layer thickness versus streamwise position for β = 0 and β = 0.03<code>/assets/img/theory/bl-thickness-vs-x.png</code></div>
+          <figcaption>Fig. 1 — Boundary layer thickness δ vs. x, showing thickening under zero gradient and thinning under a favorable one.</figcaption>
+        </figure>
+        <p>The model captures the expected phenomena: the velocity profile evolution, the growth of the boundary layer thickness (δ at 99%), and the wall shear stress through the friction coefficient C<sub>f</sub>. Analysing the u and v velocity fields also confirms mass conservation through the development of the vertical velocity component.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Velocity profiles u and v at several streamwise stations<code>/assets/img/theory/bl-velocity-profiles.png</code></div>
+          <figcaption>Fig. 2 — u and v versus y at different x for β = 0.</figcaption>
+        </figure>
+        <h2>Where the model breaks</h2>
+        <p>The most instructive result is the failure case. Under a sufficiently strong adverse gradient, flow separation causes the breakdown of the parabolic formulation itself. The marching scheme assumes information travels only downstream, and once the flow reverses that assumption is violated. Capturing separated flow requires an elliptic treatment.</p>
+        <p>This is a compact lesson in why separation is the point where the simple models stop working, and why the CFD used for loaded, multi-element geometries has to solve the full equations rather than a boundary-layer approximation.</p>
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
           <a href="/theory/laminar-vs-turbulent-boundary-layers.html">‹ Laminar vs turbulent boundary layers</a><a href="/theory/bluff-body-drag-and-flow-separation.html" style="margin-left:auto;text-align:right;">Bluff-body drag and flow separation ›</a>
         </nav>

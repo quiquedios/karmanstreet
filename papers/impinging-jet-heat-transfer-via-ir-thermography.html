@@ -41,9 +41,15 @@
         <p class="article-meta">Paper · Project 64</p>
         <p>This paper presents an experimental study of convective heat transfer under an impinging jet (Re = 10,000), using non-intrusive infrared thermography to obtain spatially resolved temperature fields.</p>
         <h2>Method</h2>
-        <p>A MATLAB processing pipeline computed the local heat-transfer coefficient field h(x,y) and Nusselt-number distributions from an energy balance that accounted for Joule heating, radiation losses and in-plane conduction, at 0.08 mm/pixel resolution with roughly 5% uncertainty.</p>
+        <p>A MATLAB-based data processing pipeline computes the local heat transfer coefficient field h(x,y) and Nusselt number distributions from energy balance equations. The balance accounts for <strong>Joule heating, radiation losses and in-plane conduction</strong>, at a spatial resolution of 0.08 mm/pixel with uncertainty around 5%.</p>
         <h2>Results</h2>
-        <p>Increasing the jet-to-plate distance (H/D = 2–6) raised the heat-transfer coefficient (h = 100→120 W/m²K, Nu = 45→55), consistent with jet-development theory. A non-axisymmetric rectangular nozzle enhanced peak heat transfer to about 127 W/m²K, and radial Nusselt profiles showed the expected stagnation peak and wall-jet decay.</p>
+        <p>The effect of jet-to-plate distance was analysed across H/D = 2–6, showing increasing heat transfer coefficients with increasing H/D (<strong>h = 100→120 W/m²K, Nu = 45→55</strong>), consistent with jet development theory — the jet has further to develop and arrives more turbulent.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Heat transfer coefficient maps at three jet-to-plate distances<code>/assets/img/papers/jet-h-maps.png</code></div>
+          <figcaption>Fig. 1 — h distribution for the round nozzle at H/D = 2, 4 and 6.</figcaption>
+        </figure>
+        <p>Design modifications were evaluated by testing non-axisymmetric rectangular nozzle geometries, achieving enhanced peak heat transfer up to <strong>h = 127 W/m²K</strong> and demonstrating the impact of nozzle geometry on convective performance.</p>
+        <p>Radial Nusselt profiles confirmed the expected stagnation peak behaviour and the decay through the wall-jet region.</p>
         <p style="margin-top:1.5rem;"><a href="/projects/impinging-jet-heat-transfer-ir-thermography.html">← See the project</a></p>
       </article>
     </div>

@@ -39,11 +39,19 @@
       <article>
         <h1 class="page-title">Grid-convergence study of the front-wing CFD</h1>
         <p class="article-meta">Paper · Master&#x27;s thesis, Ch. 5.1</p>
-        <p>Before trusting any optimisation result, the underlying CFD must be shown to be mesh-independent. This paper documents the grid-convergence study for the front-wing simulations.</p>
+        <p>Before any optimization result can be trusted, the underlying CFD has to be shown to be independent of the mesh. This paper documents the grid-convergence study for the front-wing simulations.</p>
         <h2>Method</h2>
-        <p>Three systematically refined meshes were run and their lift and drag coefficients tracked against solver iteration and against grid spacing, following a standard Richardson-style convergence analysis.</p>
+        <p>Three systematically refined meshes were generated and run on the nominal geometry, with the lift and drag coefficients tracked against grid spacing. The analysis follows the standard Grid Convergence Index approach, which estimates the discretization error from the differences between successive refinement levels and the observed order of convergence.</p>
         <h2>Results</h2>
-        <p>Both Cl and Cd converged as the mesh was refined, and log-log plots of absolute error against grid spacing confirmed the expected order of convergence — establishing the mesh resolution used for the rest of the study and bounding its discretisation error.</p>
+        <p>Both C<sub>L</sub> and C<sub>D</sub> converge as the mesh is refined, and plotting the absolute error against grid spacing on log-log axes confirms the expected order of convergence.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Mesh independence: coefficients versus grid spacing<code>/assets/img/papers/gci-convergence.png</code></div>
+          <figcaption>Fig. 1 — C<sub>L</sub> and C<sub>D</sub> against grid spacing across the three meshes.</figcaption>
+        </figure>
+        <p>Mesh quality metrics were recorded for each level alongside the computational cost, so that the chosen resolution is justified on both accuracy and affordability rather than accuracy alone.</p>
+        <h2>Outcome</h2>
+        <p>The study establishes the mesh resolution used throughout the rest of the campaign and bounds its discretization error, which is what allows differences between candidate designs to be attributed to geometry rather than to numerics.</p>
+        <div class="note">This matters more in an optimization context than in a single simulation. If the discretization error were comparable to the performance differences between designs, the optimizer would be chasing numerical noise.</div>
         <p style="margin-top:1.5rem;"><a href="/projects/surrogate-based-bayesian-optimization-of-an-f1-front-wing.html">← See the project</a></p>
       </article>
     </div>

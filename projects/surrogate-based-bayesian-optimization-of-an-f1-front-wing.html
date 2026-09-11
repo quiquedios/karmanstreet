@@ -39,10 +39,31 @@
       <article>
         <h1 class="page-title">Surrogate-based Bayesian optimization of an F1 front wing</h1>
         <p class="article-meta">Project · Master&#x27;s thesis</p>
-        <p>My Master's thesis: an end-to-end aerodynamic design and optimisation pipeline for a parametrised Formula 1 front wing and nose assembly compliant with the 2026 FIA regulations, integrating CAD automation, CFD and data-driven optimisation.</p>
-        <p>The geometry is fully parametrised in CATIA V5 and driven from Python, so designs regenerate automatically across a 26-dimensional parameter space. A Latin Hypercube of designs seeds a Gaussian-process surrogate, which is refined by active learning and then frozen and searched with an NSGA-II genetic algorithm to produce a Pareto front of downforce-versus-drag optima — from which specific geometries are chosen per circuit using each track's DRS time fraction. High-resolution CFD in OpenFOAM and wind-tunnel testing of a 32.4%-scale 3D-printed model close the loop with experimental validation.</p>
-        <p>The methodology and results are broken out across several papers, starting with the automated CAD–CFD pipeline linked below.</p>
-        <p style="margin-top:1.5rem;"><a href="/papers/automated-cad-cfd-optimization-pipeline.html">Read the paper →</a></p>
+        <p>My Master's thesis. An end-to-end aerodynamic design and optimization pipeline for a parametrized <strong>F1 front wing and nose assembly</strong> compliant with the FIA 2026 regulations, integrating CAD automation, CFD, and data-driven optimization.</p>
+        <h2>Parametric geometry</h2>
+        <p>The geometry is fully parametrized in <strong>CATIA V5</strong> and controlled via Python, enabling automated design updates through parameter-driven loops. A single design regenerates across <strong>26 design variables</strong>, and each candidate is exported twice — once per aerodynamic mode.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Nominal geometry, the starting point of the optimization<code>/assets/img/projects/f1wing-nominal.png</code></div>
+          <figcaption>Fig. 1 — Nominal geometry, starting point of the optimization.</figcaption>
+        </figure>
+        <h2>Design space exploration</h2>
+        <p>Design space exploration is implemented using <strong>Latin Hypercube Sampling</strong>, with high-fidelity CFD simulations coupled to <strong>Bayesian Optimization</strong> to identify optimal aerodynamic configurations. Surrogate machine learning models approximate the aerodynamic performance and accelerate convergence within the design space, so the expensive CFD runs are spent only on training rather than on search.</p>
+        <h2>Two competing objectives</h2>
+        <p>The problem is genuinely multi-objective: maximize downforce in the cornering mode while minimizing drag in the straight-line mode. The optimization therefore returns a <strong>Pareto front</strong> rather than a single design, and the final selection is made per circuit using the fraction of each lap spent with DRS open.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Pareto front and optimal geometries selected per track<code>/assets/img/projects/f1wing-pareto.png</code></div>
+          <figcaption>Fig. 2 — Pareto front with the optimal geometries for each track.</figcaption>
+        </figure>
+        <h2>Experimental validation</h2>
+        <p>Final designs are validated through high-resolution CFD and experimental testing, including <strong>3D-printed models at 32.4% scale</strong> with actuated configurations (high-downforce and low-drag) tested in a wind tunnel to assess aerodynamic coefficients and correlation with simulation.</p>
+        <p>The methodology and results are broken out across several papers, listed below.</p>
+        <h2>Papers from this work</h2>
+        <ul>
+          <li><a href="/papers/automated-cad-cfd-optimization-pipeline.html">Automated CAD–CFD optimization pipeline</a></li>
+          <li><a href="/papers/grid-convergence-study-of-the-front-wing-cfd.html">Grid-convergence study of the front-wing CFD</a></li>
+          <li><a href="/papers/surrogate-modelling-and-nsga-ii-optimization.html">Surrogate modelling and NSGA-II optimization</a></li>
+          <li><a href="/papers/cfd-wind-tunnel-correlation-of-a-scale-model.html">CFD–wind-tunnel correlation of a scale model</a></li>
+        </ul>
       </article>
     </div>
   </main>

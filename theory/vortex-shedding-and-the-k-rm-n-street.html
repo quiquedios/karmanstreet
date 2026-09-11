@@ -39,10 +39,25 @@
       <article>
         <h1 class="page-title">Vortex shedding and the Kármán street</h1>
         <p class="article-meta">Theory · Project 28</p>
-        <p>Flow past a bluff body such as a circular cylinder is one of the richest problems in fluid dynamics — and the origin of this site's name. What happens depends strongly on the <strong>Reynolds number</strong>.</p>
-        <p>At very low Reynolds number the flow is steady and symmetric. As it rises the wake lengthens, then becomes unstable, and past a critical value the cylinder begins to shed vortices alternately from each side. These roll downstream in the regular, staggered pattern known as the <strong>von Kármán vortex street</strong>.</p>
-        <p>The shedding is periodic, and its frequency is captured by the dimensionless <strong>Strouhal number</strong>, which settles to roughly 0.2 over a wide range of Reynolds numbers. The project traced this whole progression numerically from Re ≈ 1 to 800, watching the separation angle move forward, the wake go unsteady, and the shedding frequency climb — from about 2 Hz at Re = 100 to 25 Hz at Re = 800 — while the Strouhal number stayed in its narrow band.</p>
-
+        <p>Flow past a bluff body is one of the richest problems in fluid dynamics, and the origin of this site's name. What happens behind a circular cylinder depends almost entirely on the Reynolds number, and the progression through the regimes is worth following in order.</p>
+        <h2>From steady wake to unsteady shedding</h2>
+        <p>At low Reynolds numbers the flow is steady and symmetric. In the CFD study covering Re = 1–800, the steady-state solutions for Re ≤ 40 show the wake progressively thinning and the upstream stagnation region shrinking as convective effects come to dominate over viscous ones. The boundary layer separation angle moves forward over this range, decreasing from around 180° at very low Re to roughly 130° at Re = 40, indicating earlier flow detachment.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Separation angle versus Reynolds number under steady conditions<code>/assets/img/theory/cylinder-separation-vs-re.png</code></div>
+          <figcaption>Fig. 1 — Steady conditions: Reynolds number vs. separation angle θ.</figcaption>
+        </figure>
+        <p>Past a critical value the symmetric wake becomes unstable and the cylinder begins shedding vortices alternately from each side. These roll downstream in the regular, staggered pattern known as the <strong>von Kármán vortex street</strong>. For Re ≥ 100 the simulation has to be run transient to capture it at all.</p>
+        <h2>The shedding frequency</h2>
+        <p>Extracting oscillation frequencies from velocity probes shows a strong correlation between Reynolds number and shedding frequency, climbing from about 2 Hz at Re = 100 to 25 Hz at Re = 800. Non-dimensionalising that frequency gives the <strong>Strouhal number</strong>:</p>
+        <div class="eq">St = f D / U</div>
+        <p>which came out in the range St ≈ 0.15–0.23, consistent with empirical data and showing the characteristic weak dependence on Reynolds number at the higher regimes. That near-constancy is what makes the Strouhal number useful: it lets the shedding frequency of a body be predicted from its size and the flow speed alone.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Strouhal number versus Reynolds number under transient conditions<code>/assets/img/theory/cylinder-strouhal-vs-re.png</code></div>
+          <figcaption>Fig. 2 — Transient conditions: Strouhal number vs. Reynolds number.</figcaption>
+        </figure>
+        <h2>Measuring it experimentally</h2>
+        <p>The same phenomenon can be caught directly with hot-wire anemometry. Sampling the wake of a 32 mm cylinder at high frequency and computing power spectral densities gives clean shedding peaks and their dependence on freestream velocity, with turbulence intensities of 27–32% in the wake. A short-time Fourier transform confirms the shedding frequency is stable in time and agrees with the Strouhal-based prediction.</p>
+        <div class="note">Vortex shedding is not only an academic curiosity. It drives fatigue loads on structures, and in the air-brake project the vortex-induced vibration it causes had to be accounted for when sizing the supports.</div>
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
           <a href="/theory/bluff-body-drag-and-flow-separation.html">‹ Bluff-body drag and flow separation</a><a href="/theory/ground-effect-and-multi-element-wings.html" style="margin-left:auto;text-align:right;">Ground effect and multi-element wings ›</a>
         </nav>

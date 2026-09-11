@@ -39,10 +39,22 @@
       <article>
         <h1 class="page-title">NACA engine inlet CFD (S-duct)</h1>
         <p class="article-meta">Project · Project 17</p>
-        <p>A comprehensive CFD study of a NACA-type engine inlet in STAR-CCM+, evaluating total-pressure recovery, compressor-face distortion and mass-flow efficiency across angles of attack of 0°, 15° and 30°. The flow was compressible and turbulent (Mach 0.21) through an S-duct geometry.</p>
-        <p>Setting it up meant a full physics definition — RANS with both k-ε and k-ω SST closures, boundary conditions and ideal-gas properties — plus custom field functions to compute pressure recovery and distortion directly from the solution. The mesh used trimmed cells and prism layers with quality validation (skewness, aspect ratio, y+) and refinement studies for numerical stability.</p>
-        <p>Results showed inlet performance degrading with angle of attack — falling pressure recovery and rising distortion at the compressor face — consistent with expectations, and a turbulence-model comparison in which k-ω SST agreed best with experiment.</p>
-      </article>
+        <p>A comprehensive CFD study of a NACA-type engine inlet using <strong>STAR-CCM+</strong>, evaluating aerodynamic performance metrics including total pressure recovery, compressor face distortion, and mass flow rate efficiency under varying angles of attack (0°, 15°, 30°).</p>
+        <h2>Method</h2>
+        <p>The simulation was based on compressible turbulent flow at <strong>Mach 0.21</strong> through an S-duct geometry, requiring full setup of the physics models (RANS with both k–ε and k–ω SST closures), boundary conditions, and ideal gas properties.</p>
+        <p>Custom field functions were developed to compute the key performance parameters directly from the flow solution, including pressure recovery and distortion metrics, enabling quantitative assessment of inlet performance rather than qualitative inspection.</p>
+        <p>A detailed meshing strategy was implemented using trimmed cells and prism layers, with mesh quality validation on skewness, aspect ratio and y+, plus refinement studies to ensure numerical stability and physical accuracy.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Mach number field through the S-duct at zero angle of attack<code>/assets/img/projects/inlet-mach.png</code></div>
+          <figcaption>Fig. 1 — Mach number at AoA = 0°.</figcaption>
+        </figure>
+        <h2>Results</h2>
+        <p>Results showed a clear degradation of inlet performance with increasing angle of attack, with reduced total pressure recovery and increased flow distortion at the compressor face, consistent with aerodynamic expectations.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Pressure ratio along the port wall<code>/assets/img/projects/inlet-pressure-ratio.png</code></div>
+          <figcaption>Fig. 2 — Pressure ratio along the duct wall.</figcaption>
+        </figure>
+        <p>A model comparison between turbulence closures was also performed, demonstrating improved agreement with experimental data using the <strong>k–ω SST</strong> model — the expected outcome for a flow dominated by adverse pressure gradients and secondary flow in a curved duct.</p>      </article>
     </div>
   </main>
   <footer class="foot">

@@ -39,10 +39,17 @@
       <article>
         <h1 class="page-title">Reading an airfoil polar</h1>
         <p class="article-meta">Theory · Project 12</p>
-        <p>An <strong>airfoil polar</strong> is the compact summary of how a section performs. In its most useful form it plots the lift coefficient against the drag coefficient (or against angle of attack) across the operating range, letting you read off performance at a glance.</p>
-        <p>The key quantities are the <strong>lift-to-drag ratio</strong> (aerodynamic efficiency, whose peak marks the most economical operating point), the <strong>angle of attack</strong> at which that peak occurs, and the derived <strong>axial and normal force coefficients</strong> and <strong>centre of pressure</strong> location. Together they tell you not just how much lift a section makes but at what cost and with what pitching behaviour.</p>
-        <p>This is the basis of profile selection. In the glider-aerodynamics project, comparing polars at a Reynolds number of 10⁶ is what singled out the NACA 4412 section, whose peak L/D of about 129 at just over 5° angle of attack made it the efficient choice for range.</p>
-
+        <p>An airfoil polar is the compact summary of how a section behaves across its operating range. Once the lift and drag coefficients are known as functions of angle of attack, everything needed for a first selection of a profile is available on one plot.</p>
+        <h2>What the polar tells you</h2>
+        <p>The quantities that actually drive a decision are the <strong>lift-to-drag ratio</strong>, the angle of attack at which it peaks, and the shape of the curve around that peak. A sharp peak means the profile only works well in a narrow band; a flat one tolerates being off-design. Beyond that, the polars give the axial and normal force coefficients and the position of the centre of pressure across the envelope, which is what feeds into trim and stability work.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Lift coefficient as a function of angle of attack<code>/assets/img/theory/airfoil-polar-cl-alpha.png</code></div>
+          <figcaption>Fig. 1 — c<sub>L</sub> as a function of α, showing the linear region and stall onset.</figcaption>
+        </figure>
+        <h2>Using it to pick a profile</h2>
+        <p>In the glider study, the aim was to maximize aerodynamic efficiency for range under subsonic incompressible conditions (M &lt; 0.3). Working from experimental airfoil datasets at Re = 10⁶, the comparison of candidate geometries came down to peak L/D, and the NACA 4412 came out ahead with a lift-to-drag ratio of 129.4 at 5.25° angle of attack.</p>
+        <p>The polars were then digitized so that derived quantities — axial and normal force coefficients, centre of pressure location, efficiency metrics — could be computed across the whole operating envelope rather than at a single design point. That step is what turns a published polar into something usable in a design loop.</p>
+        <div class="note">A practical caution: polars are Reynolds-dependent. A profile selected from data at Re = 10⁶ will not behave identically at 10⁵, which matters as soon as the design is scaled down for a model or a small UAV.</div>
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
           <a href="/theory/how-lift-is-generated.html">‹ How lift is generated</a><a href="/theory/drag-breakdown.html" style="margin-left:auto;text-align:right;">Drag breakdown ›</a>
         </nav>

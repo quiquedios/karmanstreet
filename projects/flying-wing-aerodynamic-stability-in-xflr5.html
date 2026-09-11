@@ -39,10 +39,16 @@
       <article>
         <h1 class="page-title">Flying-wing aerodynamic stability in XFLR5</h1>
         <p class="article-meta">Project · Project 26</p>
-        <p>A multi-stage aerodynamic and stability analysis of flying-wing configurations in XFLR5, examining how geometry and centre-of-gravity position govern longitudinal static stability — the central difficulty of a tailless aircraft.</p>
-        <p>Starting from a rectangular wing on a cambered NACA 1410 section, I showed that moving the CG leaves the lift and efficiency polars untouched but strongly alters pitching-moment behaviour, and that this baseline is inherently unstable. Switching to a reflexed (negatively cambered) Eppler 186 section established a neutral point and stable configurations for forward CG positions, highlighting how decisive aerofoil choice is for self-stability.</p>
-        <p>I then investigated geometric sweep — finding realistic values insufficient on their own — before introducing wing twist as a design variable and demonstrating that about −5° of washout enables stable flight across a defined angle-of-attack range.</p>
-      </article>
+        <p>A multi-stage aerodynamic and stability analysis of flying wing configurations using <strong>XFLR5</strong>, evaluating the impact of geometry and centre of gravity position on longitudinal static stability — the defining problem of a tailless aircraft.</p>
+        <h2>Method and results</h2>
+        <p>A rectangular wing based on a cambered <strong>NACA 1410</strong> airfoil was analysed first. This demonstrated that variations in centre of gravity do not affect the lift or efficiency polars but significantly alter pitching moment behaviour, leading to inherently unstable configurations.</p>
+        <p>This was then compared with a negatively cambered <strong>Eppler 186</strong> airfoil, identifying a neutral point at x_CG = 25 mm and establishing stable configurations for forward CG positions. The comparison highlights the critical role of airfoil selection in achieving self-stability — a reflexed section changes the sign of the moment contribution outright.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Polars for the swept and twisted configurations<code>/assets/img/projects/flyingwing-polars.png</code></div>
+          <figcaption>Fig. 1 — C<sub>L</sub>, C<sub>D</sub>, C<sub>m</sub> and C<sub>L</sub>/C<sub>D</sub> for the analysed configurations.</figcaption>
+        </figure>
+        <p>Building on this, the influence of geometric sweep was investigated, showing that realistic sweep values do not provide sufficient stability for the baseline configuration, with only non-physical geometries yielding stable behaviour.</p>
+        <p>Finally, wing twist was introduced as a design variable, demonstrating that a negative twist of approximately <strong>−5°</strong> enables stable flight conditions, satisfying all stability criteria within a defined angle-of-attack range.</p>      </article>
     </div>
   </main>
   <footer class="foot">

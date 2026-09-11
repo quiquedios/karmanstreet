@@ -39,10 +39,17 @@
       <article>
         <h1 class="page-title">Supersonic wedge shock analysis in SU2</h1>
         <p class="article-meta">Project · Project 14</p>
-        <p>A high-fidelity CFD study of supersonic inviscid flow over a 2-D wedge, solving the Euler equations to capture oblique shock formation and propagation in a structured domain. The solver was SU2, with post-processing in ParaView.</p>
-        <p>The core of the study was numerical: I compared spatial discretisation at first and second order and evaluated several flux schemes — HLLC, JST, Lax-Friedrichs, CUSP and Roe — for their effect on shock resolution, numerical diffusion and stability. Higher-order schemes sharpened the shock; lower-order ones smeared it with added diffusion.</p>
-        <p>Quantitative Mach-number profiles along specified lines pinned down shock location and strength across the configurations, turning a textbook flow into a concrete comparison of scheme behaviour.</p>
-      </article>
+        <p>High-fidelity CFD simulations of supersonic inviscid flow over a 2D wedge, modelling oblique shock wave formation and propagation in a structured computational domain by solving the Euler equations.</p>
+        <h2>Method</h2>
+        <p>The study was conducted using <strong>SU2</strong> for the flow solution and <strong>ParaView</strong> for post-processing, enabling visualization and analysis of pressure and Mach number fields across the domain.</p>
+        <p>The core of the work was a systematic comparison of numerical treatment. Two axes were investigated: the spatial discretization order (1st vs 2nd order accuracy), and the flux method, comparing <strong>HLLC, JST, Lax-Friedrichs, CUSP and Roe</strong> schemes against each other.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Mach number contour showing the oblique shock over the wedge<code>/assets/img/projects/su2-mach-contour.png</code></div>
+          <figcaption>Fig. 1 — Mach number field over the 2D wedge.</figcaption>
+        </figure>
+        <h2>Results</h2>
+        <p>The comparison showed clear differences in shock sharpness and numerical dissipation. Higher-order schemes improved shock definition, while lower-order methods introduced increased diffusion that visibly thickened the discontinuity — a direct demonstration of how much the numerics, rather than the physics, determine what a simulation appears to show.</p>
+        <p>Quantitative flow behaviour was extracted through Mach number profiles along specified lines, identifying shock location and strength variations across the configurations.</p>      </article>
     </div>
   </main>
   <footer class="foot">

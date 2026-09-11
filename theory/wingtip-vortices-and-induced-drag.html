@@ -39,10 +39,18 @@
       <article>
         <h1 class="page-title">Wingtip vortices and induced drag</h1>
         <p class="article-meta">Theory · Thesis §2.1.1</p>
-        <p>On a finite wing the high pressure below and low pressure above find a shortcut around the tip. The result is a pair of trailing <strong>tip vortices</strong> that roll up behind the wing.</p>
-        <p>These vortices induce a downward component of velocity over the wing (<em>downwash</em>), which tilts the effective oncoming flow. The local lift vector, always perpendicular to that local flow, therefore tilts backward — and its rearward projection is <strong>induced drag</strong>. It is the drag you cannot avoid if you insist on making lift with a wing of finite span.</p>
-        <p>Because induced drag scales inversely with aspect ratio, long slender wings pay less of it — the reason gliders look the way they do. Devices like winglets and endplates work by interfering with the tip roll-up and reducing the induced penalty.</p>
-
+        <p>Induced drag exists only in wings that are simultaneously (a) lift or downforce generating and (b) finite. Both conditions are necessary, and both are met by every wing on a race car.</p>
+        <h2>The out-of-plane effect</h2>
+        <p>Acknowledging the natural tendency of air to move from regions of high pressure to areas of low pressure, the air on the pressure side is driven around the tip to the suction side. This three-dimensional, out-of-plane effect is only noticeable at the tip of finite wings, and is most significant in those with low aspect ratios — which, again, describes motorsport wings.</p>
+        <p>The wingtip vortices generated in these cases have two effects:</p>
+        <ul><li>They modify the pressure distribution, generating an imbalance in net pressure.</li><li>They extract kinetic energy from the flow, increasing air resistance.</li></ul>
+        <figure class="fig-ph">
+          <div class="fig-box">Wingtip vortices made visible in flight<code>/assets/img/theory/wingtip-vortices.png</code></div>
+          <figcaption>Fig. 1 — Condensation allows the wingtip vortices to be visualized.</figcaption>
+        </figure>
+        <h2>Why endplates exist</h2>
+        <p>Since induced drag is the price paid for downforce on a finite, low-aspect-ratio wing, the obvious countermeasure is to interfere with the tip roll-up. That is exactly what <strong>endplates</strong> do: a physical barrier keeping the airflow on the pressure side isolated from the suction side.</p>
+        <p>This is the last of the four steps in the basic recipe for a motorsport wing — inverted profile, close to the ground, multi-element, and endplated — and the only one aimed specifically at drag rather than at downforce.</p>
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
           <a href="/theory/drag-breakdown.html">‹ Drag breakdown</a><a href="/theory/laminar-vs-turbulent-boundary-layers.html" style="margin-left:auto;text-align:right;">Laminar vs turbulent boundary layers ›</a>
         </nav>

@@ -39,9 +39,22 @@
       <article>
         <h1 class="page-title">Time-resolved PIV of a turbulent jet</h1>
         <p class="article-meta">Project · Project 66</p>
-        <p>Time-resolved Particle Image Velocimetry of a turbulent jet (Re = 2500), from experimental setup — laser-sheet illumination and high-speed imaging — through data processing and modal analysis.</p>
-        <p>I optimised the acquisition (dt = 12.5 ms, 80 Hz) against displacement and confidence criteria, reconstructed the velocity fields by cross-correlation, and studied how interrogation-window size (128 vs 32 px) affects spatial resolution, capturing shear-layer structures more sharply with refined processing. Mean fields and Reynolds stresses located the peak turbulence production in the shear layer, and a Principal Component Analysis via SVD extracted the coherent structures — the dominant large-scale shear-layer modes, antisymmetric flapping, and higher-frequency features.</p>
-        <p>Full method and results are in the accompanying paper.</p>
+        <p>Time-resolved <strong>Particle Image Velocimetry</strong> measurements of a turbulent jet (Re = 2500), designing and executing a full experimental setup including laser sheet illumination and high-speed imaging, followed by advanced data processing and flow analysis.</p>
+        <h2>Acquisition</h2>
+        <p>Acquisition parameters were optimised (<strong>dt = 12.5 ms, 80 Hz</strong>) based on displacement and confidence criteria, ensuring time-resolved measurement fidelity rather than merely time-averaged statistics.</p>
+        <h2>Processing</h2>
+        <p>Velocity fields were reconstructed using cross-correlation techniques, and the impact of interrogation window size (<strong>DI = 128 vs 32 px</strong>) on spatial resolution was analysed, demonstrating improved capture of shear-layer structures and turbulent fluctuations with refined processing.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Horizontal and vertical velocity fields at two interrogation window sizes<code>/assets/img/projects/piv-velocity-fields.png</code></div>
+          <figcaption>Fig. 1 — U and V fields for D<sub>I</sub> = 128 px and 32 px.</figcaption>
+        </figure>
+        <h2>Results</h2>
+        <p>Mean flow fields and Reynolds stresses were computed, identifying peak turbulence production in the shear layer and the characteristic jet entrainment behaviour.</p>
+        <p>Principal Component Analysis via SVD was then applied to extract coherent flow structures, identifying the dominant large-scale shear-layer modes, antisymmetric flapping, and higher-frequency turbulent features.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Spatial modes of the fluctuating velocity field<code>/assets/img/projects/piv-modes.png</code></div>
+          <figcaption>Fig. 2 — Spatial modes of the fluctuating velocity field, U and V components.</figcaption>
+        </figure>
         <p style="margin-top:1.5rem;"><a href="/papers/time-resolved-piv-of-a-turbulent-jet-with-modal-decomposition.html">Read the paper →</a></p>
       </article>
     </div>

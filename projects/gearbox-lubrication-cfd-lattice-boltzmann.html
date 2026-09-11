@@ -39,9 +39,20 @@
       <article>
         <h1 class="page-title">Gearbox lubrication CFD (Lattice Boltzmann)</h1>
         <p class="article-meta">Project · Project 42</p>
-        <p>A CFD study of oil–air multiphase flow inside a gearbox, using a GPU-accelerated Lattice Boltzmann Method solver to analyse lubricant distribution and torque losses under realistic operating conditions.</p>
-        <p>The model captured the fluid interaction between rotating gears at a 1.54:1 transmission ratio, quantifying oil impregnation and the wetted surface area — 32.5% on the driving gear, 56% on the driven gear — along with the quasi-periodic torque losses. A mesh-sensitivity study (40k vs 324k elements) exposed significant discrepancies between resolutions, pointing to the need for finer lattice refinement and smaller time steps to reach convergence.</p>
-        <p>The full methodology and results are written up in the accompanying paper.</p>
+        <p>A CFD study of oil–air multiphase flow in a gearbox using a GPU-accelerated <strong>Lattice Boltzmann Method (LBM)</strong> solver, analysing lubricant distribution and torque losses under realistic operating conditions.</p>
+        <h2>Method</h2>
+        <p>The model captured the fluid interaction between rotating gears at a transmission ratio of <strong>1.54:1</strong>, evaluating oil impregnation, wetted surface area and the resulting torque losses. A mesh sensitivity study compared a coarse case of 40k elements against a fine case of 324k elements.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Volume fraction fields for coarse and fine lattice resolutions<code>/assets/img/projects/gearbox-vof.png</code></div>
+          <figcaption>Fig. 1 — Oil–air distribution, coarse (02:09) vs fine (20:24) calculation time.</figcaption>
+        </figure>
+        <h2>Results</h2>
+        <p>Wetted surface area settled at <strong>32.5% for the driving gear and 56% for the driven gear</strong>, with quasi-periodic torque losses on both.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Torque losses and wetted area for driving and driven gears<code>/assets/img/projects/gearbox-torque.png</code></div>
+          <figcaption>Fig. 2 — Torque losses and wetted area results.</figcaption>
+        </figure>
+        <p>The mesh sensitivity study identified significant discrepancies between the two resolutions, highlighting the need for further lattice refinement and reduced time steps to achieve convergence — the honest conclusion being that the study establishes the method and bounds the problem rather than delivering a converged answer.</p>
         <p style="margin-top:1.5rem;"><a href="/papers/gearbox-lubrication-cfd-lattice-boltzmann-methods-and-results.html">Read the paper →</a></p>
       </article>
     </div>

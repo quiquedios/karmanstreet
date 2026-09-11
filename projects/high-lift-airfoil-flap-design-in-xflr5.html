@@ -39,10 +39,18 @@
       <article>
         <h1 class="page-title">High-lift airfoil flap design in XFLR5</h1>
         <p class="article-meta">Project · Project 21</p>
-        <p>Design and optimisation of a high-lift configuration for a NACA 23015 aerofoil in XFLR5, targeting at least a 55% increase in maximum lift coefficient under realistic constraints: Re = 3×10⁶, flap deflection ≤ 40° and flap chord ≤ 25%.</p>
-        <p>I first validated the numerical setup against the classic experimental data from <em>Theory of Wing Sections</em>, matching lift, drag and pitching-moment coefficients across a wide angle-of-attack range. A parametric study of trailing-edge flap deflection then pushed the maximum lift coefficient to 2.25 (+32%), and a dual-flap configuration — leading-edge 27° plus trailing-edge 40° — reached 2.55, roughly a 50% gain and close to the target.</p>
-        <p>The study documented the trade-offs — higher flap deflection brings more drag and more negative pitching moment — and analysed the pressure distributions, showing the strong gradients and discontinuities at the flap hinges, with thin-aerofoil theory tying the camber change back to lift.</p>
-      </article>
+        <p>Design and optimization of a high-lift configuration for a <strong>NACA 23015</strong> airfoil using XFLR5, targeting a ≥ 55% increase in maximum lift coefficient under realistic aerodynamic constraints: Re = 3×10⁶, flap deflection ≤ 40 degrees, flap chord ≤ 25%.</p>
+        <h2>Method</h2>
+        <p>The numerical setup was first validated by comparing lift, drag and pitching moment coefficients against experimental data from <em>Theory of Wing Sections</em>, achieving strong agreement across a wide angle-of-attack range. Validating before optimizing is what makes the subsequent numbers worth anything.</p>
+        <p>A parametric study of trailing-edge flap deflection was then performed, sweeping 0 to 40 degrees.</p>
+        <h2>Results</h2>
+        <p>The trailing-edge sweep demonstrated increased lift and earlier stall onset, reaching a maximum lift coefficient of <strong>c<sub>l</sub> = 2.25 (+32%)</strong>.</p>
+        <p>To improve further, an alternative <strong>dual-flap configuration</strong> was developed — leading-edge deflection at 27 degrees combined with trailing-edge deflection at 40 degrees — achieving <strong>c<sub>l</sub> = 2.55</strong>, about a 50% increase and approaching the design target.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Cp distribution and airfoil geometry for the dual-flap configuration<code>/assets/img/projects/highlift-cp.png</code></div>
+          <figcaption>Fig. 1 — c<sub>l</sub> vs α and c<sub>p</sub> vs α, NACA 23015 TE @ δ = 40° + LE @ δ = 27°.</figcaption>
+        </figure>
+        <p>The study included detailed analysis of the aerodynamic trade-offs: increased drag and more negative pitching moments with higher flap deflection, as well as pressure coefficient distributions showing strong gradients and discontinuities at the flap hinge locations. Results were further validated using thin airfoil theory, linking the camber modification back to lift generation.</p>      </article>
     </div>
   </main>
   <footer class="foot">

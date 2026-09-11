@@ -39,11 +39,22 @@
       <article>
         <h1 class="page-title">Gearbox lubrication CFD (Lattice Boltzmann): methods and results</h1>
         <p class="article-meta">Paper · Project 42</p>
-        <p>This paper documents a CFD study of oil–air multiphase flow inside a gearbox, carried out with a GPU-accelerated Lattice Boltzmann Method solver to quantify lubricant distribution and torque losses under realistic operating conditions.</p>
+        <p>This paper documents a CFD study of oil–air multiphase flow in a gearbox, using a GPU-accelerated Lattice Boltzmann Method solver to analyse lubricant distribution and torque losses under realistic operating conditions.</p>
         <h2>Method</h2>
-        <p>The model resolved the interaction between two rotating gears at a 1.54:1 transmission ratio, tracking the oil–air interface to measure impregnation and wetted area, and recording the instantaneous torque on each gear. A mesh-sensitivity study compared a 40k-element grid against a 324k-element grid.</p>
+        <p>The model captures the fluid interaction between two rotating gears at a transmission ratio of 1.54:1. The working fluids are air (ρ = 1.225 kg/m³, µ = 1.789×10⁻⁵ Pa·s) and oil (ρ = 860 kg/m³, µ = 0.01 Pa·s), with the interface tracked to measure oil impregnation and wetted surface area while recording instantaneous torque on each gear.</p>
+        <p>A mesh sensitivity study was conducted comparing a coarse lattice of <strong>40,500 elements</strong> against a fine lattice of <strong>324,000 elements</strong>, with element sizes of 0.004 m and 0.002 m respectively.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Oil–air volume fraction for both lattice resolutions<code>/assets/img/papers/gearbox-vof-comparison.png</code></div>
+          <figcaption>Fig. 1 — Volume fraction fields; coarse (02:09.272) vs fine (20:24.908) calculation time.</figcaption>
+        </figure>
         <h2>Results</h2>
-        <p>Wetted surface area settled at 32.5% on the driving gear and 56% on the driven gear, with quasi-periodic torque losses. The two mesh resolutions diverged significantly, indicating that finer lattice refinement and smaller time steps are needed for a converged answer — the study's main methodological finding.</p>
+        <p>Wetted surface area converged to <strong>32.5% for the driving gear and 56% for the driven gear</strong>, with quasi-periodic torque losses observed on both. The driven (larger) gear carries substantially more oil, as expected from its greater submerged arc.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Torque loss histories and wetted area for both gears<code>/assets/img/papers/gearbox-torque-results.png</code></div>
+          <figcaption>Fig. 2 — Torque losses for driving and driven gears, with wetted-area percentages.</figcaption>
+        </figure>
+        <h2>Discussion</h2>
+        <p>The two mesh resolutions produced significant discrepancies, which is the central methodological finding: the study is <strong>not mesh-converged</strong>. Reaching convergence requires further lattice refinement together with reduced time steps, and the computational cost gap between the two cases (roughly 2 minutes against 20 minutes) indicates what that would demand.</p>
         <p style="margin-top:1.5rem;"><a href="/projects/gearbox-lubrication-cfd-lattice-boltzmann.html">← See the project</a></p>
       </article>
     </div>

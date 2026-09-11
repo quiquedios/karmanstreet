@@ -39,10 +39,24 @@
       <article>
         <h1 class="page-title">Mesh sensitivity and turbulence resolution in STAR-CCM+</h1>
         <p class="article-meta">Project · Project 15</p>
-        <p>A detailed CFD study of subsonic flow (Mach 0.42, Re = 10⁶) over a bluff body in STAR-CCM+, focused on mesh sensitivity and near-wall turbulence resolution through systematic variation of the prismatic boundary-layer discretisation.</p>
-        <p>I generated polyhedral meshes with increasing boundary-layer refinement — from 1 to 6 prism layers — and tracked their effect on wall-resolved y+, aerodynamic force coefficients and convergence. Adding layers cut y+ from 433 down to 79, sharpening the near-wall resolution, while the force coefficients converged toward a stable 2.5×10⁻³, confirming mesh independence.</p>
-        <p>A parallel-performance study across 2 to 8 cores and several mesh sizes exposed the non-linear scaling of cost with resolution, framing the practical trade-off between accuracy and compute.</p>
-      </article>
+        <p>A detailed CFD study of subsonic flow (M = 0.42, Re = 10⁶) around a bluff body using <strong>STAR-CCM+</strong>, focusing on mesh sensitivity and near-wall turbulence resolution through systematic variation of prismatic layer discretization.</p>
+        <h2>Method</h2>
+        <p>Polyhedral meshes were generated with increasing boundary layer refinement, sweeping from <strong>1 to 6 prism layers</strong>, and their impact evaluated on wall-resolved parameters (y+), aerodynamic force coefficients, and solution convergence.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Polyhedral mesh with prism layers around the bluff body<code>/assets/img/projects/starccm-mesh.png</code></div>
+          <figcaption>Fig. 1 — Polyhedral mesh with boundary layer refinement.</figcaption>
+        </figure>
+        <h2>Results</h2>
+        <p>Increasing the layer count produced a clear reduction in y+ values, <strong>from 433 down to 79</strong>, improving boundary layer resolution and physical fidelity. Meanwhile the force coefficients converged towards a stable value of <strong>2.5×10⁻³</strong>, indicating mesh independence had been reached.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">y+ values as a function of prism layer count<code>/assets/img/projects/starccm-yplus.png</code></div>
+          <figcaption>Fig. 2 — Min and max y+ vs. number of layers.</figcaption>
+        </figure>
+        <figure class="fig-ph">
+          <div class="fig-box">Force coefficient convergence with layer count<code>/assets/img/projects/starccm-force-coeff.png</code></div>
+          <figcaption>Fig. 3 — Force coefficient vs. number of layers.</figcaption>
+        </figure>
+        <p>A parallel performance study was additionally conducted, analysing solver scalability across multiple processors (2 to 8 cores) and mesh sizes, identifying non-linear efficiency behaviour and demonstrating the trade-off between computational cost and mesh resolution.</p>      </article>
     </div>
   </main>
   <footer class="foot">

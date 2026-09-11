@@ -39,11 +39,33 @@
       <article>
         <h1 class="page-title">Surrogate modelling and NSGA-II optimization</h1>
         <p class="article-meta">Paper · Master&#x27;s thesis, Ch. 5</p>
-        <p>This paper covers the data-driven core of the thesis: fitting a surrogate to a limited set of CFD runs and using it to find the optimal wing designs.</p>
-        <h2>Surrogate and active learning</h2>
-        <p>A Gaussian-process surrogate was trained on 70×2 Latin-Hypercube designs — about 2.7 samples per dimension over the 26-dimensional space — then improved by active learning, with parity plots and forward-prediction checks tracking its accuracy across batches until it was trustworthy enough to freeze.</p>
-        <h2>Multi-objective optimisation</h2>
-        <p>The frozen surrogate was searched with an NSGA-II genetic algorithm to produce a Pareto front of downforce-versus-drag optima. Specific operating points were then selected per circuit using the fraction of each 2025 F1 lap spent with DRS open, turning the front into concrete, track-specific geometries.</p>
+        <p>This paper covers the data-driven core of the front-wing thesis: fitting a surrogate to a limited set of CFD runs and extracting the optimal designs from it.</p>
+        <h2>Training the surrogate</h2>
+        <p>A <strong>Gaussian Process</strong> surrogate was trained on <strong>70×2 Latin Hypercube designs</strong> — about 2.7 samples per dimension over the 26-dimensional design space, which is sparse by any standard and is precisely why the active-learning stage matters.</p>
+        <p>The kernel is squared-exponential with Automatic Relevance Determination, so a separate length-scale is fitted per design variable. As a by-product, the fitted length-scales provide a data-driven sensitivity ranking of the 26 variables.</p>
+        <h2>Active learning</h2>
+        <p>The surrogate was then refined iteratively. At each step the <strong>q-Expected Hypervolume Improvement</strong> acquisition function selects a batch of designs that would most enlarge the dominated region of the C<sub>D</sub>–C<sub>L</sub> plane; those designs are evaluated with the true CFD and the surrogate re-fitted.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Active-learning convergence across batches<code>/assets/img/papers/active-learning-convergence.png</code></div>
+          <figcaption>Fig. 1 — Surrogate accuracy across successive active-learning batches.</figcaption>
+        </figure>
+        <p>Parity plots and forward-prediction checks track accuracy batch by batch until the surrogate is trustworthy enough to be frozen.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Parity plot of surrogate prediction against CFD<code>/assets/img/papers/surrogate-parity.png</code></div>
+          <figcaption>Fig. 2 — Predicted vs CFD coefficients for the validation points.</figcaption>
+        </figure>
+        <h2>Multi-objective optimization</h2>
+        <p>With the surrogates frozen, <strong>NSGA-II</strong> is run directly over the surrogate means to produce a Pareto front of downforce-versus-drag optima. Selected points on the front were then re-evaluated with full CFD to quantify the surrogate offset — the discrepancy between predicted and actual performance at the optimum.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Pareto front with the selected and validated points marked<code>/assets/img/papers/nsga2-pareto.png</code></div>
+          <figcaption>Fig. 3 — Pareto front from NSGA-II with validated front points.</figcaption>
+        </figure>
+        <h2>Track-specific selection</h2>
+        <p>Every point on the front is an optimal compromise, so the algorithm does not select for you. The final choice was made <strong>per circuit</strong>, weighting the two modes by the fraction of each 2025 F1 lap spent with DRS open — which turns an abstract trade-off curve into concrete, track-specific geometries.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Optimal geometry selected for each track<code>/assets/img/papers/optimal-per-track.png</code></div>
+          <figcaption>Fig. 4 — Optimal geometries for each track.</figcaption>
+        </figure>
         <p style="margin-top:1.5rem;"><a href="/projects/surrogate-based-bayesian-optimization-of-an-f1-front-wing.html">← See the project</a></p>
       </article>
     </div>

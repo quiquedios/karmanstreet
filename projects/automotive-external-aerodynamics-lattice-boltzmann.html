@@ -39,10 +39,22 @@
       <article>
         <h1 class="page-title">Automotive external aerodynamics (Lattice Boltzmann)</h1>
         <p class="article-meta">Project · Project 43</p>
-        <p>A high-fidelity aerodynamic study of a full-scale DrivAer vehicle using a GPU-accelerated Lattice Boltzmann solver (XFlow), comparing three rear-end configurations — fastback, notchback and estateback — at a realistic 140 km/h.</p>
-        <p>I built a complete setup including domain-sensitivity analysis, a lattice-refinement strategy down to 1 cm in critical regions, and CFL-based time-step control, with a WMLES turbulence model and advanced wall functions to capture separation and wake dynamics. Aerodynamic coefficients (Cd, Cl) were validated against wind-tunnel and literature data to under 5% error in refined cases.</p>
-        <p>The flow-physics analysis — centreline pressure distributions, surface Cp, velocity slices and wake structure — pinned down the separation regions behind each body and explained the drag differences, with the estateback worst due to early separation. The study also exposed how sensitive drag prediction is to mesh refinement in the separated wake.</p>
-      </article>
+        <p>A high-fidelity aerodynamic analysis of a full-scale <strong>DrivAer</strong> vehicle using a GPU-accelerated Lattice Boltzmann Method solver (<strong>XFlow</strong>), evaluating the aerodynamic performance of multiple body configurations — fastback, notchback and estateback — under realistic operating conditions at 140 km/h.</p>
+        <h2>Method</h2>
+        <p>A complete CFD setup was developed including domain sensitivity analysis, a lattice refinement strategy (coarse vs fine resolutions down to <strong>1 cm</strong> in critical regions), and time-step control based on CFL criteria, ensuring numerical stability and physical accuracy.</p>
+        <p>The simulations employed a <strong>WMLES</strong> turbulence model with advanced wall-function treatment to capture separation and wake dynamics, which is where the differences between the three rear-end shapes actually live.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Velocity field cutting plane for the three body configurations<code>/assets/img/projects/drivaer-velocity.png</code></div>
+          <figcaption>Fig. 1 — Velocity field cutting plane at z = 0 for fastback, notchback and estateback.</figcaption>
+        </figure>
+        <h2>Results</h2>
+        <p>Aerodynamic coefficients (C<sub>d</sub>, C<sub>l</sub>) were quantified and validated against wind tunnel and literature data, achieving errors of <strong>under 5%</strong> in refined cases.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Pressure coefficient along the vehicle centreline compared with references<code>/assets/img/projects/drivaer-cp.png</code></div>
+          <figcaption>Fig. 2 — Pressure coefficient vs longitudinal location, against experimental and reference data.</figcaption>
+        </figure>
+        <p>Detailed flow physics analysis followed, including pressure coefficient distributions along the vehicle centreline, surface C<sub>p</sub> contours, velocity field slices, and wake structure visualization. This identified the key separation regions at the rear geometry and explained the drag differences between configurations, with the <strong>estateback showing the highest drag due to early separation</strong>.</p>
+        <div class="note">The study also highlighted the sensitivity of drag prediction to mesh, identifying limitations due to insufficient refinement in separation regions and open geometry manifolds — worth stating, because a 5% agreement in refined cases is not the same as 5% everywhere.</div>      </article>
     </div>
   </main>
   <footer class="foot">

@@ -39,11 +39,42 @@
       <article>
         <h1 class="page-title">CFD–wind-tunnel correlation of a scale model</h1>
         <p class="article-meta">Paper · Master&#x27;s thesis, Ch. 4 &amp; 6</p>
-        <p>This paper closes the loop on the thesis by comparing the CFD predictions against physical measurement, and by dissecting the flow field of the optimal designs.</p>
-        <h2>Scale-model testing</h2>
-        <p>A 32.4%-scale model of the wing was divided into printable sections, 3-D printed and assembled, then tested in a wind tunnel — with the setup and preliminary checks documented — to provide an experimental point of correlation for the simulations.</p>
-        <h2>Flow-field study</h2>
-        <p>For the selected optima the paper examines chordwise pressure coefficient at mid-span, wall-y+ maps on both surfaces, surface Cp from above and below, and — on a plane behind the wing — the streamwise vorticity, total-pressure loss and turbulent kinetic energy, explaining how the geometry produces its downforce and where its losses come from.</p>
+        <p>This paper closes the loop on the front-wing work: comparing the CFD predictions against physical measurement, and dissecting the flow field of the optimal designs to explain where their performance comes from.</p>
+        <h2>Scale model</h2>
+        <p>A <strong>32.4% scale</strong> model of the wing was divided into printable sections, 3D printed and assembled, then tested in a closed-circuit wind tunnel reaching 50 m/s. At that scale and speed the model reproduces real speeds close to 60 km/h — an F1 slow corner — so full Reynolds matching is not achieved and the correlation is bounded accordingly.</p>
+        <p>The boundary layer on the model is deliberately <strong>tripped</strong> near the leading edge so that model, full-scale wing and simulation all share a turbulent boundary layer, which is what makes the comparison meaningful despite the Reynolds mismatch.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">3D-printed scale model assembled in the tunnel test section<code>/assets/img/papers/tunnel-model.png</code></div>
+          <figcaption>Fig. 1 — 32.4% scale printed model installed for testing.</figcaption>
+        </figure>
+        <h2>Solution quality</h2>
+        <p>Residual histories for the selected optima are reported first, establishing that the compared solutions are themselves converged.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Residuals plot for the median optimum<code>/assets/img/papers/residuals-median-optimum.png</code></div>
+          <figcaption>Fig. 2 — Residuals plot for median optimum (Z-mode).</figcaption>
+        </figure>
+        <h2>Flow field analysis</h2>
+        <p>For the selected optima the paper examines the chordwise pressure coefficient at mid-span, wall y+ on both surfaces to confirm the near-wall treatment is being applied in its valid range, and the surface pressure coefficient viewed from above and below.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Chordwise pressure coefficient at mid-span for both optima<code>/assets/img/papers/cp-midspan.png</code></div>
+          <figcaption>Fig. 3 — Chordwise C<sub>p</sub> at mid-span (y = 0.3 m) for both optima.</figcaption>
+        </figure>
+        <figure class="fig-ph">
+          <div class="fig-box">Wall y+ on the pressure and suction surfaces<code>/assets/img/papers/wall-yplus.png</code></div>
+          <figcaption>Fig. 4 — Wall y+ on the top (pressure) and bottom (suction) surfaces.</figcaption>
+        </figure>
+        <figure class="fig-ph">
+          <div class="fig-box">Surface pressure coefficient from above and below<code>/assets/img/papers/surface-cp.png</code></div>
+          <figcaption>Fig. 5 — Surface C<sub>p</sub> viewed from the pressure and suction sides.</figcaption>
+        </figure>
+        <h2>Wake structure</h2>
+        <p>On a plane behind the wing (x = −0.4725 m), the streamwise vorticity, total-pressure loss and turbulent kinetic energy are examined together. Taken as a set these explain how the geometry produces its downforce and, just as importantly, where its losses are being generated.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Streamwise vorticity, total-pressure loss and TKE on the wake plane<code>/assets/img/papers/wake-plane.png</code></div>
+          <figcaption>Fig. 6 — ω<sub>x</sub>, total-pressure loss and k on the plane x = −0.4725 m behind the wing.</figcaption>
+        </figure>
+        <h2>Nominal versus optimized</h2>
+        <p>The paper closes with the comparison that motivated the whole campaign: the optimized geometries against the nominal starting point, in both aerodynamic modes.</p>
         <p style="margin-top:1.5rem;"><a href="/projects/surrogate-based-bayesian-optimization-of-an-f1-front-wing.html">← See the project</a></p>
       </article>
     </div>

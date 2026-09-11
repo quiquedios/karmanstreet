@@ -39,10 +39,17 @@
       <article>
         <h1 class="page-title">Laminar vs turbulent boundary layers</h1>
         <p class="article-meta">Theory · Thesis §2.1.1</p>
-        <p>Right against any surface is a thin region where viscosity dominates and the velocity climbs from zero at the wall to the freestream value: the <strong>boundary layer</strong>. It comes in two regimes.</p>
-        <p>A <strong>laminar</strong> boundary layer is smooth and orderly, with low skin friction but little resistance to adverse pressure gradients — it separates easily. A <strong>turbulent</strong> boundary layer is chaotic and thicker, with higher skin friction but far better mixing, so it stays attached longer. The trade is fundamental: turbulence costs friction drag but buys separation resistance.</p>
-        <p>The switch between them, <strong>transition</strong>, is governed largely by Reynolds number and surface disturbances. A great deal of practical aerodynamics is really about managing where transition and separation happen — sometimes even tripping the flow turbulent deliberately to keep it attached.</p>
-
+        <p>Right against any surface there is a thin region where viscosity dominates and the velocity climbs from zero at the wall up to the freestream value. That region is the boundary layer, and its state — laminar or turbulent — governs both the friction the surface feels and how readily the flow will separate from it.</p>
+        <h2>The two regimes</h2>
+        <p>A boundary layer normally begins in a <strong>laminar</strong> regime and, after a certain distance from the leading edge, transitions to <strong>turbulent</strong>. The laminar layer is smooth and orderly, carries low skin friction, and has little momentum near the wall, which makes it separate easily under an adverse pressure gradient. The turbulent layer is chaotic and thicker, carries substantially higher skin friction, but mixes high-momentum fluid down towards the wall and therefore resists separation far better.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Laminar, transitional and turbulent regions along a surface<code>/assets/img/theory/laminar-turbulent-transition.png</code></div>
+          <figcaption>Fig. 1 — Laminar, transient and turbulent stages of a boundary layer.</figcaption>
+        </figure>
+        <p>The friction penalty is quantifiable through the empirical coefficients — 1.328/√Re<sub>c</sub> for laminar against 0.074/Re<sub>c</sub><sup>1/5</sup> for turbulent — and the total skin friction on a surface is the sum of the two contributions weighted by where transition occurs.</p>
+        <h2>Why this is a design decision, not just a fact</h2>
+        <p>The trade is fundamental: turbulence costs friction drag but buys separation resistance. On a streamlined body with t/c ≪ 1, where skin friction dominates the total drag, keeping the layer laminar for as long as possible is worth chasing. On a bluff or heavily loaded body, where pressure drag dominates and separation is the real enemy, a turbulent layer is preferable and is sometimes forced deliberately.</p>
+        <p>That deliberate forcing is exactly what <em>tripping</em> does, and it matters well beyond aircraft design. At reduced wind-tunnel scale the Reynolds number is too low for the boundary layer to be turbulent over most of the model, while at full scale it would be turbulent almost everywhere — and the CFD it is being compared against assumes a fully turbulent layer. Placing a small surface disturbance near the leading edge forces transition at a fixed location so that model, full-scale wing and simulation all share the same regime.</p>
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
           <a href="/theory/wingtip-vortices-and-induced-drag.html">‹ Wingtip vortices and induced drag</a><a href="/theory/boundary-layers-under-pressure-gradients.html" style="margin-left:auto;text-align:right;">Boundary layers under pressure gradients ›</a>
         </nav>

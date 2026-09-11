@@ -39,9 +39,21 @@
       <article>
         <h1 class="page-title">Hot-wire anemometry and cylinder wake</h1>
         <p class="article-meta">Project · Project 65</p>
-        <p>Experimental aerodynamic measurement using hot-wire anemometry, covering full sensor characterisation, calibration and wake-flow analysis of a circular cylinder.</p>
-        <p>I determined the probe's dynamic response through impulse analysis (cutoff frequency 10 kHz) and calibrated it with King's Law over 3–20 m/s, achieving an excellent fit (R² = 0.9998). Sampling the wake of a 32 mm cylinder at high frequency, I computed power spectral densities to extract vortex-shedding frequencies and their velocity dependence, found turbulence intensities of 27–32% in the wake, and tracked the shedding frequency over time with a short-time Fourier transform, confirming its stability and agreement with Strouhal-based predictions.</p>
-        <p>Full method and results are in the accompanying paper.</p>
+        <p>Experimental aerodynamic measurements using <strong>hot-wire anemometry</strong>, including full sensor characterization, calibration, and wake flow analysis of a circular cylinder.</p>
+        <h2>Sensor characterisation and calibration</h2>
+        <p>The probe's dynamic response was determined through impulse analysis, obtaining a cutoff frequency of <strong>10 kHz</strong>, ensuring suitability for resolving turbulent fluctuations. The hot-wire was calibrated using King's Law over a velocity range of 3–20 m/s, achieving excellent fit accuracy (<strong>R² = 0.9998</strong>), enabling reliable conversion of voltage signals into instantaneous velocity.</p>
+        <div class="eq">E² = A + B · U<sup>n</sup></div>
+        <figure class="fig-ph">
+          <div class="fig-box">King&#x27;s Law calibration curve<code>/assets/img/projects/hotwire-calibration.png</code></div>
+          <figcaption>Fig. 1 — Final King's law calibration curve, E² = A + BUⁿ.</figcaption>
+        </figure>
+        <h2>Wake analysis</h2>
+        <p>The wake of a circular cylinder (<strong>D = 32 mm</strong>) was then analysed using high-frequency sampling, computing power spectral densities to identify vortex shedding frequencies and their dependence on freestream velocity.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Power spectral density at 4, 8 and 12 m/s<code>/assets/img/projects/hotwire-psd.png</code></div>
+          <figcaption>Fig. 2 — Power spectral density for 4, 8 and 12 m/s.</figcaption>
+        </figure>
+        <p>Turbulence statistics revealed significant velocity deficits and high turbulence intensity (<strong>27–32%</strong>) in the wake. Time-frequency analysis via STFT was additionally implemented to track the shedding frequency evolution, confirming temporal stability and agreement with Strouhal-based theoretical predictions.</p>
         <p style="margin-top:1.5rem;"><a href="/papers/hot-wire-anemometry-and-cylinder-wake-analysis.html">Read the paper →</a></p>
       </article>
     </div>

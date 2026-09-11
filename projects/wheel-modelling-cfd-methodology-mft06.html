@@ -39,10 +39,17 @@
       <article>
         <h1 class="page-title">Wheel-modelling CFD methodology (MFT06)</h1>
         <p class="article-meta">Project · Project 72</p>
-        <p>A methodology study assessing how wheel-geometry simplification and mesh parameters affect aerodynamic accuracy and cost for the MFT06 Formula Student car — the kind of groundwork that makes a full-vehicle CFD campaign affordable.</p>
-        <p>I built wheel models at several fidelity levels (full rim, simplified rim with spokes, closed rim) and measured their influence on aerodynamic coefficients and wake structure under constrained resources, isolating the front axle first and later extending to full-vehicle runs using symmetry to cut cost. Simplified geometries proved usable within acceptable deviations, provided the extra recirculation of a closed rim was accounted for.</p>
-        <p>A comprehensive mesh-sensitivity study varied refinement, boundary-layer resolution and growth rate, judging convergence through residuals, y+, non-orthogonality and the aerodynamic coefficients — establishing local mesh independence and selecting a configuration that balanced accuracy against compute.</p>
-      </article>
+        <p>A detailed CFD methodology study to assess the impact of wheel geometry simplification and mesh parameters on aerodynamic accuracy and computational cost — the groundwork that makes a full-vehicle campaign affordable under Formula Student resource limits.</p>
+        <h2>Geometry fidelity</h2>
+        <p>Multiple wheel models were developed with varying levels of geometric fidelity — <strong>full rim, simplified rim with spokes, and closed rim</strong> — and their influence evaluated on aerodynamic coefficients and wake structures under constrained computational resources.</p>
+        <p>An efficient simulation strategy was designed by isolating the front axle first and later extending to full-vehicle simulations using symmetry assumptions to reduce computational expense.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">The three wheel fidelity levels compared<code>/assets/img/projects/mft06-wheel-models.png</code></div>
+          <figcaption>Fig. 1 — Full rim, simplified rim with spokes, and closed rim.</figcaption>
+        </figure>
+        <h2>Results</h2>
+        <p>The trade-offs between model fidelity and performance were quantified, identifying that simplified geometries could be used with acceptable deviations, while accounting for the increased recirculation effects that appear in closed rims.</p>
+        <p>A comprehensive mesh sensitivity study was performed varying refinement levels, boundary layer resolution and growth parameters, evaluating convergence through <strong>residuals, y+, non-orthogonality and aerodynamic coefficients</strong> together rather than any one of them alone. This demonstrated local mesh independence and identified global sensitivities, leading to an optimal mesh configuration that balanced accuracy and computational cost.</p>      </article>
     </div>
   </main>
   <footer class="foot">

@@ -39,10 +39,22 @@
       <article>
         <h1 class="page-title">Finite-volume Euler solver from first principles</h1>
         <p class="article-meta">Project · Project 49</p>
-        <p>A finite-volume CFD solver written from scratch to simulate compressible flow in a 2-D channel with a geometric perturbation, solving the Euler equations with a cell-centred formulation.</p>
-        <p>The solver used central differencing for the fluxes with artificial dissipation, and a four-stage Runge–Kutta time integration with adaptive, CFL-based time stepping. I implemented full boundary-condition handling for subsonic inlet and outlet, ensuring the correct characteristic behaviour, and validated against Hirsch's reference data — matching the pressure-coefficient distribution and confirming mesh independence at a 75×25 grid.</p>
-        <p>Parametric studies over freestream Mach number (0.3–0.7) captured the onset of compressibility effects and shock formation at the higher end, alongside analyses of entropy variation, outlet-pressure sensitivity and convergence via residual reduction and mass-flow balance.</p>
-      </article>
+        <p>A finite volume CFD solver developed from first principles to simulate compressible flow in a 2D channel with a geometric perturbation, solving the Euler equations using a cell-centered formulation. Writing the solver rather than using one is what exposes the parts that are usually hidden.</p>
+        <h2>Numerical scheme</h2>
+        <p>The solver includes central differencing for flux computation, artificial dissipation, and a <strong>4-stage Runge–Kutta</strong> time integration scheme with adaptive timestep control based on CFL conditions. Full boundary condition handling was implemented for subsonic inlet and outlet flows, ensuring correct characteristic behaviour — which is where a hand-written solver most often goes wrong.</p>
+        <h2>Validation</h2>
+        <p>The model was validated against reference data (Hirsch), achieving strong agreement in pressure coefficient distributions, and a mesh independence study confirmed convergence at <strong>75×25</strong> resolution.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Comparison against the Hirsch dataset for different mesh sizes<code>/assets/img/projects/euler-hirsch-validation.png</code></div>
+          <figcaption>Fig. 1 — Comparison of Hirsch dataset and results for different mesh sizes.</figcaption>
+        </figure>
+        <h2>Results</h2>
+        <p>Parametric studies were performed on freestream Mach number (<strong>M = 0.3–0.7</strong>), identifying compressibility effects and shock formation at higher Mach numbers, as well as analysing entropy variations and pressure distributions across the domain.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Mach number distribution at M = 0.70<code>/assets/img/projects/euler-mach-070.png</code></div>
+          <figcaption>Fig. 2 — Mach number distribution for M∞ = 0.70.</figcaption>
+        </figure>
+        <p>Additional studies included outlet pressure sensitivity and convergence behaviour based on residual reduction and mass flow balance.</p>      </article>
     </div>
   </main>
   <footer class="foot">

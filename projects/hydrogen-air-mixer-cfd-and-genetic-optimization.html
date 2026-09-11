@@ -39,10 +39,27 @@
       <article>
         <h1 class="page-title">Hydrogen–air mixer: CFD and genetic optimization</h1>
         <p class="article-meta">Project · Project 34</p>
-        <p>Design and optimisation of a passive hydrogen–air mixing system to improve combustion stability through better outlet-mixture uniformity, exploiting Venturi-induced acceleration, controlled turbulence and hydrogen's high diffusivity. The device combined a Venturi flume with radial hydrogen injectors and a downstream cylinder array to deliberately trigger vortex shedding and enhance turbulent mixing.</p>
-        <p>The CFD was high-fidelity: unsteady RANS in Ansys Fluent with k-ω SST turbulence and species transport, capturing the coupled diffusion–turbulence physics, validated against canonical benchmarks for Strouhal number and drag. I then automated the entire workflow with Python (PyFluent), converting GUI-driven simulations into scriptable pipelines for parametric study without manual intervention.</p>
-        <p>That automated framework was coupled to a genetic algorithm (PyGAD) that iteratively optimised the inlet conditions to maximise a custom outlet-uniformity index, delivering a clear improvement over the nominal design while keeping the architecture mechanically simple, with no moving parts.</p>
-      </article>
+        <p>Design and optimization of a passive hydrogen-air mixing system aimed at enhancing combustion stability through improved outlet mixture uniformity, leveraging Venturi-induced acceleration, controlled turbulence generation, and hydrogen's high diffusivity.</p>
+        <h2>Geometry concept</h2>
+        <p>The device geometry incorporated a Venturi flume combined with radial hydrogen injectors and a downstream cylinder array, the latter placed deliberately to induce vortex shedding and enhance mixing via turbulent diffusion. The mixing is therefore achieved with a mechanically simple, <strong>no-moving-parts architecture</strong>.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Geometry of the proposed mixer<code>/assets/img/projects/h2-mixer-geometry.png</code></div>
+          <figcaption>Fig. 1 — Geometry of the proposed mixer (not to scale).</figcaption>
+        </figure>
+        <h2>Method</h2>
+        <p>High-fidelity CFD simulations were developed in <strong>Ansys Fluent</strong>, solving the compressible, unsteady Reynolds-Averaged Navier–Stokes equations with k-ω SST turbulence modelling and species transport, capturing the coupled diffusion–turbulence effects.</p>
+        <p>The numerical setup was rigorously validated against canonical benchmark cases, ensuring agreement with experimental Strouhal number and drag coefficient trends across Reynolds numbers before any optimization was attempted.</p>
+        <p>To enable scalable design exploration, the full CFD workflow was automated using Python (<strong>PyFluent</strong>), converting GUI-based simulations into scriptable pipelines and enabling parametric studies without manual intervention. This framework was then integrated with a Genetic Algorithm (<strong>PyGAD</strong>) to iteratively optimize inlet conditions, maximizing a custom-defined outlet uniformity index.</p>
+        <h2>Results</h2>
+        <p>The optimization process demonstrated clear performance improvements over the nominal design, achieving significantly enhanced mixing quality while maintaining the simple architecture.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Hydrogen mass fraction contours across the optimization<code>/assets/img/projects/h2-mass-fraction.png</code></div>
+          <figcaption>Fig. 2 — H₂ mass fraction contours for r = 0, 0.145, 0.291 and 0.436.</figcaption>
+        </figure>
+        <figure class="fig-ph">
+          <div class="fig-box">Validation of drag coefficient against experimental data<code>/assets/img/projects/h2-cd-validation.png</code></div>
+          <figcaption>Fig. 3 — Validation of C<sub>D</sub> vs Re against experimental data.</figcaption>
+        </figure>      </article>
     </div>
   </main>
   <footer class="foot">

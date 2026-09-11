@@ -39,11 +39,22 @@
       <article>
         <h1 class="page-title">Automated CAD–CFD optimization pipeline</h1>
         <p class="article-meta">Paper · Master&#x27;s thesis, Ch. 4</p>
-        <p>This paper describes the automated CAD–CFD pipeline at the heart of the F1 front-wing thesis: the machinery that lets an expensive, geometry-heavy optimisation run without a human in the loop.</p>
-        <h2>Parametric CAD</h2>
-        <p>The wing is fully parametrised in CATIA V5 and driven programmatically through its scripting interface. A Python routine reads the active parameters and their physical ranges from a spreadsheet, draws a Latin Hypercube of designs over the resulting high-dimensional cube, and for each sample writes the parameters into the CATIA template, regenerates the geometry and exports it — twice per design, once for each aerodynamic mode.</p>
-        <h2>Automated CFD reduction</h2>
-        <p>Once meshed and solved, each run's force-coefficient history is reduced automatically: a routine reads the exported CSVs, finds where the oscillating signal settles within a ±2% band, and averages the tail to a single Cl or Cd value written straight back to the design database — leaving the surrogate ready to train. The result is a reproducible, seed-controlled pipeline from parameters to coefficients.</p>
+        <p>This paper describes the automated CAD–CFD pipeline at the core of the front-wing optimization: the machinery that allows a geometry-heavy, expensive optimization to run without a human in the loop.</p>
+        <h2>Parametric CAD generation</h2>
+        <p>The wing is fully parametrized in <strong>CATIA V5</strong> and driven programmatically through its scripting interface. A Python routine reads the active parameters and their physical ranges from a spreadsheet, draws a <strong>Latin Hypercube</strong> of designs over the resulting high-dimensional cube, and for each sample writes the parameters into the CATIA template, regenerates the geometry and exports it — twice per design, once for each aerodynamic mode.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Parametrized geometry with the design variables annotated<code>/assets/img/papers/pipeline-parametric-cad.png</code></div>
+          <figcaption>Fig. 1 — Parametric CATIA model with the 26 active design variables.</figcaption>
+        </figure>
+        <h2>Meshing and solution</h2>
+        <p>Each exported geometry is meshed following a fixed strategy of refinement regions and boundary layers, so that every candidate in the campaign is treated identically and differences in the results are attributable to geometry rather than to meshing choices.</p>
+        <h2>Automated reduction of force histories</h2>
+        <p>Once solved, each run's force coefficient history must be reduced to a single number. A routine reads the exported CSVs, locates where the oscillating signal settles within a <strong>±2% band</strong>, and averages the tail to a single C<sub>L</sub> or C<sub>D</sub> value written straight back into the design database.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Force coefficient history with the settling band and averaged tail<code>/assets/img/papers/pipeline-force-history.png</code></div>
+          <figcaption>Fig. 2 — Oscillating force history, settling detection and averaged value.</figcaption>
+        </figure>
+        <p>The result is a reproducible, seed-controlled pipeline running from a parameter vector to a pair of aerodynamic coefficients, leaving the surrogate ready to train without manual intervention at any stage.</p>
         <p style="margin-top:1.5rem;"><a href="/projects/surrogate-based-bayesian-optimization-of-an-f1-front-wing.html">← See the project</a></p>
       </article>
     </div>
