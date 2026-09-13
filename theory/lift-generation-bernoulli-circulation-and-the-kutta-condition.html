@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lift generation: Bernoulli, circulation and the Kutta condition — Kármán Street</title>
+  <meta name="description" content="Lift generation: Bernoulli, circulation and the Kutta condition">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Lift generation: Bernoulli, circulation and the Kutta condition</h1>
+        <p class="article-meta">Theory · from TFM §2.1</p>
+
+        <p class="section-lead">Continuing from the Newtonian view of lift generation, we turn to the Bernoulli interpretation and the role of circulation.</p>
+<h2>The Bernoulli interpretation, and circulation</h2>
+        <p>There is also a Bernoulli interpretation of lift, which is just as correct. The widely repeated version is right in relating the pressure imbalance to different velocities over the upper and lower surfaces, but it usually ignores <em>why</em> the velocities are different, which is the fundamental part.</p>
+        <p>Neglecting the height term, since a fluid as light as air over the height variation of an airfoil causes insignificant pressure variation, Bernoulli's theorem reads:</p>
+        <div class="eq">p + ½ ρ v² = constant</div>
+        <p>The direct interpretation is that regions of higher velocity have lower pressure, and vice versa. This is why the stagnant leading edge, where incoming flow has been slowed down, has a much higher pressure than the freestream. What remains is to explain why the flow is faster over the upper surface, and that is the role of <strong>circulation</strong> and the Kutta condition.</p>
+        <p>According to circulation theory, the flow around an airfoil develops a net circulation Γ when the airfoil is cambered, at incidence, or both. This circulation arises as a consequence of the <strong>Kutta condition</strong>, which enforces a smooth flow departure at the trailing edge and selects a unique, physically realizable solution among the infinite inviscid possibilities. Adding that circulation to the incoming uniform freestream produces a velocity field in which the upper surface accelerates while the lower surface slows down — precisely the asymmetric distribution needed for the pressure difference predicted by Bernoulli.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Effect of circulation and the Kutta condition<code>/assets/img/theory/circulation-kutta.png</code></div>
+          <figcaption>Fig. 3 — Effect of circulation and Kutta condition on the freestream, and consequent lift.</figcaption>
+        </figure>
+        <p>It is also worth recording that the establishment of circulation is accompanied by the shedding of a <strong>starting vortex</strong> from the trailing edge, ensuring conservation of total circulation in accordance with Kelvin's circulation theorem.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Starting vortex shed at the trailing edge<code>/assets/img/theory/starting-vortex.png</code></div>
+          <figcaption>Fig. 4 — Starting vortex at the trailing edge due to conservation of total circulation.</figcaption>
+        </figure>
+        <h2>Five interdependent components</h2>
+        <p>A good closing point is the one given by Doug McLean, who explains that there are five components behind lift generation:</p>
+        <ol><li>A deflection of free flow</li><li>An increase in air velocity</li><li>A low-pressure area</li><li>A high-pressure area</li><li>A cause-effect relation by which neither of the previous four exists without the others</li></ol>
+        <p>This is why lift generation is best understood as a combination of velocity changes, pressure imbalances and flow deflection, all of which are interdependent.</p>
+
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/lift-generation-the-flawed-explanation-and-the-newtonian-view.html">‹ Lift generation: the flawed explanation and the Newtonian view</a><a href="/theory/drag-generation.html" style="margin-left:auto;text-align:right;">Drag generation ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 3 of 18</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -32,13 +32,13 @@
       <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
     </div>
   </header>
-
   <main>
     <div class="wrap">
       <a class="back" href="/theory/">← Theory roadmap</a>
       <article>
         <h1 class="page-title">Surrogate models and Gaussian processes</h1>
-        <p class="article-meta">Theory · sources: thesis</p>
+        <p class="article-meta">Theory · from TFM §2.1</p>
+
 
         <p>Each evaluation of a design — in the thesis, a pair of CFD cases, one for C<sub>L</sub> in the cornering mode and one for C<sub>D</sub> in the straight-line mode — is far too costly to call repeatedly inside an optimizer. A <strong>surrogate model</strong> avoids this: it is a cheap-to-evaluate function fitted to the available data that approximates the true input-output relationship and replaces the simulation during the search. The optimizer can then call the surrogate thousands of times at negligible cost, while the expensive CFD evaluations are reserved exclusively for training it.</p>
         <h2>Gaussian processes</h2>
@@ -50,14 +50,11 @@
         <p>The kernel chosen is a squared-exponential with <strong>Automatic Relevance Determination</strong>, meaning a separate length-scale is fitted for each design variable rather than a single shared one. The kernel is largest when two designs coincide and decays as they move apart, expressing the idea that similar designs give similar outputs. The length-scales set how fast that decay happens along each axis independently: a large ℓ<sub>d</sub> means the variable must change significantly before the correlation drops, whereas a small ℓ<sub>d</sub> makes it fall off sharply.</p>
         <p>This per-dimension behaviour is what gives ARD its usefulness. Once fitted, the length-scales can be read directly as a measure of influence — a large ℓ<sub>d</sub> marks a variable the output is insensitive to, a small one a variable of strong influence. The fitted kernel therefore delivers a data-driven sensitivity ranking of the design variables as a natural by-product of training, which partially compensates for the absence of a dedicated sensitivity analysis before sampling.</p>
         <p>A noise term is also fitted and added to the diagonal, which is what lets the GP pass near the CFD points rather than interpolating each one exactly, tolerating their residual numerical scatter.</p>
-        <h2>Bayesian optimization</h2>
-        <p>With a probabilistic surrogate available, <strong>Bayesian optimization</strong> is the strategy used to find the optimum of the expensive function with as few evaluations as possible. Rather than optimizing the surrogate once, it proceeds iteratively: at each step an <em>acquisition function</em>, built from the GP's mean and variance, identifies the most informative design to evaluate next, balancing exploitation (sampling where the mean predicts a good value) against exploration (sampling where the variance is high and the model is uncertain).</p>
-        <p>That design is evaluated with the true CFD, the GP is re-fitted with the new data, and the cycle repeats. This is the <strong>active learning</strong> that progressively sharpens the surrogate precisely where it matters, and it is what makes a plain space-filling LHS seed sufficient as a starting point.</p>
-        <p>For a single objective, a standard choice is Expected Improvement, measuring how much the objective is expected to exceed the best value observed so far. Because the predictive distribution is Gaussian, the expectation has a closed form depending on both mean and standard deviation: a design scores highly either when its mean is promising or when its uncertainty is large enough that a good outcome remains plausible, so the single expression balances the two automatically.</p>
+
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
-          <a href="/theory/latin-hypercube-sampling.html">‹ Latin Hypercube Sampling</a><a href="/theory/bayesian-optimization-and-acquisition-functions.html" style="margin-left:auto;text-align:right;">Bayesian optimization and acquisition functions ›</a>
+          <a href="/theory/design-of-experiments-and-latin-hypercube-sampling.html">‹ Design of Experiments and Latin Hypercube Sampling</a><a href="/theory/bayesian-optimization-and-active-learning.html" style="margin-left:auto;text-align:right;">Bayesian optimization and active learning ›</a>
         </nav>
-        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 125 of 129</a></p>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 16 of 18</a></p>
       </article>
     </div>
   </main>

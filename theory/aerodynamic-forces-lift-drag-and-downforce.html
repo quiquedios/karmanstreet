@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aerodynamic forces: lift, drag and downforce — Kármán Street</title>
+  <meta name="description" content="Aerodynamic forces: lift, drag and downforce">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Aerodynamic forces: lift, drag and downforce</h1>
+        <p class="article-meta">Theory · from TFM §2.1</p>
+
+        <p>A front wing, like any solid moving through air, experiences a net aerodynamic force. That force can be decomposed into two components: <strong>lift</strong> and <strong>drag</strong>, which are the projections of the net force in the directions perpendicular and parallel to the freestream velocity. When lift points downwards, it is called <strong>downforce</strong>. The third component, side force, is null for symmetrical configurations.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Net force decomposition on a front wing<code>/assets/img/theory/force-decomposition.png</code></div>
+          <figcaption>Fig. 1 — Net force decomposition in a front wing.</figcaption>
+        </figure>
+        <h2>Why downforce became the priority</h2>
+        <p>Historically the first aerodynamic development efforts were oriented towards streamlining the car to reduce drag, which is what defined the shape of early racing vehicles. That held until the importance of downforce was discovered in 1968.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Lotus Climax 33 (1964) next to Tyrrell-Ford 003 (1971)<code>/assets/img/theory/lotus-vs-tyrrell.png</code></div>
+          <figcaption>Fig. 2 — Prioritization of drag versus downforce, before and after 1968.</figcaption>
+        </figure>
+        <p>All the forces involved in accelerating, braking and cornering originate at the contact patch between the tyres and the road. These friction forces are mostly determined by a normal force and a maximum friction coefficient. Downforce virtually increases the normal force on the tyres without increasing the vehicle's weight, which raises the friction forces and improves high-speed stability, cornering ability and power transmission. The loads on the tyres could also be increased by simply adding mass to the car, but doing it aerodynamically avoids the penalty on inertial forces.</p>
+        <p>The discovery of downforce led to the use of wings and body shapes that generate it, always at the expense of higher drag. It is then the job of the aerodynamicist to pursue the best tradeoff, which typically depends on the race track and the conditions, leading to a different aerodynamic set-up for each race.</p>
+        <h2>Where the forces actually come from</h2>
+        <p>No matter how complex the shape, aerodynamic forces and moments always originate from two sources:</p>
+        <ol><li>Pressure distribution on the surface</li><li>Shear stress distribution on the surface</li></ol>
+        <p>These are the only mechanisms by which a body can be transmitted forces by the fluid through which it is moving. The net force is the surface integral of both contributions:</p>
+        <div class="eq">F = ∬<sub>A</sub> τ<sub>w</sub> dA − ∬<sub>A</sub> p n dA</div>
+        <p>Projecting onto two components, parallel and perpendicular to the freestream velocity with angle of incidence θ, gives the mathematical definitions of lift and drag:</p>
+        <div class="eq">L = ∬<sub>A</sub> τ<sub>w</sub> · e<sub>L</sub> dA − ∬<sub>A</sub> p n · e<sub>L</sub> dA<br>D = ∬<sub>A</sub> τ<sub>w</sub> · e<sub>D</sub> dA − ∬<sub>A</sub> p n · e<sub>D</sub> dA</div>
+        <p>with e<sub>D</sub> = cos θ i + sin θ j and e<sub>L</sub> = −sin θ i + cos θ j. For a flat plate, where the orientation is constant, the expressions simplify considerably and the shear and pressure contributions to each component can be read off directly.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Angle of incidence and unit vectors on a flat plate<code>/assets/img/theory/incidence-unit-vectors.png</code></div>
+          <figcaption>Fig. 3 — Angle of incidence and unit vectors in a flat plate.</figcaption>
+        </figure>
+        <h2>The coefficients</h2>
+        <p>All of these dependencies are collected into the non-dimensional coefficients, which is how aerodynamic performance is actually reported and compared:</p>
+        <div class="eq">C<sub>L</sub> = L / (½ ρ U² S)  ,  C<sub>D</sub> = D / (½ ρ U² S)</div>
+        <p>Notice that force increases linearly with air density and reference surface, but quadratically with velocity. Doubling the speed results in four times the force, while halving it yields 25%.</p>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <span></span><a href="/theory/lift-generation-the-flawed-explanation-and-the-newtonian-view.html" style="margin-left:auto;text-align:right;">Lift generation: the flawed explanation and the Newtonian view ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 1 of 18</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

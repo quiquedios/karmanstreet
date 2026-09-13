@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Reynolds stress tensor and the closure problem — Kármán Street</title>
-  <meta name="description" content="The Reynolds stress tensor and the closure problem">
+  <title>Bayesian optimization and active learning — Kármán Street</title>
+  <meta name="description" content="Bayesian optimization and active learning">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -36,19 +36,19 @@
     <div class="wrap">
       <a class="back" href="/theory/">← Theory roadmap</a>
       <article>
-        <h1 class="page-title">The Reynolds stress tensor and the closure problem</h1>
+        <h1 class="page-title">Bayesian optimization and active learning</h1>
         <p class="article-meta">Theory · from TFM §2.1</p>
 
-        <p class="section-lead">The RANS equations introduce a new unknown — the Reynolds stress tensor. This is the closure problem, and the reason a turbulence model is needed.</p>
-<h2>The Reynolds stress tensor and the closure problem</h2>
-        <p>That term is the <strong>Reynolds stress tensor</strong>, a symmetric second-order tensor representing the mean momentum transport caused by turbulent fluctuations. Its three diagonal components are normal stresses and its six off-diagonal components shear stresses; symmetry reduces the nine components to six independent unknowns.</p>
-        <p>Physically, it accounts for the fact that turbulent eddies continuously exchange momentum between adjacent layers of fluid — an effect entirely absent from the mean-field description, but one that dominates the behaviour of the flow.</p>
-        <p>The appearance of these six new unknowns without any additional equations to determine them is the <strong>closure problem</strong> of turbulence. The averaging procedure has introduced more unknowns than equations, so the system cannot be solved as it stands. Bridging that gap is precisely the role of a turbulence model, which supplies the missing relations between the Reynolds stresses and the mean flow — at the cost of introducing empirical values.</p>
+        <p class="section-lead">With a probabilistic surrogate in hand, Bayesian optimization uses its uncertainty to choose which design to evaluate next.</p>
+<h2>Bayesian optimization</h2>
+        <p>With a probabilistic surrogate available, <strong>Bayesian optimization</strong> is the strategy used to find the optimum of the expensive function with as few evaluations as possible. Rather than optimizing the surrogate once, it proceeds iteratively: at each step an <em>acquisition function</em>, built from the GP's mean and variance, identifies the most informative design to evaluate next, balancing exploitation (sampling where the mean predicts a good value) against exploration (sampling where the variance is high and the model is uncertain).</p>
+        <p>That design is evaluated with the true CFD, the GP is re-fitted with the new data, and the cycle repeats. This is the <strong>active learning</strong> that progressively sharpens the surrogate precisely where it matters, and it is what makes a plain space-filling LHS seed sufficient as a starting point.</p>
+        <p>For a single objective, a standard choice is Expected Improvement, measuring how much the objective is expected to exceed the best value observed so far. Because the predictive distribution is Gaussian, the expectation has a closed form depending on both mean and standard deviation: a design scores highly either when its mean is promising or when its uncertainty is large enough that a good outcome remains plausible, so the single expression balances the two automatically.</p>
 
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
-          <a href="/theory/navier-stokes-and-rans.html">‹ Navier–Stokes and RANS</a><a href="/theory/boussinesq-s-hypothesis.html" style="margin-left:auto;text-align:right;">Boussinesq&#x27;s hypothesis ›</a>
+          <a href="/theory/surrogate-models-and-gaussian-processes.html">‹ Surrogate models and Gaussian processes</a><a href="/theory/genetic-algorithms-and-pareto-fronts.html" style="margin-left:auto;text-align:right;">Genetic algorithms and Pareto fronts ›</a>
         </nav>
-        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 8 of 18</a></p>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 17 of 18</a></p>
       </article>
     </div>
   </main>
