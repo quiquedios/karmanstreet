@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On DOE and optimization — Kármán Street</title>
+  <meta name="description" content="Design of Experiments, Latin Hypercube Sampling, Gaussian-process surrogates, Bayesian optimization, genetic algorithms and the Pareto front.">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">On DOE and optimization</h1>
+        <p class="article-meta">Theory · from TFM §2.1.4</p>
+
+        <p>The final theoretical block underpins the data-handling core of this work: how the design space is sampled, how a cheap predictive model is built from those samples, and how that model is optimized.</p>
+
+        <p>Design of Experiments (DOE) is the discipline of choosing where in the design space to place the expensive evaluations. When the objective is to characterize a response over the whole domain, a space-filling design is required.</p>
+
+        <h2>Latin Hypercube Sampling</h2>
+
+        <p>Latin Hypercube Sampling (LHS) is the canonical choice for DOE in this case: it partitions each of the \(n\) input dimensions into equal-probability intervals and draws exactly one sample per interval per dimension, guaranteeing that every variable is uniformly covered while the joint samples spread evenly across the space. It is the standard way to generate the initial training set that seeds a surrogate model.</p>
+
+        <p>Concretely, the construction proceeds one dimension at a time. Consider a single design variable \(j\), whose normalised range \([0,1]\) is divided into \(N\) equal sub-intervals: \([0, \tfrac{1}{N})\), \([\tfrac{1}{N}, \tfrac{2}{N})\), and so on up to \([\tfrac{N-1}{N}, 1]\). Within each of these \(N\) intervals a single point is drawn at random, so that after this step there is exactly one candidate value per interval. These \(N\) values are then shuffled into a random order and handed out to the \(N\) samples, one each. Repeating this independently for every dimension, and pairing the \(k\)-th value of each dimension to form sample \(k\), yields the full design.</p>
+
+        <p>Written compactly, the coordinate of sample \(k\) in dimension \(j\) is</p>
+        <div class="eq">$$x_k^{(j)} = \frac{\bigl(\pi_j(k) - 1\bigr) + U_k^{(j)}}{N},$$</div>
+        <p>where each symbol corresponds directly to one of the steps above:</p>
+        <ul>
+          <li>\(\pi_j(k) \in \{1, \dots, N\}\) is the interval assigned to sample \(k\) in dimension \(j\) — the outcome of the shuffle. The term \(\pi_j(k) - 1\) counts how many whole intervals lie below it, and dividing by \(N\) places the point at the lower edge of its interval.</li>
+          <li>\(U_k^{(j)} \in [0,1)\) is an independent uniform random number that offsets the point <em>within</em> its interval, so it does not sit exactly on the edge but somewhere inside the sub-interval of width \(1/N\).</li>
+        </ul>
+
+        <p>Because the shuffle \(\pi_j\) is drawn independently for each dimension, every interval of every variable is occupied exactly once, while the pairing of intervals across dimensions is randomised — which is what produces the characteristic even spread of the design.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Random sampling vs. Latin Hypercube Sampling<code>/assets/img/theory/LHS.png</code></div>
+          <figcaption>Purely random sampling vs. basic Latin Hypercube Sampling.</figcaption>
+        </figure>
+
+        <p>The advantage of this construction is best seen against two alternatives. A full-factorial grid, which would place samples at every combination of intervals, requires \(N^n\) points and is therefore hopeless in high dimension — for the \(n = 26\) variables of this work, even two levels per dimension would demand \(2^{26}\) (over sixty million) evaluations. Pure random sampling, on the other hand, uses an affordable number of points but tends to leave gaps in some regions while clustering in others, and in particular does not guarantee that any single variable is evenly covered. LHS keeps the affordable sample count of random sampling while enforcing, by construction, the per-dimension uniformity that random sampling lacks. The projection of the design onto any single axis is always perfectly stratified, regardless of \(N\) or \(n\), which makes it scalable while affordable.</p>
+
+        <p>One limitation remains: the stratification guarantee applies to the one-dimensional projections, but a particular random pairing of intervals can still leave the joint space unevenly filled, with points aligning along diagonals or leaving multidimensional voids. More elaborate variants of the method address this by generating many candidate hypercubes and retaining the one that best spreads the points.</p>
+
+        <h2>Surrogate models</h2>
+
+        <p>Each evaluation of a design — a pair of CFD cases, one for \(C_L\) in the cornering mode and one for \(C_D\) in the straight-line mode — is far too costly to call repeatedly inside an optimizer. A surrogate model avoids this: it is a cheap-to-evaluate function fitted to the available data that approximates the true input–output relationship and then replaces the simulation during the search, so the optimizer can call the surrogate thousands of times at negligible cost while the expensive CFD evaluations are reserved exclusively to train it.</p>
+
+        <p>The surrogate adopted in this work is a Gaussian Process (GP), also known as Kriging. Unlike a model that returns a single predicted value, a GP returns, at every unseen input, a full predictive distribution with a mean \(\mu(\mathbf{x})\) and a variance \(\sigma^2(\mathbf{x})\). Given a training dataset \(\mathcal{D}\) with inputs \(X = \{\mathbf{x}_1, \dots, \mathbf{x}_N\}\) and observed responses \(\mathbf{y}\), the prediction at a new point \(\mathbf{x}_*\) is Gaussian:</p>
+        <div class="eq">$$f(\mathbf{x}_*) \mid \mathcal{D} \;\sim\; \mathcal{N}\!\bigl(\mu(\mathbf{x}_*),\, \sigma^2(\mathbf{x}_*)\bigr),$$</div>
+        <p>with mean and variance</p>
+        <div class="eq">$$\mu(\mathbf{x}_*) = \mathbf{k}_*^{\top}\,\mathbf{K}^{-1}\,\mathbf{y}, \qquad \sigma^2(\mathbf{x}_*) = k(\mathbf{x}_*, \mathbf{x}_*) - \mathbf{k}_*^{\top}\,\mathbf{K}^{-1}\,\mathbf{k}_*,$$</div>
+        <p>where \(\mathbf{K}\) is the matrix of kernel values between all pairs of training points; \(\mathbf{k}_*\) the vector of kernel values between \(\mathbf{x}_*\) and each training point; and \(k(\mathbf{x}_*, \mathbf{x}_*)\) the prior variance of the response. In practice, a noise term \(\sigma_n^2\) is added to the diagonal of \(\mathbf{K}\), which is what allows the model to tolerate the residual scatter of the CFD data rather than interpolate every point exactly.</p>
+
+        <p>For this work, the kernel chosen is a squared-exponential kernel with Automatic Relevance Determination (ARD), meaning that a separate length-scale is fitted for each of the \(n\) design variables rather than a single, shared one. Explicitly, for two design candidates \(\mathbf{x}\) and \(\mathbf{x}'\) it takes the form</p>
+        <div class="eq">$$k(\mathbf{x}, \mathbf{x}') = \sigma_f^2 \exp\!\left( -\frac{1}{2} \sum_{d=1}^{n} \frac{\bigl(x_d - x_d'\bigr)^2}{\ell_d^{\,2}} \right),$$</div>
+        <p>where \(\sigma_f^2\) is the signal variance and each \(\ell_d\) is the length-scale of variable \(d\), the length-scale being the distance one must move along a design variable before the output "changes appreciably". Since every variable here is normalized to the same range \([0,1]\), the \(\ell_d\) are directly comparable to one another.</p>
+
+        <p>The kernel is largest when the two designs coincide and decays as they move apart, so it expresses the idea that similar designs give similar outputs. What the length-scales do is set how fast that decay happens along each axis independently: because \(\ell_d\) sits in the denominator, a large \(\ell_d\) means the variable must change significantly before the correlation drops, whereas a small \(\ell_d\) makes the correlation fall off sharply, so even a small change in that variable matters.</p>
+
+        <p>The "per-dimension" behaviour is what gives ARD its usefulness. Once the model is fitted, the length-scales can be read directly as a measure of influence: a large \(\ell_d\) marks a variable the output is insensitive to while a small \(\ell_d\) a variable of strong influence. The fitted kernel therefore delivers a data-driven sensitivity ranking of the design variables as a natural by-product of training. This is valuable because it partially compensates for the absence of a dedicated sensitivity analysis before sampling.</p>
+
+        <p>Finally, a noise term \(\sigma_n^2\) is fitted — added to the diagonal of \(\mathbf{K}\), and obtained from the data rather than fixed in advance — which is what lets the GP pass near the CFD points instead of interpolating each one exactly, tolerating their residual numerical scatter. Once these parameters are fixed, \(\mathbf{K}\) and \(\mathbf{k}_*\) take on definite values, and with them the predictive mean and variance acquire a concrete and intuitive meaning.</p>
+
+        <p>The predicted mean \(\mu(\mathbf{x}_*)\) is then nothing more than a weighted average of the observed responses \(\mathbf{y}\), in which the weights — encoded in \(\mathbf{k}_*^{\top}\mathbf{K}^{-1}\) — give most influence to the training points closest to \(\mathbf{x}_*\). The prediction is therefore dominated by nearby data and barely affected by distant data, exactly the behaviour one expects of a smooth interpolator. The variance \(\sigma^2(\mathbf{x}_*)\) has an equally intuitive reading: it starts from the prior uncertainty \(k(\mathbf{x}_*, \mathbf{x}_*)\) and subtracts the term \(\mathbf{k}_*^{\top}\mathbf{K}^{-1}\mathbf{k}_*\), which represents how much the training data constrains the value at \(\mathbf{x}_*\). When \(\mathbf{x}_*\) lies close to observed points this subtracted term is large and the variance collapses toward zero; when \(\mathbf{x}_*\) lies far from all data it vanishes and the variance returns to its full prior value. This is precisely why the model is confident near the data and uncertain in the gaps.</p>
+
+        <h2>Bayesian optimization</h2>
+
+        <p>With a probabilistic surrogate available, Bayesian optimization (BO) is the strategy used to find the optimum of the expensive function with as few evaluations as possible. Rather than optimizing the surrogate once, BO proceeds iteratively: at each step, an acquisition function — built from the GP's mean and variance — identifies the most informative design to evaluate next, balancing exploitation (sampling where the mean predicts a good value) against exploration (sampling where the variance is high and the model is uncertain). That design is evaluated with the true CFD, the GPs are re-fitted with the new data, and the cycle repeats. This is the active learning that progressively sharpens the surrogate precisely where it matters, and it is what makes the plain space-filling LHS seed sufficient as a starting point.</p>
+
+        <p>Formally, the next design candidate \(\mathbf{x}_{\mathrm{next}}\) maximizes the acquisition function \(\alpha(\mathbf{x})\) over the admissible space of designs \(\mathcal{X}\):</p>
+        <div class="eq">$$\mathbf{x}_{\mathrm{next}} = \arg\max_{\mathbf{x}\,\in\,\mathcal{X}} \; \alpha(\mathbf{x}),$$</div>
+        <p>that is, the design at which \(\alpha\) attains its highest value. This search is itself cheap to solve, since \(\alpha\) is evaluated on the surrogate rather than on the CFD. For a single objective, a standard choice is the Expected Improvement (EI) measuring how much the objective is expected to exceed the best value \(f^{*}\) observed so far,</p>
+        <div class="eq">$$\alpha_{\mathrm{EI}}(\mathbf{x}) = \mathbb{E}\!\left[\max\,\!\bigl(f(\mathbf{x}) - f^{*},\, 0\bigr)\right],$$</div>
+        <p>the expectation being taken over the GP's predictive distribution at \(\mathbf{x}\). Because that distribution is Gaussian, the expectation has a closed form that depends on both the mean \(\mu(\mathbf{x})\) and the standard deviation \(\sigma(\mathbf{x})\): a design scores highly either when its mean is promising (exploitation) or when its uncertainty is large enough that a good outcome remains plausible (exploration), so the single expression balances the two automatically.</p>
+
+        <p>The Expected Improvement above is a single-objective criterion: it ranks designs by improvement over one best-so-far value. This work, however, pursues two competing objectives at once: maximizing downforce \(C_L\) in the cornering mode while minimizing drag \(C_D\) in the straight-line mode. Therefore "improvement" can no longer be a single number, and what is needed instead is a measure of how "good" the whole set of trade-off designs is (and how much a new design improves that set as a whole).</p>
+
+        <p>That measure is the hypervolume, easiest to picture on the \(C_D\)–\(C_L\) plot itself. Take the designs evaluated so far and keep only the non-dominated ones (i.e. the best compromises). Together with a reference point \(\mathbf{r}\), fixed deliberately worse than any design of interest, these solutions enclose a region of the plot: the area of all outcomes that the current designs already beat. That area is the hypervolume, written \(\mathrm{HV}(\mathcal{P})\) for a solution set \(\mathcal{P}\), and it condenses the quality of the whole front into a single number. In other words, the larger the area, the better and the more spread-out the designs are.</p>
+
+        <p>The acquisition function adopted in this work is built directly on this measure: the \(q\)-Expected Hypervolume Improvement (\(q\)-EHVI). It scores a candidate batch of \(q\) designs by how much they would enlarge the hypervolume — the growth expected if the batch \(\{\mathbf{x}_1, \dots, \mathbf{x}_q\}\) were added to the current set \(\mathcal{P}\):</p>
+        <div class="eq">$$\alpha_{q\text{-}\mathrm{EHVI}}(\mathbf{x}_1, \dots, \mathbf{x}_q) = \mathbb{E}\,\!\left[\max\,\!\bigl(\mathrm{HV}(\mathcal{P} \cup \{\mathbf{x}_1,\dots,\mathbf{x}_q\}) - \mathrm{HV}(\mathcal{P}),\ 0\bigr)\right]$$</div>
+        <p>The bracket is simply the new area minus the current area — the gain the batch provides — and the \(\max\) discards batches that would add nothing. The expectation \(\mathbb{E}\) averages this gain over the surrogates' predictions, since the true coefficients of an untested design are known only as GP distributions rather than fixed values. Maximising this score selects the batch that expands the dominated region the most, which is precisely what pushes the front toward higher downforce and lower drag at once.</p>
+
+        <p>Choosing \(q\) designs together as a batch, rather than one at a time, suits the workflow directly: it allows several CFD cases to be prepared and run together between successive re-fits of the surrogates (actively learning).</p>
+
+        <h2>Genetic algorithms</h2>
+
+        <p>Once the active-learning loop is concluded and the surrogates are frozen, the final optimum must be extracted from them. As using a fitted GP is computationally cheap, this last step is performed not with further Bayesian iterations but with a genetic algorithm run directly over the surrogate means. A genetic algorithm is a population-based, gradient-free optimizer inspired by natural selection: a population of candidate designs is repeatedly recombined (crossover) and perturbed (mutation), and the fittest members are retained each generation, so the population evolves toward better solutions. Its gradient-free nature is well suited to the surrogate, which does not need to be differentiated, and its population naturally explores many designs in parallel.</p>
+
+        <p>The specific algorithm used is the Non-dominated Sorting Genetic Algorithm II (NSGA-II), the standard genetic algorithm for multi-objective problems. Rather than optimizing a single blended objective, NSGA-II ranks the population by non-domination (i.e. by whether any other design beats them on both objectives at once) and preserves solution diversity through a crowding measure — a metric of how isolated each design is from its neighbors, used to favor spread-out designs over clustered ones. In this way, a single run returns not one design but a whole spread of mutually optimal trade-offs between downforce and drag.</p>
+
+        <p>Two mechanisms make this work. The first is non-dominated sorting. Acknowledging that a design \(\mathbf{a}\) dominates a design \(\mathbf{b}\) if it is at least as good in both objectives and strictly better in one, the two objective functions to be minimized can be written as \(f_1 = C_D\) and \(f_2 = -C_L\) (\(C_L\) is written with a negative sign because it is downforce that we want to maximize), this is</p>
+        <div class="eq">$$\mathbf{a} \prec \mathbf{b} \iff f_i(\mathbf{a}) \le f_i(\mathbf{b}) \;\; \forall i \in \{1,2\} \quad \text{and} \quad f_j(\mathbf{a}) < f_j(\mathbf{b}) \;\; \text{for some } j.$$</div>
+
+        <p>The population is sorted into successive fronts by this relation: the first front is the set of designs dominated by none, the second front those dominated only by members of the first, and so on. Selection then favors designs in the earlier fronts, driving the population toward the true trade-off surface.</p>
+
+        <p>The second mechanism preserves diversity along that surface, so the algorithm returns a well-spread front rather than a cluster of near-identical designs. Within a front, each design is assigned a crowding distance measuring how isolated it is from its neighbors. The crowding distance can be written as the sum, over both objectives, of the gap between the design's two nearest neighbors in that objective:</p>
+        <div class="eq">$$d_k = \sum_{i=1}^{2} \frac{f_i(\mathbf{x}_{k+1}) - f_i(\mathbf{x}_{k-1})}{f_i^{\max} - f_i^{\min}},$$</div>
+        <p>where the neighbors \(k-1\) and \(k+1\) are taken with the front sorted along objective \(i\), and the denominator normalizes each objective to its range so the two contribute comparably. When choosing between designs on the same front, those with the larger crowding distance — the more isolated ones — are preferred, which spreads the retained population evenly and keeps the extremes of the front populated.</p>
+
+        <h2>Pareto front</h2>
+
+        <p>That spread of trade-offs is formalized by the concept of the Pareto front. In a problem with competing objectives there is generally no single best design; instead, a design is said to be Pareto-optimal (non-dominated) if no objective can be improved without worsening another. In this work, that means a design on which downforce cannot be increased without also increasing drag. The set of all such designs forms the Pareto front: a curve, in the \(C_D\)–\(C_L\) plane, of the best attainable compromises.</p>
+
+        <p>The outcome of the optimization is therefore this front rather than a point, and evaluating the fitted GPs along it gives, for each design, both the predicted coefficients and the model's uncertainty in them — so it is possible to distinguish the well-supported region of the front from where it relies on extrapolation. Selecting a single design from the front requires an external criterion, which in this work is the aerodynamic demands of a particular track.</p>
+
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/on-wind-tunnels.html">‹ On wind tunnels</a><a href="/theory/" style="margin-left:auto;text-align:right;">Back to roadmap ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 4 of 4</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

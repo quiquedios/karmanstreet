@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On CFD — Kármán Street</title>
+  <meta name="description" content="The Navier–Stokes equations, RANS, turbulence modelling, wall treatment and discretisation.">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">On CFD</h1>
+        <p class="article-meta">Theory · from TFM §2.1.2</p>
+
+        <p>Computational Fluid Dynamics (CFD) is the numerical resolution of the equations that govern fluid motion. Since the aerodynamic forces on a wing cannot be obtained analytically for a geometry of this complexity, CFD is the tool used to quantify downforce and drag for every candidate design.</p>
+
+        <h2>Navier-Stokes and RANS</h2>
+
+        <p>The governing set of equations are the Navier–Stokes equations, which express conservation of mass and momentum for a viscous fluid. For the incompressible regime found in motorsports (\(\text{M}<0.3\)), they read:</p>
+        <div class="eq">$$\nabla \cdot \mathbf{u} = 0$$</div>
+        <div class="eq">$$\rho\left(\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u}\cdot\nabla)\mathbf{u}\right) = -\nabla p + \mu\nabla^2\mathbf{u}$$</div>
+
+        <p>A direct resolution of these equations resolving every turbulent scale, which is known as Direct Numerical Simulation or DNS, is computationally prohibitive for a wing at realistic Reynolds numbers with the intended development pace. Instead, the equations are time-averaged, yielding the Reynolds-Averaged Navier–Stokes (RANS) equations.</p>
+
+        <p>The idea, first introduced by Reynolds, is to decompose every instantaneous flow quantity into a mean and a fluctuating part — the so-called Reynolds decomposition. For the velocity and pressure fields, this reads:</p>
+        <div class="eq">$$u_i = \overline{u}_i + u_i', \qquad p = \overline{p} + p'$$</div>
+
+        <p>where the overbar denotes the time-averaged (mean) component and the prime denotes the turbulent fluctuation about that mean. By definition, the time average of a fluctuation is zero (\(\overline{u_i'} = 0\)), but the average of a product of two fluctuations is not, a subtlety that turns out to be the crux of the whole method.</p>
+
+        <p>Substituting this decomposition into the incompressible continuity and momentum equations, and averaging over time, yields the RANS equations. Continuity retains its form for the mean field:</p>
+        <div class="eq">$$\frac{\partial \overline{u}_i}{\partial x_i} = 0$$</div>
+
+        <p>while the momentum equation becomes:</p>
+        <div class="eq">$$\rho\,\overline{u}_j \frac{\partial \overline{u}_i}{\partial x_j} = -\frac{\partial \overline{p}}{\partial x_i} + \frac{\partial}{\partial x_j}\left[ \mu\left( \frac{\partial \overline{u}_i}{\partial x_j} + \frac{\partial \overline{u}_j}{\partial x_i} \right) - \rho\,\overline{u_i' u_j'} \right]$$</div>
+
+        <p>This equation is almost identical to the original Navier–Stokes momentum equation, but with one crucial addition: the term \(-\rho\,\overline{u_i' u_j'}\), which arises purely from the averaging of the non-linear convective term. This is the Reynolds stress tensor, a symmetric second-order tensor that represents the mean momentum transport caused by the turbulent fluctuations:</p>
+        <div class="eq">$$\tau_{ij}^{R} = -\rho\,\overline{u_i' u_j'} = -\rho \begin{pmatrix} \overline{u'u'} & \overline{u'v'} & \overline{u'w'} \\ \overline{v'u'} & \overline{v'v'} & \overline{v'w'} \\ \overline{w'u'} & \overline{w'v'} & \overline{w'w'} \end{pmatrix}$$</div>
+
+        <p>where \(u'\), \(v'\) and \(w'\) denote the velocity fluctuations in the \(x\), \(y\) and \(z\) directions respectively. The three diagonal components are the normal stresses and the six off-diagonal components the shear stresses. Symmetry (\(\overline{u_i' u_j'} = \overline{u_j' u_i'}\)) reduces the nine components to six independent unknowns, which are modeled by the Boussinesq hypothesis.</p>
+
+        <p>Physically, the Reynolds stress tensor accounts for the fact that turbulent eddies continuously exchange momentum between adjacent layers of fluid, an effect that is entirely absent from the mean-field description but dominates the behaviour of the flow.</p>
+
+        <p>The appearance of these six new unknown components without any additional equations to determine them is what is known as the closure problem of turbulence. The averaging procedure has introduced more unknowns than equations, so the system cannot be solved as it stands. Bridging this gap is precisely the role of a turbulence model, which supplies the missing relations between the Reynolds stresses and the mean flow, closing the system at the cost of introducing empirical values.</p>
+
+        <h2>Boussinesq's hypothesis</h2>
+
+        <p>The most widespread family of closures, and the one adopted in this work, relies on the Boussinesq hypothesis, which postulates that the Reynolds stresses are proportional to the mean strain-rate tensor, in direct analogy to how viscous stresses relate to strain in a Newtonian fluid:</p>
+        <div class="eq">$$-\rho\,\overline{u_i' u_j'} = \mu_t \left( \frac{\partial \overline{u}_i}{\partial x_j} + \frac{\partial \overline{u}_j}{\partial x_i} \right) - \frac{2}{3}\rho k\,\delta_{ij}$$</div>
+
+        <p>where \(\mu_t\) is the turbulent (eddy) viscosity, \(k = \tfrac{1}{2}\overline{u_i' u_i'}\) is the turbulent kinetic energy and \(\delta_{ij}\) is the Kronecker delta, defined as</p>
+        <div class="eq">$$\delta_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$$</div>
+
+        <p>that is, the components of the identity tensor, equal to one on the diagonal and zero elsewhere.</p>
+
+        <p>The reasoning behind the analogy is physical. In a laminar Newtonian fluid, molecular viscosity arises because the random thermal motion of molecules carries momentum between adjacent layers of fluid moving at different speeds, smearing out their velocity differences; the resulting stress is proportional to the strain rate, with the molecular viscosity \(\mu\) as the constant of proportionality. Boussinesq's proposal is that turbulence does something qualitatively identical, only through a different medium: the momentum is transported not by individual molecules but by turbulent eddies — "packets" of fluid that detach, travel across the mean flow and mix momentum between layers.</p>
+
+        <p>If the two mechanisms are analogous, then the turbulent stress can be written with the same mathematical form as the viscous one, replacing the molecular viscosity \(\mu\) with an eddy viscosity \(\mu_t\) and the instantaneous strain by the mean strain-rate tensor.</p>
+
+        <p>The final term, \(-\tfrac{2}{3}\rho k\,\delta_{ij}\), is required for consistency, and the reason can be seen by taking the trace of each side. The trace of a tensor is the sum of its diagonal components; for the Reynolds stress tensor this is \(-\rho\,\overline{u_i' u_i'}\), which by the definition of the turbulent kinetic energy \(k = \tfrac{1}{2}\overline{u_i' u_i'}\) equals exactly \(-2\rho k\) — a nonzero quantity representing twice the energy contained in the turbulent fluctuations. The strain-rate tensor, however, is traceless for an incompressible flow: its diagonal sums to \(\partial \overline{u}_i / \partial x_i\), which is zero by the continuity equation. The first term of the Boussinesq expression therefore cannot reproduce the correct trace on its own, as it would force it to vanish.</p>
+
+        <p>The isotropic term \(-\tfrac{2}{3}\rho k\,\delta_{ij}\) is introduced precisely to close this gap. Because the Kronecker delta places it only on the diagonal, and the factor \(\tfrac{2}{3}\) is chosen so that the three diagonal contributions sum to \(-2\rho k\), it restores the correct normal-stress content without affecting the shear, off-diagonal, components.</p>
+
+        <p>The value of Boussinesq's hypothesis lies in what it does to the closure problem. Rather than requiring six independent relations for the six unknown components of the Reynolds stress tensor, the hypothesis expresses all of them in terms of the mean velocity field — which is already being solved for — and a single unknown scalar, the eddy viscosity \(\mu_t\). The problem therefore collapses from finding a full tensor field to finding one scalar field.</p>
+
+        <p>The hypothesis carries an implicit assumption of local isotropy that is not strictly valid in flows with strong streamline curvature, separation or adverse pressure gradients — exactly the conditions encountered on a loaded, multi-element wing operating in ground effect. This limitation does not invalidate the approach, which remains the accepted standard, but it does explain why the specific choice of eddy-viscosity turbulence model matters and why its results must ultimately be validated experimentally.</p>
+
+        <h2>Turbulence models</h2>
+
+        <p>Continuing with the reasoning, providing the remaining unknown (the scalar field \(\mu_t\)) is the purpose of the various turbulence models that exist. Those built on the Boussinesq hypothesis are known as eddy-viscosity models, and they are classified by the number of additional transport equations they solve to obtain \(\mu_t\): zero-equation (algebraic) models, one-equation models such as Spalart–Allmaras, and two-equation models, which are the most widely used in external aerodynamics. The two-equation models close the problem by solving transport equations for two turbulent quantities, which then allow to obtain \(\mu_t\), closing the system of equations.</p>
+
+        <p>The two classical two-equation models are \(k\)-\(\varepsilon\) and \(k\)-\(\omega\). Both solve a transport equation for the turbulent kinetic energy \(k\), but they differ in the second variable: the former solves for the dissipation rate \(\varepsilon\), and the latter for the specific dissipation rate \(\omega = \varepsilon / (\beta^{*} k)\), which can be interpreted as the rate at which turbulent energy is dissipated per unit of energy. This apparently minor difference has a decisive practical consequence. The \(k\)-\(\varepsilon\) model is robust and accurate in free-stream, fully turbulent regions, but behaves poorly in the near-wall region and under adverse pressure gradients, precisely where boundary layers thicken and separate. The \(k\)-\(\omega\) model, conversely, resolves the near-wall region accurately without the need for damping functions, but is overly sensitive to the free-stream value of \(\omega\) far from the wall.</p>
+
+        <p>The model adopted in this work is the \(k\)-\(\omega\) SST (Shear Stress Transport) model proposed by Menter, which was formulated precisely to combine the strengths of both. Through a blending function based on the distance to the nearest wall, it behaves as \(k\)-\(\omega\) near the wall — capturing the boundary layer and its response to pressure gradients faithfully — and gradually switches to \(k\)-\(\varepsilon\) in the free stream, where its free-stream independence is preferable. In addition, the SST formulation limits the eddy viscosity in accordance with the transport of turbulent shear stress in adverse-pressure-gradient boundary layers, which significantly improves its prediction of the onset and extent of flow separation.</p>
+
+        <p>This last property is what makes it the natural choice for the present problem. The wing is a loaded, multi-element geometry operating in ground effect, where the flow is dominated by thick boundary layers developing against strong adverse pressure gradients and is perpetually on the verge of separating — the very conditions under which the \(k\)-\(\omega\) SST model is most reliable, and the plain \(k\)-\(\varepsilon\) and \(k\)-\(\omega\) models least so. Its accuracy in these regimes has made it the accepted standard for external and motorsport aerodynamics.</p>
+
+        <h2>Wall treatment and y+</h2>
+
+        <p>Independently of the turbulence model, a decision must be made on how the near-wall region is represented on the mesh, since it is there that the steepest velocity gradients of the entire flow occur. The law of the wall describes the near-wall structure of a turbulent boundary layer — the regime present over essentially the entire wing at the Reynolds numbers of interest, and which at reduced wind-tunnel scale is enforced by tripping the boundary layer. Such a boundary layer is conventionally divided, near the wall, into three regions: (1) the viscous sublayer, immediately adjacent to the wall, where molecular viscosity dominates and the velocity grows almost linearly from zero; (2) the buffer layer, an intermediate zone in which neither viscous nor turbulent stresses are negligible; and (3) the fully turbulent logarithmic (inertial) layer, where the eddy viscosity dominates and the velocity follows the logarithmic law of the wall. Capturing the momentum exchange across these regions is what ultimately determines the predicted wall shear stress and, with it, the onset of separation.</p>
+
+        <p>This structure is made quantitative through two dimensionless quantities: the wall-normal coordinate \(y^+\) and the velocity \(u^+ = \overline{u}/u_\tau\). The former expresses the distance from the wall to the centroid of the first cell, but measured in viscous units rather than in metres, which is what makes it the reference metric for near-wall resolution:</p>
+        <div class="eq">$$y^+ = \frac{u_\tau\, y}{\nu}, \qquad u_\tau = \sqrt{\frac{\tau_w}{\rho}}$$</div>
+
+        <p>where \(y\) is the physical wall-normal distance of the first cell centroid, \(\nu\) the kinematic viscosity, \(\tau_w\) the wall shear stress and \(u_\tau\) the friction velocity built from it. Because \(y^+\) scales the distance by the local flow conditions at the wall, the same physical first-cell height corresponds to different \(y^+\) values depending on the speed and the state of the boundary layer, so it is \(y^+\), and not the raw distance, that must be controlled when making design choices regarding the mesh.</p>
+
+        <p>Plotting \(u^+\) against \(y^+\) on a semi-logarithmic scale yields a universal velocity profile, remarkably consistent across wall-bounded turbulent flows, in which the three regions become apparent. In the viscous sublayer the relation is linear,</p>
+        <div class="eq">$$u^+ = y^+,$$</div>
+        <p>whereas in the logarithmic layer it follows the law of the wall,</p>
+        <div class="eq">$$u^+ = \frac{1}{\kappa}\ln y^+ + B,$$</div>
+        <p>where \(\kappa \approx 0.41\) is the von Kármán constant and \(B \approx 5.0\) an empirical constant for smooth walls. These two expressions are the asymptotes joined by the buffer layer, in which neither holds exactly.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Universal turbulent boundary-layer velocity profile<code>/assets/img/theory/loglaw.png</code></div>
+          <figcaption>Universal turbulent boundary-layer velocity profile, u⁺ versus y⁺ on a semi-logarithmic scale. The dashed asymptotes are the viscous sublayer relation and the logarithmic law of the wall; the buffer layer between them follows neither.</figcaption>
+        </figure>
+
+        <p>Two strategies exist to represent this structure on the mesh, and each is valid only in the region whose profile it assumes. The wall-resolved approach refines the mesh sufficiently to place several cells inside the viscous sublayer and integrate the governing equations directly to the surface; the first cell must therefore lie within the sublayer, at a target of \(y^+ \approx 1\) and in any case below \(y^+ \approx 5\). It is the most accurate route, but the near-wall mesh it demands is extremely dense and raises the cell count — and therefore the memory expenditure — dramatically. The wall-function approach does the opposite: it does not resolve the sublayer at all, but places the first cell within the logarithmic layer (conventionally \(30 \lesssim y^+ \lesssim 300\)) and bridges the region between it and the wall with the analytical law-of-the-wall profile, supplying the boundary condition without a fine near-wall mesh. It is substantially cheaper, at the cost of relying on the equilibrium assumptions embedded in that profile, which lose validity under strong adverse pressure gradients or separated flow. The intervening buffer layer (\(5 \lesssim y^+ \lesssim 30\)) is to be avoided for the first cell under either approach, as it is precisely where neither asymptote is accurate.</p>
+
+        <p>When the near-wall region is treated with wall functions, the meshing target is fixed unambiguously: the first-layer thickness on every modelled surface must be sized so that \(y^+\) lands inside the logarithmic band (30–300) at the simulated speed. This carries a clear consequence for the mesh-independence study, where the mesh must be refined without letting \(y^+\) drift out of that band — since allowing it to fall below the logarithmic range would break the wall-function assumption and corrupt the predicted wall shear stress. The \(k\)-\(\omega\) SST model remains appropriate under this treatment, as the shear-stress limiter responsible for its accurate separation behaviour acts across the outer boundary layer and is therefore not lost by using wall functions.</p>
+
+        <h2>Spatial discretisation</h2>
+
+        <p>The governing equations cannot be solved over a continuous domain; they must first be discretised over a finite set of small volumes, or cells, whose union is the mesh. The solver then computes the flow variables at each cell and enforces the conservation laws between neighbours.</p>
+
+        <p>Cells may take different shapes, and the choice bears an important influence on the results. Tetrahedral cells fill arbitrary geometries automatically and are therefore convenient for complex shapes, but they need many more of them to reach a given accuracy and tend to align poorly with the flow. Hexahedral cells are the opposite: harder to fit to intricate geometry, but far more efficient, delivering accurate results at a much lower cell count and aligning naturally with the predominant flow direction, which reduces numerical diffusion. A predominantly hexahedral mesh is often preferred, since the cleaner treatment of the boundary layers and wake that flow-aligned cells provide make it the better-suited choice. The near-wall region is meshed with thin, wall-parallel inflation layers stacked on the surface, whose thickness is what sets the \(y^+\) discussed above. Away from the wall, the cells grow progressively larger through a bounded expansion ratio, coarsening toward the far field, where gradients are considerably smaller so using larger elements hardly affects the results, with the benefit of saving memory to solve more demanding regions.</p>
+
+        <p>The reliability of the result not only depends on the local resolution but also on the cell quality, the degree to which the individual cells are well shaped. Quality is assessed through several geometrical metrics, of which three are the most relevant to CFD:</p>
+        <ul>
+          <li><strong>Skewness</strong> measures how far a cell or face is distorted from its ideal symmetric shape. In other words, how much its center is displaced relative to where it should be. Highly skewed cells degrade the accuracy of the interpolation between cells and are a common source of solver instability. Thus, values as low as possible are preferred, normally kept well below unity.</li>
+          <li><strong>Aspect ratio</strong> is the ratio between the longest and shortest dimensions of a cell. Very elongated cells are not harmful in themselves (for example, the near-wall inflation layers are deliberately high-aspect-ratio) but excessive stretching degrades accuracy and conditioning. A common guideline is to keep the maximum aspect ratio below roughly 100 for CFD.</li>
+          <li><strong>Non-orthogonality</strong> is the angle between the line joining two adjacent cell centres and the normal of the face they share; it is zero for a perfectly orthogonal mesh and grows as the cells become misaligned. It is the single most critical metric for this type of simulation, since high non-orthogonality corrupts the pressure–velocity coupling of the solver. Below about 65–70° the standard algorithm is adequate; between roughly 70 and 85° additional non-orthogonal corrector steps are required to keep the solution stable, and above ~88° the simulation is very likely to diverge altogether.</li>
+        </ul>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Skewness, aspect ratio and non-orthogonality<code>/assets/img/theory/metrics.jpg</code></div>
+          <figcaption>Visualization of skewness, aspect ratio and non-orthogonality.</figcaption>
+        </figure>
+
+        <p>These metrics are strongly correlated — a cell that is bad by one measure is usually bad by the others — and poorly shaped cells both introduce numerical error and can prevent the solver from converging. A trade-off is therefore always struck between resolution, cell count and quality, all of it constrained by the available memory.</p>
+
+        <p>Finally, since any finite mesh introduces a discretization error, a solution is only trustworthy once it has been shown to be independent of the mesh — that is, once further refinement no longer changes the result appreciably. The established way to quantify this is the Grid Convergence Index (GCI), built on Richardson extrapolation. The same case is solved on three systematically refined meshes; from the way the result changes between them, the observed order of convergence is obtained, and the solution is extrapolated to the limit of zero cell size (i.e. the value the mesh would give if it were infinitely fine). The GCI then converts the remaining difference into an uncertainty band on the reported force coefficients, with a safety factor applied to guard against non-asymptotic behavior. A subtlety specific to a wall-function treatment is that the near-wall \(y^+\) must be held constant as the mesh is refined, since the method assumes the only quantity changing between meshes is the overall cell size. Although keeping \(y^+\) exactly constant while refining is considerably complicated, a well-constructed mesh study ensures that it remains relatively constant and definitely within the log-law band (recall, \(y^+\) between 30 and 300).</p>
+
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/on-aerodynamics.html">‹ On aerodynamics</a><a href="/theory/on-wind-tunnels.html" style="margin-left:auto;text-align:right;">On wind tunnels ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 2 of 4</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

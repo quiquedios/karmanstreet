@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On aerodynamics — Kármán Street</title>
+  <meta name="description" content="Aerodynamic forces, lift and drag generation, and wings in motorsport.">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">On aerodynamics</h1>
+        <p class="article-meta">Theory · from TFM §2.1.1</p>
+
+        <p>A wing, like any solid moving through air, experiences a net aerodynamic force that can be decomposed into two components: lift and drag, which are the net aerodynamic force projections in the perpendicular and parallel directions, respectively. The third component, side force, is null for symmetrical configurations. When lift points downwards, it is referred to as downforce.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Net force decomposition on a wing<code>/assets/img/theory/liftanddrag.jpg</code></div>
+          <figcaption>Net force decomposition in a wing.</figcaption>
+        </figure>
+
+        <p>Historically, the first aerodynamic development efforts were oriented towards streamlining the car to reduce drag, which defined the streamlined shape of the vehicles. This was until the importance of downforce was discovered in 1968.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Lotus Climax 33 (1964) vs. Tyrrell-Ford 003 (1971)<code>/assets/img/theory/lotus-vs-tyrrell.jpg</code></div>
+          <figcaption>Lotus Climax 33 (1964) vs. Tyrrell-Ford 003 (1971): Drag vs. downforce.</figcaption>
+        </figure>
+
+        <p>All the forces involved in accelerating, braking and cornering are originated at the contact patch between the tires and the road. These friction forces are mostly determined by a normal force and a maximum friction coefficient. Downforce virtually increases the normal force on the tyres without increasing the vehicle's weight, which increases the friction forces improving high-speed stability, cornering abilities and power transmission. The loads on the tyres could also be increased by adding weight to the car, but, by using aerodynamic loads, it can be done without a penalty on inertial forces.</p>
+
+        <p>The discovery of downforce led to the use of wings and body shapes that generate it, always at the expense of higher drag, which is explained later on. It is then the job of the aerodynamicist to pursue the best tradeoff, which typically depends on the race track and conditions, leading to different aerodynamic set-ups for each race.</p>
+
+        <h2>Sources of aerodynamic forces</h2>
+
+        <p>No matter how complex the shape, aerodynamic forces and moments always originate from two sources:</p>
+        <ol>
+          <li>Pressure distribution on the surface</li>
+          <li>Shear stress distribution on the surface</li>
+        </ol>
+
+        <p>These are the only mechanisms by which a body can be transmitted forces by the fluid through which it is moving. The net force is:</p>
+        <div class="eq">$$\vec{F} = \iint_A \vec{\tau}_w\, dA - \iint_A p\,\vec{n}\, dA$$</div>
+
+        <p>Upon projection into two components — parallel and perpendicular to freestream velocity, with angle of incidence \(\theta\) — the mathematical definitions of lift and drag are obtained:</p>
+        <div class="eq">$$L = \iint_A \vec{\tau}_w \cdot \left(-\sin\theta\,\vec{i}+\cos\theta\,\vec{j}\right) dA - \iint_A p\,\vec{n} \cdot \left(-\sin\theta\,\vec{i}+\cos\theta\,\vec{j}\right) dA$$</div>
+        <div class="eq">$$D = \iint_A \vec{\tau}_w \cdot \left(\cos\theta\,\vec{i}+\sin\theta\,\vec{j}\right) dA - \iint_A p\,\vec{n} \cdot \left(\cos\theta\,\vec{i}+\sin\theta\,\vec{j}\right) dA$$</div>
+
+        <p>or, by projecting into unit vectors along lift and drag directions:</p>
+        <div class="eq">$$L = \iint_A \vec{\tau}_w \cdot \vec{e}_L \, dA - \iint_A p\,\vec{n} \cdot \vec{e}_L \, dA$$</div>
+        <div class="eq">$$D = \iint_A \vec{\tau}_w \cdot \vec{e}_D \, dA - \iint_A p\,\vec{n} \cdot \vec{e}_D \, dA$$</div>
+
+        <p>where</p>
+        <div class="eq">$$\vec{e}_D = \cos\theta\,\vec{i} + \sin\theta\,\vec{j}, \qquad \vec{e}_L = -\sin\theta\,\vec{i} + \cos\theta\,\vec{j}$$</div>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Angle of incidence and unit vectors on a flat plate<code>/assets/img/theory/plate.jpg</code></div>
+          <figcaption>Angle of incidence and unit vectors in a flat plate.</figcaption>
+        </figure>
+
+        <p>For a flat plate, where orientation is constant, the expressions simplify to:</p>
+        <div class="eq">$$D = \iint_A \tau_w \cos\theta \, dA - \iint_A p \sin\theta \, dA$$</div>
+        <div class="eq">$$L = \iint_A \tau_w \sin\theta \, dA + \iint_A p \cos\theta \, dA$$</div>
+
+        <h2>Lift generation</h2>
+
+        <p>The mechanism by which lift is generated is widely misunderstood. It is often stated that air particles that are divided at the leading edge reach the trailing edge at the same time, leading to a higher velocity in the longest side of the airfoil, which results in a pressure imbalance — the net force that called lift. This explanation, known as Equal Transit Theory, is taught at rather advanced levels and has been proven incorrect. Although the suction side does accelerate airflow, the air paths do not recombine at the trailing edge at the same time. Still, even if the airfoil does produce a velocity and a pressure difference, the explanation is missing other physical phenomena that are involved, as the velocity difference alone does not account for the totality of the lift observed.</p>
+
+        <p>In reality, lift generation is a combination of mechanisms and can be explained by different observations of the same phenomenon. This is perhaps the most important and non-intuitive point to understand: there is not a Newtonian component and a Bernoulli component that add up to a total lift — they are both different observations of the same.</p>
+
+        <p>The Newtonian interpretation of lift generation is sometimes understood as a momentum exchange in which air molecules collide with the wing, producing an action-reaction pair. The idea of an action-reaction pair is not wrong <em>per se</em>, but thinking that the air is deflected exclusively through molecular collisions misses some information about the flow. This raises the question of how the flow is deflected downwards in a continuous fluid.</p>
+
+        <p>The tendency of the flow to follow the curvature of the airfoil is governed by pressure gradients in the outer flow and boundary-layer dynamics near the wall. As the flow moves along a curved surface, a pressure gradient normal to the streamline is required to provide the centripetal acceleration necessary to bend the flow. This is expressed as:</p>
+        <div class="eq">$$\frac{\partial p}{\partial n} = \rho \frac{V^2}{R}$$</div>
+
+        <p>where \(R\) is the local radius of curvature of the streamlines. This pressure gradient provides the centripetal acceleration required for the flow to follow the surface curvature and remain attached. Without such a normal pressure gradient, the streamlines could not bend around the airfoil.</p>
+
+        <p>Near the wall, viscosity gives rise to a boundary layer, within which the flow has reduced momentum. The ability of the flow to remain attached therefore depends on the streamwise pressure gradient. Looking at the Navier-Stokes momentum equation in differential form:</p>
+        <div class="eq">$$\rho \left( \frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla) \mathbf{v} \right) = -\nabla p + \mu \nabla^2 \mathbf{v} + \rho \mathbf{g}$$</div>
+
+        <p>Neglecting viscosity and gravity in the outer airflow, where their effects are small compared to pressure forces:</p>
+        <div class="eq">$$\rho \frac{D\mathbf{v}}{Dt} = -\nabla p$$</div>
+
+        <p>where \(D/Dt\) stands for the material derivative, accounting for both time and convective effects. The equation above shows that favorable pressure gradients accelerate the flow, whereas adverse pressure gradients decelerate it.</p>
+
+        <p>Now because of mass conservation, a fluid that is arbitrarily close (but not exactly at the surface, where velocity would be zero due to the no-slip condition) to a solid, non-porous surface must have zero perpendicular velocity, as no fluid mass moves in or out. Therefore, the velocity must be completely tangent, resulting in three possible scenarios:</p>
+        <ol>
+          <li>The fluid travels tangent to the surface.</li>
+          <li>The fluid is stationary, which occurs at stagnation points.</li>
+          <li>The flow is reversed, resulting in flow separation.</li>
+        </ol>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Three scenarios of flow tangency<code>/assets/img/theory/tangency.jpg</code></div>
+          <figcaption>Three scenarios of flow tangency: attached boundary layer, flow stagnation and reversal.</figcaption>
+        </figure>
+
+        <p>In the presence of a favorable pressure gradient, the boundary layer remains attached (case 1) and the flow follows the surface curvature. Conversely, sufficiently strong adverse pressure gradients can lead first to stagnation and then to flow separation (cases 2 and 3). Therefore, flow attachment is not the result of a distinct effect, but rather of the balance between pressure gradients and viscous effects within the boundary layer.</p>
+
+        <p>At this point, it is understood how a cambered wing can orient the flow downwards, but the process by which momentum is exchanged still needs to be addressed through the Navier–Stokes equations.</p>
+
+        <p>The integral form of the Navier-Stokes momentum equation reads:</p>
+        <div class="eq">$$\int_S \left(-p\mathbf{n}\right) dS + \int_S \left(\vec{\tau}\cdot\mathbf{n}\right) dS + \int_{CV} \rho \mathbf{b}\,dV = \frac{d}{dt}\int_{CV}\rho \mathbf{u}\,dV + \int_S \rho \mathbf{u}\,(\mathbf{u}\cdot\mathbf{n})\,dS$$</div>
+
+        <p>According to this equation, the sum of surface and body forces is equal to the momentum accumulation over time plus the momentum flux across the boundaries. With negligible body forces (\(\mathbf{b} = 0\)) and considering the steady problem (\(d/dt = 0\)), the problem simplifies to:</p>
+        <div class="eq">$$\int_S \left(-p\mathbf{n}\right) dS + \int_S \left(\vec{\tau}\cdot\mathbf{n}\right) dS = \int_S \rho \mathbf{u}\,(\mathbf{u}\cdot\mathbf{n})\,dS$$</div>
+
+        <p>Considering that there is no flux across the solid wing, the right hand side is just the integral over the outer boundaries, which is by definition equal to the force exerted by the wing on the flow:</p>
+        <div class="eq">$$F_{W\rightarrow F} = \int_S -p \mathbf{n}\, dS + \int_S \vec{\tau} \cdot \mathbf{n}\, dS$$</div>
+
+        <p>This states that the force \(F_{W\rightarrow F}\) must be congruent with the boundary conditions of the flow. In particular, said force must be the sum of a pressure and a viscous contribution (typically smaller) at the surface of the wing. This explains why, looking at the wake, the horizontal velocity is lower and there is a downward component, showing drag and lift, respectively.</p>
+
+        <p>Once understood how the wing transfers momentum to the air, the rest of the explanation is straightforward. In an initial scenario where both air and the wing move horizontally, direct interpretation of Newton's third law explains that, if air is being deflected downwards by some force, an equal and opposite reaction must be exerted on the wing, this reaction being lift.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Action-reaction pairs and wake of a lift-generating wing<code>/assets/img/theory/actionreaction.jpg</code></div>
+          <figcaption>Action-reaction aerodynamic force pairs and wake of a lift-generating wing.</figcaption>
+        </figure>
+
+        <p>There is also a Bernoulli interpretation of lift, which is just as correct. While the widely repeated explanation is correct in relating pressure imbalance to different velocities over the upper and lower surfaces, it usually ignores why the velocities are different, which is fundamental to address.</p>
+
+        <p>Recalling Bernoulli's theorem:</p>
+        <div class="eq">$$p + \frac{1}{2}\rho v^2 + \rho g h = \text{constant}$$</div>
+
+        <p>Realizing that a fluid as light as air over the height variation of an airfoil causes insignificant variations of pressure that can be neglected:</p>
+        <div class="eq">$$p + \frac{1}{2}\rho v^2 = \text{constant}$$</div>
+
+        <p>A direct interpretation of this equation is that regions with higher velocity have lower pressures, and vice versa. This is why the stagnant leading edge of an airfoil, where incoming flow has been slowed down, has a much higher pressure than the free stream. Now it is necessary to understand why the flow is faster over the upper surface than on the lower surface, and this is explained by the concept of circulation and the Kutta-Joukowski Theorem.</p>
+
+        <p>According to circulation theory, the flow around an airfoil develops a net circulation \(\Gamma\) when the airfoil is cambered, at incidence, or both. This circulation arises as a consequence of the Kutta condition, which enforces a smooth flow departure at the trailing edge and selects a unique, physically realizable solution among the infinite inviscid possibilities. When adding the circulation to the incoming, uniform free stream of air, the velocity field is such that the upper surface accelerates while the lower surface slows down. This asymmetric velocity distribution provides the necessary conditions for the pressure difference predicted by Bernoulli's equation.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Effect of circulation and the Kutta condition<code>/assets/img/theory/circulation.png</code></div>
+          <figcaption>Effect of circulation and Kutta condition on freestream, and consequent lift.</figcaption>
+        </figure>
+
+        <p>In summary, the velocity field induced by circulation, together with the free-stream velocity, determines the pressure distribution over the airfoil through Bernoulli's equation. The integration of this pressure distribution over the surface yields the aerodynamic force, whose vertical component is the lift. This result is consistent with the momentum balance of the flow, as the same pressure field responsible for lift also produces a net downward deflection of the wake.</p>
+
+        <p>It is also worth noting that the establishment of circulation is accompanied by the shedding of a starting vortex from the trailing edge, ensuring conservation of total circulation in the flow in accordance with Kelvin's circulation theorem.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Starting vortex at the trailing edge<code>/assets/img/theory/kelvin.jpg</code></div>
+          <figcaption>Starting vortex at the trailing edge due to conservation of total circulation.</figcaption>
+        </figure>
+
+        <p>Now that the Newtonian and Bernoulli interpretations have been discussed, a good closing point for this section on lift generation is that provided by Doug McLean, who explains that there are 5 components behind lift generation:</p>
+        <ol>
+          <li>A deflection of free flow</li>
+          <li>An increase in air velocity</li>
+          <li>A low-pressure area</li>
+          <li>A high-pressure area</li>
+          <li>A cause-effect relation by which neither of the previous 4 elements exists without the others.</li>
+        </ol>
+
+        <p>This is why lift generation is best understood as a combination of velocity changes, pressure imbalances and flow deflection, all of which are interdependent.</p>
+
+        <p>All these effects are collected in the lift coefficient \(C_L\), defined as:</p>
+        <div class="eq">$$C_L = \frac{L}{\frac{1}{2}\cdot\rho\cdot U^2\cdot S}$$</div>
+
+        <p>And, conversely, the total lift can be obtained by means of the lift coefficient as:</p>
+        <div class="eq">$$L = \frac{1}{2}\cdot\rho\cdot U^2\cdot S\cdot C_L$$</div>
+
+        <h2>Drag generation</h2>
+
+        <p>Drag is the aerodynamic force component acting in parallel to freestream velocity. Recalling the aerodynamic force decomposition, drag can be written as:</p>
+        <div class="eq">$$D = \iint_A \vec{\tau}_w \cdot \vec{e}_D \, dA - \iint_A p\,\vec{n} \cdot \vec{e}_D \, dA$$</div>
+
+        <p>where two components are clearly identified. The first term corresponds to <strong>skin friction drag</strong>. It is produced by shear stress and it is always positive, meaning that skin friction will always oppose resistance to motion through a fluid.</p>
+        <div class="eq">$$D_s = \iint_A \vec{\tau}_w \cdot \left(\cos\theta\,\vec{i}+\sin\theta\,\vec{j}\right) dA$$</div>
+
+        <p>Skin friction drag is a consequence of viscous effects within the boundary layer of the body's surface. Normally, the boundary layer begins as a laminar regime and, after a certain distance from the leading edge, it transitions to turbulent regime. The total skin friction is the sum of both. The skin friction coefficients are given by the following (empirical) expressions:</p>
+        <div class="eq">$$\text{Laminar:}\quad C_f=\frac{1.328}{\sqrt{\text{Re}_c}}\qquad\qquad\text{Turbulent:}\quad C_f=\frac{0.074}{\text{Re}_c^{1/5}}$$</div>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Laminar, transient and turbulent stages of a boundary layer<code>/assets/img/theory/boundarylayer.jpg</code></div>
+          <figcaption>Laminar, transient and turbulent stages of a boundary layer.</figcaption>
+        </figure>
+
+        <p>This type of drag is obviously highly dependent on the fluid's viscosity. A quick look at the previous equations provides the realization that higher viscosity will result in a lower Reynolds number \(\text{Re}_c\), increasing the friction coefficient. However, skin friction is dominant in streamlined bodies with small thickness-to-length ratios (\(t/c \ll 1\)). In motorsports, this is hardly the case.</p>
+
+        <p>The second term corresponds to <strong>pressure drag</strong>. It is the integral of all normal stresses along the direction of the flux. Thus, it is caused by pressure imbalances and most often points backwards, causing air resistance. It is the most dominant type of drag in motorsports, where cars have intricate shapes resulting in complex pressure distributions.</p>
+        <div class="eq">$$D_p = -\iint_A p\,\vec{n} \cdot \left(\cos\theta\,\vec{i}+\sin\theta\,\vec{j}\right) dA$$</div>
+
+        <p>It can be sorted into <strong>form drag</strong> and <strong>induced drag</strong>. (This ignores wave drag, which is caused by shock waves and is nonexistent at the subsonic regimes found in motorsports; under \(M < 0.3\) incompressible flow is assumed.)</p>
+        <ul>
+          <li>Form drag is influenced directly by the shape of the body and the pressure distribution that it causes, including flow separation effects and inertial effects. Form drag is always present in a body in motion as long as there is a pressure imbalance, regardless of the lift or downforce generation. In other words, there can be form drag even when there is no downforce being generated (for example, for an infinite symmetrical airfoil with zero angle of attack).</li>
+          <li>Induced drag exists only in wings that are both (1) lift or downforce generating, and (2) finite. In these cases, acknowledging the natural tendency of air to move from regions of high pressure to areas of low pressure, the air on the pressure side is driven to the suction side. This 3D "out-of-plane" effect is only noticeable in the tip of finite wings, and most significant in those with low aspect ratios. The wingtip vortices generated in these cases have two effects: they modify the pressure distribution, generating an imbalance in net pressure; and they extract kinetic energy from the flow, increasing air resistance.</li>
+        </ul>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Wingtip vortices visualised in flight<code>/assets/img/theory/wingtip.jpg</code></div>
+          <figcaption>A Tupolev Tu-95MC in flight allows the wingtip vortices to be visualized.</figcaption>
+        </figure>
+
+        <p>In practice, the largest sources of drag in a race car will narrow down to either internal flow (e.g. radiators, HVAC, intake manifold), separated flow, or induced drag — the "cost" of generating downforce.</p>
+
+        <p>All of the previous dependencies are characterized within the drag coefficient:</p>
+        <div class="eq">$$C_D = \frac{D}{\frac{1}{2}\cdot\rho\cdot U^2\cdot S}$$</div>
+
+        <p>More often, the total drag needs to be estimated by means of a known \(C_D\), using the derived expression:</p>
+        <div class="eq">$$D = \frac{1}{2}\cdot\rho\cdot U^2\cdot S\cdot C_D$$</div>
+
+        <p>Notice that drag increases linearly with air density and reference surface, but quadratically with velocity. For example, doubling the speed will result in four times the drag, while halving it will yield 25% the drag.</p>
+
+        <h2>Introduction to wings in motorsports</h2>
+
+        <p>Now that the benefits of downforce on a race car are well understood, it is time to assess the different ways to generate it. The most straightforward approach is through the installation of inverted wings. The aerodynamic mechanisms by which these operate have already been discussed and, by inverting them, lift is turned into downforce. Inverted wings are very typical in both closed-wheelers and open-wheelers, although the former are typically limited to rear-mounted wings while the latter offers more possibilities such as front wings, rear wings and even side wings. The following picture shows a comparison of the aero devices on closed and open wheelers, left and right respectively.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Aero kits on closed vs open wheelers<code>/assets/img/theory/closed-vs-open.jpg</code></div>
+          <figcaption>Porsche 963 (LMDh 2023) vs. Dallara DW12 Honda Aero Kit (IndyCar 2015).</figcaption>
+        </figure>
+
+        <p>A second, less obvious approach is the exploitation of ground effect. When a downforce-generating surface is placed in close proximity to the ground, the flow accelerated underneath it is further constrained by the road, producing a stronger suction peak and, consequently, more downforce. As the ride height is progressively reduced, downforce increases until a critical height-to-chord ratio is reached, beyond which the boundary layer underneath can no longer withstand the adverse pressure gradient and separates, abruptly losing load. This behavior has also been characterized experimentally for single-element wings in ground effect, where the downforce is observed to rise with decreasing clearance up to that critical point. Because the front wing is the lowest and foremost aerodynamic surface of the car, it operates permanently in this regime, and ground effect is therefore inseparable from its design.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Downforce coefficient vs. ground clearance<code>/assets/img/theory/zhang.png</code></div>
+          <figcaption>Downforce coefficient vs. ground clearance for a front wing (X. Zhang et al).</figcaption>
+        </figure>
+
+        <p>Finally, downforce is rarely produced by a single surface working in isolation. Modern front wings are multi-element, meaning they stack several airfoil profiles separated by small gaps. Each slot re-energises the boundary layer of the element downstream, allowing the assembly to reach far higher effective angles of attack — and therefore far higher downforce — before stalling than a single element ever could. This is the same slotted-flap principle used on aircraft high-lift devices, applied here in inverted form.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Multi-element front wing with airfoil cascade cross-sections<code>/assets/img/theory/granados.png</code></div>
+          <figcaption>Multi-element front wing with cross-sections of airfoil cascades (F. J. Granados et al).</figcaption>
+        </figure>
+
+        <p>So for now, in a simplistic approach the steps followed to maximize the aerodynamic efficiency \(E=C_L/C_D\) generated by a given volume are 1) using an inverted wing, 2) placing it close to the ground and 3) converting it into a multi-element wing. The step that remains is getting rid of (some of the) induced drag, recalling that race car wings are finite and have a low aspect ratio. This can be done through the installation of endplates, a physical barrier to keep the airflow in the pressure side isolated from the suction side.</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Endplates of a 2026 F1 rear wing<code>/assets/img/theory/endplates.jpg</code></div>
+          <figcaption>Detail of an F1 2026 rear wing showing endplates.</figcaption>
+        </figure>
+
+        <p>As a useful summary of why motorsport wings are the way they are, a real question that the author was asked when interviewing for an aerodynamics position in a motorsports team: <em>"You get a bounding box in freestream air. How do you maximize the downforce while limiting drag?"</em>. The answer given:</p>
+        <ol>
+          <li>Inverted wing.</li>
+          <li>Close to the ground for ground effect.</li>
+          <li>Multi-element to increase the effective angle of attack without flow separation.</li>
+          <li>Endplates to reduce the induced drag.</li>
+        </ol>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Basic steps for motorsport wing design<code>/assets/img/theory/razonamiento.jpg</code></div>
+          <figcaption>Basic steps for motorsports wing design.</figcaption>
+        </figure>
+
+        <p>This procedure is not exclusive to front wings but also a standard for other devices such as the rear wing — with the difference that ground effect is considerably weaker in this case, for it sits higher with respect to the ground. An additional consideration is that the wing mounts (i.e. pylons) should be placed in the pressure side of the wing, as the suction side is more delicate and prone to detachment. For the front wing, this is the natural location due to its orientation with respect to the chassis, but in the case of the rear wing, this leads to less obvious arrangements such as the so-called goose-necks or swan-necks. Sometimes, such care of flow disturbance is taken that the mounts are moved behind the trailing edge so as not to affect the incoming flow:</p>
+
+        <figure class="fig-ph">
+          <div class="fig-box">Swan-neck rear wing mounts<code>/assets/img/theory/swan_neck.jpg</code></div>
+          <figcaption>Rear-mounted swan-necks on a Toyota GR86 rear wing.</figcaption>
+        </figure>
+
+        <p>Returning to the front wing, its different parts also generate strong and intricate vortical structures that condition the flow ingested by the rest of the car, which is why the front wing is often described as governing the aerodynamic behavior of everything downstream of it.</p>
+
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <span></span><a href="/theory/on-cfd.html" style="margin-left:auto;text-align:right;">On CFD ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 1 of 4</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

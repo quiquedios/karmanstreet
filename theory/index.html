@@ -4,30 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Theory — Kármán Street</title>
-  <meta name="description" content="Theoretical foundations, from my Master&#x27;s thesis.">
+  <meta name="description" content="Theoretical foundations: aerodynamics, CFD, wind tunnels, and optimization.">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-
-  <style>
-    .roadmap { margin: 2rem 0 1rem; }
-    .stage { position: relative; padding-left: 2.2rem; padding-bottom: 1.6rem; }
-    .stage:before { content:""; position:absolute; left:0.7rem; top:0.2rem; bottom:-0.4rem; width:2px; background:var(--line); }
-    .stage:last-child:before { bottom:auto; height:1.4rem; }
-    .stage-dot { position:absolute; left:0; top:0.1rem; width:1.5rem; height:1.5rem; border-radius:50%;
-      background:var(--accent); color:#fff; font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.8rem;
-      font-weight:700; display:flex; align-items:center; justify-content:center; }
-    .stage-title { font-family:"Helvetica Neue",Arial,sans-serif; font-weight:600; font-size:1.15rem; margin:0 0 0.6rem; color:var(--ink); }
-    .stage-steps { list-style:none; margin:0; padding:0; }
-    .stage-steps li { margin:0.1rem 0; }
-    .stage-steps a { display:flex; gap:0.6rem; align-items:baseline; text-decoration:none; color:var(--ink);
-      padding:0.32rem 0.5rem; border:1px solid transparent; border-radius:6px; }
-    .stage-steps a:hover { background:var(--panel); border-color:var(--line); }
-    .step-num { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.8rem; color:var(--accent); font-weight:700; min-width:1.7rem; }
-    .step-title { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.98rem; }
-  </style>
 </head>
 <body>
   <header class="masthead">
@@ -53,51 +35,33 @@
   <main>
     <div class="wrap">
       <h1 class="page-title">Theory</h1>
-      <p class="section-lead">The theoretical foundations behind my work, drawn from my Master's thesis. Read in order, or jump to any topic.</p>
-      <div class="roadmap">
-      <div class="stage">
-        <div class="stage-dot">1</div>
-        <p class="stage-title">On aerodynamics</p>
-        <ul class="stage-steps">
-          <li><a href="/theory/aerodynamic-forces-lift-drag-and-downforce.html"><span class="step-num">01</span><span class="step-title">Aerodynamic forces: lift, drag and downforce</span></a></li>
-          <li><a href="/theory/lift-generation-the-flawed-explanation-and-the-newtonian-view.html"><span class="step-num">02</span><span class="step-title">Lift generation: the flawed explanation and the Newtonian view</span></a></li>
-          <li><a href="/theory/lift-generation-bernoulli-circulation-and-the-kutta-condition.html"><span class="step-num">03</span><span class="step-title">Lift generation: Bernoulli, circulation and the Kutta condition</span></a></li>
-          <li><a href="/theory/drag-generation.html"><span class="step-num">04</span><span class="step-title">Drag generation</span></a></li>
-          <li><a href="/theory/wings-in-motorsport-inverted-wings-and-ground-effect.html"><span class="step-num">05</span><span class="step-title">Wings in motorsport: inverted wings and ground effect</span></a></li>
-          <li><a href="/theory/wings-in-motorsport-multi-element-wings-and-endplates.html"><span class="step-num">06</span><span class="step-title">Wings in motorsport: multi-element wings and endplates</span></a></li>
-        </ul>
-      </div>
-      <div class="stage">
-        <div class="stage-dot">2</div>
-        <p class="stage-title">On CFD</p>
-        <ul class="stage-steps">
-          <li><a href="/theory/navier-stokes-and-rans.html"><span class="step-num">07</span><span class="step-title">Navier–Stokes and RANS</span></a></li>
-          <li><a href="/theory/the-reynolds-stress-tensor-and-the-closure-problem.html"><span class="step-num">08</span><span class="step-title">The Reynolds stress tensor and the closure problem</span></a></li>
-          <li><a href="/theory/boussinesq-s-hypothesis.html"><span class="step-num">09</span><span class="step-title">Boussinesq&#x27;s hypothesis</span></a></li>
-          <li><a href="/theory/turbulence-models.html"><span class="step-num">10</span><span class="step-title">Turbulence models</span></a></li>
-          <li><a href="/theory/wall-treatment-and-y.html"><span class="step-num">11</span><span class="step-title">Wall treatment and y+</span></a></li>
-          <li><a href="/theory/spatial-discretisation.html"><span class="step-num">12</span><span class="step-title">Spatial discretisation</span></a></li>
-        </ul>
-      </div>
-      <div class="stage">
-        <div class="stage-dot">3</div>
-        <p class="stage-title">On wind tunnels</p>
-        <ul class="stage-steps">
-          <li><a href="/theory/wind-tunnels-and-dynamic-similarity.html"><span class="step-num">13</span><span class="step-title">Wind tunnels and dynamic similarity</span></a></li>
-          <li><a href="/theory/blockage-wall-interference-and-tripping.html"><span class="step-num">14</span><span class="step-title">Blockage, wall interference and tripping</span></a></li>
-        </ul>
-      </div>
-      <div class="stage">
-        <div class="stage-dot">4</div>
-        <p class="stage-title">On DOE and optimization</p>
-        <ul class="stage-steps">
-          <li><a href="/theory/design-of-experiments-and-latin-hypercube-sampling.html"><span class="step-num">15</span><span class="step-title">Design of Experiments and Latin Hypercube Sampling</span></a></li>
-          <li><a href="/theory/surrogate-models-and-gaussian-processes.html"><span class="step-num">16</span><span class="step-title">Surrogate models and Gaussian processes</span></a></li>
-          <li><a href="/theory/bayesian-optimization-and-active-learning.html"><span class="step-num">17</span><span class="step-title">Bayesian optimization and active learning</span></a></li>
-          <li><a href="/theory/genetic-algorithms-and-pareto-fronts.html"><span class="step-num">18</span><span class="step-title">Genetic algorithms and Pareto fronts</span></a></li>
-        </ul>
-      </div>
-      </div>
+      <p class="section-lead">The theoretical foundations behind my work, drawn from my Master's thesis. Four chapters, read in order or on their own.</p>
+      <ul class="post-list">
+        <li>
+          <a href="/theory/on-aerodynamics.html">
+            <p class="post-h">1. On aerodynamics</p>
+            <p class="post-excerpt">Aerodynamic forces, lift and drag generation, and wings in motorsport.</p>
+          </a>
+        </li>
+        <li>
+          <a href="/theory/on-cfd.html">
+            <p class="post-h">2. On CFD</p>
+            <p class="post-excerpt">Navier–Stokes and RANS, turbulence models, wall treatment and discretisation.</p>
+          </a>
+        </li>
+        <li>
+          <a href="/theory/on-wind-tunnels.html">
+            <p class="post-h">3. On wind tunnels</p>
+            <p class="post-excerpt">Dynamic similarity, blockage, wall interference and boundary-layer tripping.</p>
+          </a>
+        </li>
+        <li>
+          <a href="/theory/on-doe-and-optimization.html">
+            <p class="post-h">4. On DOE and optimization</p>
+            <p class="post-excerpt">Sampling, surrogate models, Bayesian optimization and genetic algorithms.</p>
+          </a>
+        </li>
+      </ul>
     </div>
   </main>
   <footer class="foot">
