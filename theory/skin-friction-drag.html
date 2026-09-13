@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skin-friction drag — Kármán Street</title>
+  <meta name="description" content="Skin-friction drag">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Skin-friction drag</h1>
+        <p class="article-meta">Theory · sources: thesis · A</p>
+
+        <p>Drag is the component of the aerodynamic force acting parallel to the freestream velocity. Recalling the force decomposition, it can be written as the sum of two integrals, and the split between them identifies the two physical origins of drag.</p>
+        <div class="eq">D = ∬<sub>A</sub> τ<sub>w</sub> · e<sub>D</sub> dA − ∬<sub>A</sub> p n · e<sub>D</sub> dA</div>
+        <h2>Skin friction drag</h2>
+        <p>The first term corresponds to <strong>skin friction drag</strong>. It is produced by shear stress and it is always positive, meaning skin friction will always oppose resistance to motion through a fluid.</p>
+        <p>It is a consequence of viscous effects within the boundary layer. Normally the boundary layer begins in a laminar regime and, after a certain distance from the leading edge, transitions to turbulent; the total skin friction is the sum of both. The empirical friction coefficients are:</p>
+        <div class="eq">Laminar: C<sub>f</sub> = 1.328 / √Re<sub>c</sub>   ·   Turbulent: C<sub>f</sub> = 0.074 / Re<sub>c</sub><sup>1/5</sup></div>
+        <figure class="fig-ph">
+          <div class="fig-box">Laminar, transitional and turbulent stages of a boundary layer<code>/assets/img/theory/boundary-layer-stages.png</code></div>
+          <figcaption>Fig. 1 — Laminar, transient and turbulent stages of a boundary layer.</figcaption>
+        </figure>
+        <p>This type of drag is obviously highly dependent on viscosity: a quick look at the expressions above gives the realization that higher viscosity results in a lower Reynolds number and therefore a higher friction coefficient. Skin friction is dominant in streamlined bodies with small thickness-to-length ratios (t/c ≪ 1). In motorsport, that is hardly the case.</p>
+        <h2>Pressure drag</h2>
+        <p>The second term is <strong>pressure drag</strong>, the integral of all normal stresses along the direction of the flux. It is caused by pressure imbalances and most often points backwards. It is the dominant type of drag in motorsport, where cars have intricate shapes producing complex pressure distributions. It can be sorted into form drag and induced drag.</p>
+        <p><strong>Form drag</strong> is influenced directly by the shape of the body and the pressure distribution it causes, including separation and inertial effects. It is always present in a body in motion as long as there is a pressure imbalance, regardless of whether downforce is being generated — an infinite symmetrical airfoil at zero angle of attack still has form drag.</p>
+        <p><strong>Induced drag</strong> exists only in wings that are both lift-generating and finite, and is treated separately in its own entry.</p>
+        <div class="note">Wave drag is ignored here: it is caused by shock waves and is nonexistent at the subsonic regimes found in motorsport. Below M &lt; 0.3 the flow is assumed incompressible.</div>
+        <h2>Where the drag actually is, on a real car</h2>
+        <p>In practice, the largest sources of drag on a race car narrow down to internal flow (radiators, HVAC, intake manifold), separated flow, or induced drag — the cost of generating downforce. All of these dependencies are characterized within the drag coefficient C<sub>D</sub> = D / (½ρU²S), and drag grows quadratically with velocity: doubling the speed gives four times the drag.</p>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/flow-separation.html">‹ Flow separation</a><a href="/theory/pressure-form-drag.html" style="margin-left:auto;text-align:right;">Pressure (form) drag ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 42 of 129</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

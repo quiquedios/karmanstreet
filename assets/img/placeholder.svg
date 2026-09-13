@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
-  <rect width="400" height="220" fill="#eef2f4"/>
-  <path d="M20 120 q30 -40 60 0 M100 120 q30 -40 60 0 M180 120 q30 -40 60 0 M260 120 q30 -40 60 0 M340 120 q30 -40 60 0"
-        fill="none" stroke="#2e6f8e" stroke-width="2" opacity="0.5"/>
-  <path d="M-20 140 q30 40 60 0 M60 140 q30 40 60 0 M140 140 q30 40 60 0 M220 140 q30 40 60 0 M300 140 q30 40 60 0"
-        fill="none" stroke="#c25b3a" stroke-width="2" opacity="0.5"/>
-  <text x="200" y="190" text-anchor="middle" font-family="Helvetica, Arial, sans-serif"
-        font-size="13" fill="#55606b">project image</text>
-</svg>

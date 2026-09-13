@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Boundary layers under pressure gradients — Kármán Street</title>
-  <meta name="description" content="Theory · Project 50">
+  <meta name="description" content="Boundary layers under pressure gradients">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -35,10 +35,11 @@
 
   <main>
     <div class="wrap">
-      <a class="back" href="/theory/">← All theory</a>
+      <a class="back" href="/theory/">← Theory roadmap</a>
       <article>
         <h1 class="page-title">Boundary layers under pressure gradients</h1>
-        <p class="article-meta">Theory · Project 50</p>
+        <p class="article-meta">Theory · sources: A · thesis</p>
+
         <p>A boundary layer never develops in isolation. The pressure imposed by the outer flow shapes it continuously, and whether that pressure is falling or rising along the surface is what separates attached flow from separated flow.</p>
         <h2>Favorable and adverse</h2>
         <p>Neglecting viscosity and gravity in the outer airflow, the momentum equation reduces to Dv/Dt = −∇p/ρ, which says plainly that <strong>favorable pressure gradients accelerate the flow, whereas adverse pressure gradients decelerate it</strong>. Inside the boundary layer, where the fluid already has reduced momentum, that deceleration is far more consequential than it is outside.</p>
@@ -58,9 +59,9 @@
         <p>The most instructive result is the failure case. Under a sufficiently strong adverse gradient, flow separation causes the breakdown of the parabolic formulation itself. The marching scheme assumes information travels only downstream, and once the flow reverses that assumption is violated. Capturing separated flow requires an elliptic treatment.</p>
         <p>This is a compact lesson in why separation is the point where the simple models stop working, and why the CFD used for loaded, multi-element geometries has to solve the full equations rather than a boundary-layer approximation.</p>
         <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
-          <a href="/theory/laminar-vs-turbulent-boundary-layers.html">‹ Laminar vs turbulent boundary layers</a><a href="/theory/bluff-body-drag-and-flow-separation.html" style="margin-left:auto;text-align:right;">Bluff-body drag and flow separation ›</a>
+          <a href="/theory/displacement-and-momentum-thickness.html">‹ Displacement and momentum thickness</a><a href="/theory/flow-separation.html" style="margin-left:auto;text-align:right;">Flow separation ›</a>
         </nav>
-        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · step 7 of 23</a></p>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 40 of 129</a></p>
       </article>
     </div>
   </main>

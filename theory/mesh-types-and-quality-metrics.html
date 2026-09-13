@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mesh types and quality metrics — Kármán Street</title>
+  <meta name="description" content="Mesh types and quality metrics">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Mesh types and quality metrics</h1>
+        <p class="article-meta">Theory · sources: B · thesis</p>
+
+        <p>Two meshes with an identical cell count can produce very different answers. What separates them is quality, and quality is measured by a small set of standard metrics that describe how distorted the individual cells are.</p>
+        <h2>The metrics</h2>
+        <ul><li><strong>Skewness</strong> — how far a cell departs from its ideal shape. Highly skewed cells degrade accuracy and can destabilise the solver outright.</li><li><strong>Aspect ratio</strong> — the ratio of a cell's longest to shortest dimension. Very stretched cells are perfectly acceptable when aligned with the flow, as in a boundary-layer prism stack, and harmful when they are not.</li><li><strong>Non-orthogonality</strong> — the angle between the line joining two cell centres and the normal of the face they share. Large angles introduce error into the gradient calculation and usually require explicit correction terms.</li></ul>
+        <figure class="fig-ph">
+          <div class="fig-box">Mesh quality metrics illustrated on cell pairs<code>/assets/img/theory/mesh-quality-metrics.png</code></div>
+          <figcaption>Fig. 1 — Skewness, aspect ratio and non-orthogonality on representative cells.</figcaption>
+        </figure>
+        <h2>Refinement where it matters</h2>
+        <p>A good mesh does not distribute cells uniformly. It refines where gradients are steep — near walls, around leading edges, through the wake and any shear layer — and stays coarse where the flow is essentially uniform. The prism-layer study on a bluff body makes the point quantitatively: going from 1 to 6 boundary-layer prism layers dropped y+ from 433 to 79 and brought the force coefficients to a stable value, while the far field was left untouched throughout.</p>
+        <h2>Mesh independence is not optional</h2>
+        <p>Because the answer depends on the mesh, demonstrating that it has stopped depending on the mesh is a required step, not a nicety. The procedure is to refine systematically and track the quantities of interest until they settle within an acceptable band.</p>
+        <p>In the front-wing work this took the form of a formal grid-convergence study across three systematically refined meshes, with the lift and drag coefficients tracked against grid spacing and the convergence order verified. In the Formula Student wheel study the same discipline was applied under tighter constraints, varying refinement level, boundary-layer resolution and growth rate while judging convergence through residuals, y+, non-orthogonality and the aerodynamic coefficients together.</p>
+        <div class="note">Judging convergence on residuals alone is a common trap. Residuals can fall happily while an integrated force coefficient is still drifting. The coefficient is the answer being sought, so it is the coefficient that has to converge.</div>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/finite-difference-schemes-von-neumann-stability-and-the-courant-number.html">‹ Finite-difference schemes, Von Neumann stability and the Courant number</a><a href="/theory/boundary-conditions-in-cfd.html" style="margin-left:auto;text-align:right;">Boundary conditions in CFD ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 74 of 129</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>
