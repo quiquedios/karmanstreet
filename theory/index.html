@@ -22,16 +22,16 @@
     .stage-title { font-family:"Helvetica Neue",Arial,sans-serif; font-weight:600; font-size:1.12rem; margin:0 0 0.5rem; color:var(--ink); }
     .stage-steps { list-style:none; margin:0; padding:0; }
     .stage-steps li { margin:0.08rem 0; }
-    .stage-steps a { display:flex; gap:0.55rem; align-items:baseline; text-decoration:none; color:var(--ink);
+    .stage-steps a, .stage-steps span.row { display:flex; gap:0.55rem; align-items:baseline;
       padding:0.28rem 0.5rem; border:1px solid transparent; border-radius:6px; }
+    .stage-steps a { text-decoration:none; color:var(--ink); }
     .stage-steps a:hover { background:var(--panel); border-color:var(--line); }
-    .stage-steps a.soon { color:var(--ink-soft); }
+    .stage-steps span.row.soon { color:var(--ink-soft); cursor:default; }
     .step-num { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.78rem; color:var(--accent); font-weight:700; min-width:1.9rem; }
-    .stage-steps a.soon .step-num { color:var(--ink-soft); }
+    .row.soon .step-num { color:var(--ink-soft); }
     .step-title { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.95rem; }
     .step-tag { font-family:"Helvetica Neue",Arial,sans-serif; font-size:0.68rem; margin-left:auto; padding:0.05rem 0.45rem;
       border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); white-space:nowrap; }
-    .step-tag.ready { color:var(--accent); border-color:var(--accent); }
   </style>
 </head>
 <body>
@@ -59,207 +59,207 @@
   <main>
     <div class="wrap">
       <h1 class="page-title">Theory</h1>
-      <p class="section-lead">A complete study roadmap through aerodynamics and CFD, one concept per post, built from the ground up. Posts marked <em>notes</em> are written; those marked <em>soon</em> are still being drafted from their sources.</p>
+      <p class="section-lead">A complete study roadmap through aerodynamics and CFD, one concept per post, built from the ground up. Concepts marked <em>soon</em> are still being written from their sources.</p>
       <div class="roadmap">
       <div class="stage">
         <div class="stage-dot">1</div>
         <p class="stage-title">Fluid fundamentals</p>
         <ul class="stage-steps">
-          <li><a class="soon" href="/theory/what-is-a-fluid-the-continuum-hypothesis.html"><span class="step-num">01</span><span class="step-title">What is a fluid; the continuum hypothesis</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/density-specific-volume-specific-gravity.html"><span class="step-num">02</span><span class="step-title">Density, specific volume, specific gravity</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/compressibility-and-the-incompressible-assumption.html"><span class="step-num">03</span><span class="step-title">Compressibility and the incompressible assumption</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/viscosity-and-newton-s-law-of-viscosity.html"><span class="step-num">04</span><span class="step-title">Viscosity and Newton&#x27;s law of viscosity</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/dynamic-vs-kinematic-viscosity.html"><span class="step-num">05</span><span class="step-title">Dynamic vs kinematic viscosity</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/the-perfect-gas-law-and-standard-atmosphere.html"><span class="step-num">06</span><span class="step-title">The perfect gas law and standard atmosphere</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/hydrostatics-pressure-in-a-static-fluid.html"><span class="step-num">07</span><span class="step-title">Hydrostatics; pressure in a static fluid</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/streamlines-streaklines-and-pathlines.html"><span class="step-num">08</span><span class="step-title">Streamlines, streaklines and pathlines</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/stream-tubes.html"><span class="step-num">09</span><span class="step-title">Stream tubes</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/steady-vs-unsteady-flow.html"><span class="step-num">10</span><span class="step-title">Steady vs unsteady flow</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/flow-dimensionality.html"><span class="step-num">11</span><span class="step-title">Flow dimensionality</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/laminar-vs-turbulent-flow.html"><span class="step-num">12</span><span class="step-title">Laminar vs turbulent flow</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/the-reynolds-number.html"><span class="step-num">13</span><span class="step-title">The Reynolds number</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/circulation.html"><span class="step-num">14</span><span class="step-title">Circulation</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/vorticity.html"><span class="step-num">15</span><span class="step-title">Vorticity</span><span class="step-tag">soon</span></a></li>
+          <li><span class="row soon"><span class="step-num">01</span><span class="step-title">What is a fluid; the continuum hypothesis</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">02</span><span class="step-title">Density, specific volume, specific gravity</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">03</span><span class="step-title">Compressibility and the incompressible assumption</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">04</span><span class="step-title">Viscosity and Newton&#x27;s law of viscosity</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">05</span><span class="step-title">Dynamic vs kinematic viscosity</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">06</span><span class="step-title">The perfect gas law and standard atmosphere</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">07</span><span class="step-title">Hydrostatics; pressure in a static fluid</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">08</span><span class="step-title">Streamlines, streaklines and pathlines</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">09</span><span class="step-title">Stream tubes</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">10</span><span class="step-title">Steady vs unsteady flow</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">11</span><span class="step-title">Flow dimensionality</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">12</span><span class="step-title">Laminar vs turbulent flow</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">13</span><span class="step-title">The Reynolds number</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">14</span><span class="step-title">Circulation</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">15</span><span class="step-title">Vorticity</span><span class="step-tag">soon</span></span></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">2</div>
         <p class="stage-title">Governing equations and Bernoulli</p>
         <ul class="stage-steps">
-          <li><a class="soon" href="/theory/the-material-derivative-eulerian-and-lagrangian-description.html"><span class="step-num">16</span><span class="step-title">The material derivative; Eulerian and Lagrangian description</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/conservation-of-mass-and-continuity.html"><span class="step-num">17</span><span class="step-title">Conservation of mass and continuity</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/conservation-of-momentum-the-momentum-theorem.html"><span class="step-num">18</span><span class="step-title">Conservation of momentum; the momentum theorem</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/conservation-of-energy.html"><span class="step-num">19</span><span class="step-title">Conservation of energy</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/the-navier-stokes-equations.html"><span class="step-num">20</span><span class="step-title">The Navier–Stokes equations</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/euler-equations-and-inviscid-flow.html"><span class="step-num">21</span><span class="step-title">Euler equations and inviscid flow</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/bernoulli-s-equation-assumptions-and-limits.html"><span class="step-num">22</span><span class="step-title">Bernoulli&#x27;s equation: assumptions and limits</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/dynamic-pressure-and-total-pressure.html"><span class="step-num">23</span><span class="step-title">Dynamic pressure and total pressure</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/the-pressure-coefficient.html"><span class="step-num">24</span><span class="step-title">The pressure coefficient</span><span class="step-tag">soon</span></a></li>
+          <li><span class="row soon"><span class="step-num">16</span><span class="step-title">The material derivative; Eulerian and Lagrangian description</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">17</span><span class="step-title">Conservation of mass and continuity</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">18</span><span class="step-title">Conservation of momentum; the momentum theorem</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">19</span><span class="step-title">Conservation of energy</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/the-navier-stokes-equations.html"><span class="step-num">20</span><span class="step-title">The Navier–Stokes equations</span></a></li>
+          <li><span class="row soon"><span class="step-num">21</span><span class="step-title">Euler equations and inviscid flow</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">22</span><span class="step-title">Bernoulli&#x27;s equation: assumptions and limits</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">23</span><span class="step-title">Dynamic pressure and total pressure</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">24</span><span class="step-title">The pressure coefficient</span><span class="step-tag">soon</span></span></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">3</div>
         <p class="stage-title">How aerodynamic forces arise</p>
         <ul class="stage-steps">
-          <li><a class="" href="/theory/the-two-sources-of-aerodynamic-force.html"><span class="step-num">25</span><span class="step-title">The two sources of aerodynamic force</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/net-force-as-a-surface-integral.html"><span class="step-num">26</span><span class="step-title">Net force as a surface integral</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/lift-drag-and-downforce.html"><span class="step-num">27</span><span class="step-title">Lift, drag and downforce</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/force-and-moment-coefficients.html"><span class="step-num">28</span><span class="step-title">Force and moment coefficients</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/the-sae-aerodynamic-axis-system.html"><span class="step-num">29</span><span class="step-title">The SAE aerodynamic axis system</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/equal-transit-theory-and-why-it-is-wrong.html"><span class="step-num">30</span><span class="step-title">Equal Transit Theory and why it is wrong</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/lift-via-the-newtonian-momentum-view.html"><span class="step-num">31</span><span class="step-title">Lift via the Newtonian / momentum view</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/streamline-curvature-and-the-normal-pressure-gradient.html"><span class="step-num">32</span><span class="step-title">Streamline curvature and the normal pressure gradient</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/lift-via-bernoulli-and-circulation.html"><span class="step-num">33</span><span class="step-title">Lift via Bernoulli and circulation</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/the-kutta-condition.html"><span class="step-num">34</span><span class="step-title">The Kutta condition</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/kelvin-s-theorem-and-the-starting-vortex.html"><span class="step-num">35</span><span class="step-title">Kelvin&#x27;s theorem and the starting vortex</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/the-kutta-joukowski-theorem.html"><span class="step-num">36</span><span class="step-title">The Kutta–Joukowski theorem</span><span class="step-tag">soon</span></a></li>
+          <li><a href="/theory/the-two-sources-of-aerodynamic-force.html"><span class="step-num">25</span><span class="step-title">The two sources of aerodynamic force</span></a></li>
+          <li><span class="row soon"><span class="step-num">26</span><span class="step-title">Net force as a surface integral</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/lift-drag-and-downforce.html"><span class="step-num">27</span><span class="step-title">Lift, drag and downforce</span></a></li>
+          <li><span class="row soon"><span class="step-num">28</span><span class="step-title">Force and moment coefficients</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">29</span><span class="step-title">The SAE aerodynamic axis system</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/equal-transit-theory-and-why-it-is-wrong.html"><span class="step-num">30</span><span class="step-title">Equal Transit Theory and why it is wrong</span></a></li>
+          <li><a href="/theory/lift-via-the-newtonian-momentum-view.html"><span class="step-num">31</span><span class="step-title">Lift via the Newtonian / momentum view</span></a></li>
+          <li><a href="/theory/streamline-curvature-and-the-normal-pressure-gradient.html"><span class="step-num">32</span><span class="step-title">Streamline curvature and the normal pressure gradient</span></a></li>
+          <li><a href="/theory/lift-via-bernoulli-and-circulation.html"><span class="step-num">33</span><span class="step-title">Lift via Bernoulli and circulation</span></a></li>
+          <li><a href="/theory/the-kutta-condition.html"><span class="step-num">34</span><span class="step-title">The Kutta condition</span></a></li>
+          <li><a href="/theory/kelvin-s-theorem-and-the-starting-vortex.html"><span class="step-num">35</span><span class="step-title">Kelvin&#x27;s theorem and the starting vortex</span></a></li>
+          <li><span class="row soon"><span class="step-num">36</span><span class="step-title">The Kutta–Joukowski theorem</span><span class="step-tag">soon</span></span></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">4</div>
         <p class="stage-title">The boundary layer and drag</p>
         <ul class="stage-steps">
-          <li><a class="" href="/theory/the-boundary-layer-no-slip-structure-and-growth.html"><span class="step-num">37</span><span class="step-title">The boundary layer: no-slip, structure and growth</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/laminar-to-turbulent-transition.html"><span class="step-num">38</span><span class="step-title">Laminar to turbulent transition</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/displacement-and-momentum-thickness.html"><span class="step-num">39</span><span class="step-title">Displacement and momentum thickness</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/boundary-layers-under-pressure-gradients.html"><span class="step-num">40</span><span class="step-title">Boundary layers under pressure gradients</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/flow-separation.html"><span class="step-num">41</span><span class="step-title">Flow separation</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/skin-friction-drag.html"><span class="step-num">42</span><span class="step-title">Skin-friction drag</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/pressure-form-drag.html"><span class="step-num">43</span><span class="step-title">Pressure (form) drag</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/induced-drag-and-wingtip-vortices.html"><span class="step-num">44</span><span class="step-title">Induced drag and wingtip vortices</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/bluff-body-drag-and-the-wake.html"><span class="step-num">45</span><span class="step-title">Bluff-body drag and the wake</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/vortex-shedding-the-k-rm-n-street-and-the-strouhal-number.html"><span class="step-num">46</span><span class="step-title">Vortex shedding, the Kármán street and the Strouhal number</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/total-drag-breakdown-and-the-drag-coefficient.html"><span class="step-num">47</span><span class="step-title">Total drag breakdown and the drag coefficient</span><span class="step-tag ready">notes</span></a></li>
+          <li><a href="/theory/the-boundary-layer-no-slip-structure-and-growth.html"><span class="step-num">37</span><span class="step-title">The boundary layer: no-slip, structure and growth</span></a></li>
+          <li><a href="/theory/laminar-to-turbulent-transition.html"><span class="step-num">38</span><span class="step-title">Laminar to turbulent transition</span></a></li>
+          <li><span class="row soon"><span class="step-num">39</span><span class="step-title">Displacement and momentum thickness</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/boundary-layers-under-pressure-gradients.html"><span class="step-num">40</span><span class="step-title">Boundary layers under pressure gradients</span></a></li>
+          <li><a href="/theory/flow-separation.html"><span class="step-num">41</span><span class="step-title">Flow separation</span></a></li>
+          <li><a href="/theory/skin-friction-drag.html"><span class="step-num">42</span><span class="step-title">Skin-friction drag</span></a></li>
+          <li><a href="/theory/pressure-form-drag.html"><span class="step-num">43</span><span class="step-title">Pressure (form) drag</span></a></li>
+          <li><a href="/theory/induced-drag-and-wingtip-vortices.html"><span class="step-num">44</span><span class="step-title">Induced drag and wingtip vortices</span></a></li>
+          <li><a href="/theory/bluff-body-drag-and-the-wake.html"><span class="step-num">45</span><span class="step-title">Bluff-body drag and the wake</span></a></li>
+          <li><a href="/theory/vortex-shedding-the-k-rm-n-street-and-the-strouhal-number.html"><span class="step-num">46</span><span class="step-title">Vortex shedding, the Kármán street and the Strouhal number</span></a></li>
+          <li><a href="/theory/total-drag-breakdown-and-the-drag-coefficient.html"><span class="step-num">47</span><span class="step-title">Total drag breakdown and the drag coefficient</span></a></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">5</div>
         <p class="stage-title">Airfoils and wings</p>
         <ul class="stage-steps">
-          <li><a class="soon" href="/theory/airfoil-geometry-and-nomenclature.html"><span class="step-num">48</span><span class="step-title">Airfoil geometry and nomenclature</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/the-airfoil-polar.html"><span class="step-num">49</span><span class="step-title">The airfoil polar</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/centre-of-pressure-and-aerodynamic-centre.html"><span class="step-num">50</span><span class="step-title">Centre of pressure and aerodynamic centre</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/finite-wings-aspect-ratio-and-lift-curve-slope.html"><span class="step-num">51</span><span class="step-title">Finite wings, aspect ratio and lift-curve slope</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/spanwise-loading-and-the-elliptic-ideal.html"><span class="step-num">52</span><span class="step-title">Spanwise loading and the elliptic ideal</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/wing-sections-of-interest-for-racing.html"><span class="step-num">53</span><span class="step-title">Wing sections of interest for racing</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/basic-lifting-surface-interactions.html"><span class="step-num">54</span><span class="step-title">Basic lifting-surface interactions</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/wing-sections-with-special-load-distributions.html"><span class="step-num">55</span><span class="step-title">Wing sections with special load distributions</span><span class="step-tag">soon</span></a></li>
+          <li><span class="row soon"><span class="step-num">48</span><span class="step-title">Airfoil geometry and nomenclature</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/the-airfoil-polar.html"><span class="step-num">49</span><span class="step-title">The airfoil polar</span></a></li>
+          <li><span class="row soon"><span class="step-num">50</span><span class="step-title">Centre of pressure and aerodynamic centre</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/finite-wings-aspect-ratio-and-lift-curve-slope.html"><span class="step-num">51</span><span class="step-title">Finite wings, aspect ratio and lift-curve slope</span></a></li>
+          <li><span class="row soon"><span class="step-num">52</span><span class="step-title">Spanwise loading and the elliptic ideal</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">53</span><span class="step-title">Wing sections of interest for racing</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">54</span><span class="step-title">Basic lifting-surface interactions</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">55</span><span class="step-title">Wing sections with special load distributions</span><span class="step-tag">soon</span></span></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">6</div>
         <p class="stage-title">Potential flow and analytical methods</p>
         <ul class="stage-steps">
-          <li><a class="" href="/theory/potential-flow-laplace-s-equation-and-irrotationality.html"><span class="step-num">56</span><span class="step-title">Potential flow, Laplace&#x27;s equation and irrotationality</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/elementary-solutions-source-sink-vortex-doublet.html"><span class="step-num">57</span><span class="step-title">Elementary solutions: source, sink, vortex, doublet</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/superposition-of-elementary-flows.html"><span class="step-num">58</span><span class="step-title">Superposition of elementary flows</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/the-method-of-images.html"><span class="step-num">59</span><span class="step-title">The method of images</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/the-milne-thomson-circle-theorem.html"><span class="step-num">60</span><span class="step-title">The Milne-Thomson circle theorem</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/the-source-panel-method.html"><span class="step-num">61</span><span class="step-title">The source panel method</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/flow-over-a-cylinder-ideal-vs-real.html"><span class="step-num">62</span><span class="step-title">Flow over a cylinder: ideal vs real</span><span class="step-tag ready">notes</span></a></li>
+          <li><a href="/theory/potential-flow-laplace-s-equation-and-irrotationality.html"><span class="step-num">56</span><span class="step-title">Potential flow, Laplace&#x27;s equation and irrotationality</span></a></li>
+          <li><span class="row soon"><span class="step-num">57</span><span class="step-title">Elementary solutions: source, sink, vortex, doublet</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/superposition-of-elementary-flows.html"><span class="step-num">58</span><span class="step-title">Superposition of elementary flows</span></a></li>
+          <li><a href="/theory/the-method-of-images.html"><span class="step-num">59</span><span class="step-title">The method of images</span></a></li>
+          <li><a href="/theory/the-milne-thomson-circle-theorem.html"><span class="step-num">60</span><span class="step-title">The Milne-Thomson circle theorem</span></a></li>
+          <li><a href="/theory/the-source-panel-method.html"><span class="step-num">61</span><span class="step-title">The source panel method</span></a></li>
+          <li><a href="/theory/flow-over-a-cylinder-ideal-vs-real.html"><span class="step-num">62</span><span class="step-title">Flow over a cylinder: ideal vs real</span></a></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">7</div>
         <p class="stage-title">Computational fluid dynamics</p>
         <ul class="stage-steps">
-          <li><a class="soon" href="/theory/what-cfd-is-its-role-vs-analysis-and-experiment.html"><span class="step-num">63</span><span class="step-title">What CFD is; its role vs analysis and experiment</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/reynolds-averaging-and-the-rans-equations.html"><span class="step-num">64</span><span class="step-title">Reynolds averaging and the RANS equations</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/the-reynolds-stress-tensor-and-the-closure-problem.html"><span class="step-num">65</span><span class="step-title">The Reynolds stress tensor and the closure problem</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/boussinesq-s-hypothesis-and-eddy-viscosity.html"><span class="step-num">66</span><span class="step-title">Boussinesq&#x27;s hypothesis and eddy viscosity</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/turbulence-model-families.html"><span class="step-num">67</span><span class="step-title">Turbulence model families</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/k-k-and-k-sst.html"><span class="step-num">68</span><span class="step-title">k-ε, k-ω and k-ω SST</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/the-law-of-the-wall-y-and-u.html"><span class="step-num">69</span><span class="step-title">The law of the wall; y+ and u+</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/wall-resolved-meshes-vs-wall-functions.html"><span class="step-num">70</span><span class="step-title">Wall-resolved meshes vs wall functions</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/the-finite-volume-method.html"><span class="step-num">71</span><span class="step-title">The finite-volume method</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/discretisation-schemes-and-numerical-diffusion.html"><span class="step-num">72</span><span class="step-title">Discretisation schemes and numerical diffusion</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/finite-difference-schemes-von-neumann-stability-and-the-courant-number.html"><span class="step-num">73</span><span class="step-title">Finite-difference schemes, Von Neumann stability and the Courant number</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/mesh-types-and-quality-metrics.html"><span class="step-num">74</span><span class="step-title">Mesh types and quality metrics</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/boundary-conditions-in-cfd.html"><span class="step-num">75</span><span class="step-title">Boundary conditions in CFD</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/convergence-and-residuals.html"><span class="step-num">76</span><span class="step-title">Convergence and residuals</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/mesh-independence-and-the-grid-convergence-index.html"><span class="step-num">77</span><span class="step-title">Mesh independence and the grid convergence index</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/verification-and-validation.html"><span class="step-num">78</span><span class="step-title">Verification and validation</span><span class="step-tag">soon</span></a></li>
+          <li><span class="row soon"><span class="step-num">63</span><span class="step-title">What CFD is; its role vs analysis and experiment</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/reynolds-averaging-and-the-rans-equations.html"><span class="step-num">64</span><span class="step-title">Reynolds averaging and the RANS equations</span></a></li>
+          <li><a href="/theory/the-reynolds-stress-tensor-and-the-closure-problem.html"><span class="step-num">65</span><span class="step-title">The Reynolds stress tensor and the closure problem</span></a></li>
+          <li><a href="/theory/boussinesq-s-hypothesis-and-eddy-viscosity.html"><span class="step-num">66</span><span class="step-title">Boussinesq&#x27;s hypothesis and eddy viscosity</span></a></li>
+          <li><a href="/theory/turbulence-model-families.html"><span class="step-num">67</span><span class="step-title">Turbulence model families</span></a></li>
+          <li><a href="/theory/k-k-and-k-sst.html"><span class="step-num">68</span><span class="step-title">k-ε, k-ω and k-ω SST</span></a></li>
+          <li><a href="/theory/the-law-of-the-wall-y-and-u.html"><span class="step-num">69</span><span class="step-title">The law of the wall; y+ and u+</span></a></li>
+          <li><a href="/theory/wall-resolved-meshes-vs-wall-functions.html"><span class="step-num">70</span><span class="step-title">Wall-resolved meshes vs wall functions</span></a></li>
+          <li><a href="/theory/the-finite-volume-method.html"><span class="step-num">71</span><span class="step-title">The finite-volume method</span></a></li>
+          <li><a href="/theory/discretisation-schemes-and-numerical-diffusion.html"><span class="step-num">72</span><span class="step-title">Discretisation schemes and numerical diffusion</span></a></li>
+          <li><a href="/theory/finite-difference-schemes-von-neumann-stability-and-the-courant-number.html"><span class="step-num">73</span><span class="step-title">Finite-difference schemes, Von Neumann stability and the Courant number</span></a></li>
+          <li><a href="/theory/mesh-types-and-quality-metrics.html"><span class="step-num">74</span><span class="step-title">Mesh types and quality metrics</span></a></li>
+          <li><span class="row soon"><span class="step-num">75</span><span class="step-title">Boundary conditions in CFD</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">76</span><span class="step-title">Convergence and residuals</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">77</span><span class="step-title">Mesh independence and the grid convergence index</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">78</span><span class="step-title">Verification and validation</span><span class="step-tag">soon</span></span></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">8</div>
         <p class="stage-title">Experimental methods</p>
         <ul class="stage-steps">
-          <li><a class="soon" href="/theory/wind-tunnels-types-and-layout.html"><span class="step-num">79</span><span class="step-title">Wind tunnels: types and layout</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/dynamic-similarity-and-reynolds-matching.html"><span class="step-num">80</span><span class="step-title">Dynamic similarity and Reynolds matching</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/blockage-and-wall-interference.html"><span class="step-num">81</span><span class="step-title">Blockage and wall interference</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/moving-ground-and-rolling-road.html"><span class="step-num">82</span><span class="step-title">Moving ground and rolling road</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/tripping-the-boundary-layer.html"><span class="step-num">83</span><span class="step-title">Tripping the boundary layer</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/flow-visualisation.html"><span class="step-num">84</span><span class="step-title">Flow visualisation</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/pressure-measurement-taps-and-rakes.html"><span class="step-num">85</span><span class="step-title">Pressure measurement: taps and rakes</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/hot-wire-anemometry.html"><span class="step-num">86</span><span class="step-title">Hot-wire anemometry</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/particle-image-velocimetry.html"><span class="step-num">87</span><span class="step-title">Particle image velocimetry</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/force-balances.html"><span class="step-num">88</span><span class="step-title">Force balances</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/road-and-track-testing.html"><span class="step-num">89</span><span class="step-title">Road and track testing</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/commercially-available-full-scale-tunnels.html"><span class="step-num">90</span><span class="step-title">Commercially available full-scale tunnels</span><span class="step-tag">soon</span></a></li>
+          <li><span class="row soon"><span class="step-num">79</span><span class="step-title">Wind tunnels: types and layout</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/dynamic-similarity-and-reynolds-matching.html"><span class="step-num">80</span><span class="step-title">Dynamic similarity and Reynolds matching</span></a></li>
+          <li><a href="/theory/blockage-and-wall-interference.html"><span class="step-num">81</span><span class="step-title">Blockage and wall interference</span></a></li>
+          <li><span class="row soon"><span class="step-num">82</span><span class="step-title">Moving ground and rolling road</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/tripping-the-boundary-layer.html"><span class="step-num">83</span><span class="step-title">Tripping the boundary layer</span></a></li>
+          <li><span class="row soon"><span class="step-num">84</span><span class="step-title">Flow visualisation</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">85</span><span class="step-title">Pressure measurement: taps and rakes</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">86</span><span class="step-title">Hot-wire anemometry</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">87</span><span class="step-title">Particle image velocimetry</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">88</span><span class="step-title">Force balances</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">89</span><span class="step-title">Road and track testing</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">90</span><span class="step-title">Commercially available full-scale tunnels</span><span class="step-tag">soon</span></span></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">9</div>
         <p class="stage-title">Applied motorsport aerodynamics</p>
         <ul class="stage-steps">
-          <li><a class="soon" href="/theory/aerodynamics-in-motorsport-an-overview.html"><span class="step-num">91</span><span class="step-title">Aerodynamics in motorsport: an overview</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/aerodynamic-elements-of-the-car.html"><span class="step-num">92</span><span class="step-title">Aerodynamic elements of the car</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/aerodynamics-influence-on-performance.html"><span class="step-num">93</span><span class="step-title">Aerodynamics&#x27; influence on performance</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/historical-background-of-race-car-aerodynamics.html"><span class="step-num">94</span><span class="step-title">Historical background of race-car aerodynamics</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/airdams-splitters-and-spoilers.html"><span class="step-num">95</span><span class="step-title">Airdams, splitters and spoilers</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/inverted-wings-in-motorsport.html"><span class="step-num">96</span><span class="step-title">Inverted wings in motorsport</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/multi-element-wings-and-slots.html"><span class="step-num">97</span><span class="step-title">Multi-element wings and slots</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/flaps-and-their-derivatives.html"><span class="step-num">98</span><span class="step-title">Flaps and their derivatives</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/isolated-vs-car-mounted-wings.html"><span class="step-num">99</span><span class="step-title">Isolated vs car-mounted wings</span><span class="step-tag">soon</span></a></li>
-          <li><a class="" href="/theory/ground-effect-with-skirts.html"><span class="step-num">100</span><span class="step-title">Ground effect with skirts</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="soon" href="/theory/ground-effect-without-skirts.html"><span class="step-num">101</span><span class="step-title">Ground effect without skirts</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/sliding-seals-and-skirts.html"><span class="step-num">102</span><span class="step-title">Sliding seals and skirts</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/endplates.html"><span class="step-num">103</span><span class="step-title">Endplates</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/gurney-flaps-and-wickers.html"><span class="step-num">104</span><span class="step-title">Gurney flaps and wickers</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/vortex-generators-and-flow-conditioning.html"><span class="step-num">105</span><span class="step-title">Vortex generators and flow conditioning</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/wheel-aerodynamics.html"><span class="step-num">106</span><span class="step-title">Wheel aerodynamics</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/the-magnus-effect-with-open-wheels.html"><span class="step-num">107</span><span class="step-title">The Magnus effect with open wheels</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/underbody-and-venturi-channels.html"><span class="step-num">108</span><span class="step-title">Underbody and Venturi channels</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/diffusers.html"><span class="step-num">109</span><span class="step-title">Diffusers</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/internal-flow-radiators-ducts-and-cooling.html"><span class="step-num">110</span><span class="step-title">Internal flow: radiators, ducts and cooling</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/miscellaneous-devices.html"><span class="step-num">111</span><span class="step-title">Miscellaneous devices</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/flat-plate-aerodynamics.html"><span class="step-num">112</span><span class="step-title">Flat-plate aerodynamics</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/profiles-for-ground-effect.html"><span class="step-num">113</span><span class="step-title">Profiles for ground effect</span><span class="step-tag">soon</span></a></li>
+          <li><span class="row soon"><span class="step-num">91</span><span class="step-title">Aerodynamics in motorsport: an overview</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">92</span><span class="step-title">Aerodynamic elements of the car</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">93</span><span class="step-title">Aerodynamics&#x27; influence on performance</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">94</span><span class="step-title">Historical background of race-car aerodynamics</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">95</span><span class="step-title">Airdams, splitters and spoilers</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/inverted-wings-in-motorsport.html"><span class="step-num">96</span><span class="step-title">Inverted wings in motorsport</span></a></li>
+          <li><a href="/theory/multi-element-wings-and-slots.html"><span class="step-num">97</span><span class="step-title">Multi-element wings and slots</span></a></li>
+          <li><span class="row soon"><span class="step-num">98</span><span class="step-title">Flaps and their derivatives</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">99</span><span class="step-title">Isolated vs car-mounted wings</span><span class="step-tag">soon</span></span></li>
+          <li><a href="/theory/ground-effect-with-skirts.html"><span class="step-num">100</span><span class="step-title">Ground effect with skirts</span></a></li>
+          <li><span class="row soon"><span class="step-num">101</span><span class="step-title">Ground effect without skirts</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">102</span><span class="step-title">Sliding seals and skirts</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">103</span><span class="step-title">Endplates</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">104</span><span class="step-title">Gurney flaps and wickers</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">105</span><span class="step-title">Vortex generators and flow conditioning</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">106</span><span class="step-title">Wheel aerodynamics</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">107</span><span class="step-title">The Magnus effect with open wheels</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">108</span><span class="step-title">Underbody and Venturi channels</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">109</span><span class="step-title">Diffusers</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">110</span><span class="step-title">Internal flow: radiators, ducts and cooling</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">111</span><span class="step-title">Miscellaneous devices</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">112</span><span class="step-title">Flat-plate aerodynamics</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">113</span><span class="step-title">Profiles for ground effect</span><span class="step-tag">soon</span></span></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">10</div>
         <p class="stage-title">Vehicle integration</p>
         <ul class="stage-steps">
-          <li><a class="soon" href="/theory/the-aeromap.html"><span class="step-num">114</span><span class="step-title">The aeromap</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/aerodynamic-balance-and-centre-of-pressure.html"><span class="step-num">115</span><span class="step-title">Aerodynamic balance and centre of pressure</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/aerodynamic-effect-on-performance-and-lap-time.html"><span class="step-num">116</span><span class="step-title">Aerodynamic effect on performance and lap time</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/tyre-load-sensitivity-why-downforce-pays.html"><span class="step-num">117</span><span class="step-title">Tyre-load sensitivity: why downforce pays</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/aerodynamics-and-vehicle-dynamics-coupling.html"><span class="step-num">118</span><span class="step-title">Aerodynamics and vehicle dynamics coupling</span><span class="step-tag">soon</span></a></li>
-          <li><a class="soon" href="/theory/drag-coefficients-reference-and-case-studies.html"><span class="step-num">119</span><span class="step-title">Drag coefficients reference and case studies</span><span class="step-tag">soon</span></a></li>
+          <li><span class="row soon"><span class="step-num">114</span><span class="step-title">The aeromap</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">115</span><span class="step-title">Aerodynamic balance and centre of pressure</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">116</span><span class="step-title">Aerodynamic effect on performance and lap time</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">117</span><span class="step-title">Tyre-load sensitivity: why downforce pays</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">118</span><span class="step-title">Aerodynamics and vehicle dynamics coupling</span><span class="step-tag">soon</span></span></li>
+          <li><span class="row soon"><span class="step-num">119</span><span class="step-title">Drag coefficients reference and case studies</span><span class="step-tag">soon</span></span></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">11</div>
         <p class="stage-title">Aeroelasticity</p>
         <ul class="stage-steps">
-          <li><a class="" href="/theory/aeroelastic-coupling-static-vs-dynamic.html"><span class="step-num">120</span><span class="step-title">Aeroelastic coupling: static vs dynamic</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/divergence-of-a-wing-section-and-the-divergence-speed.html"><span class="step-num">121</span><span class="step-title">Divergence of a wing section and the divergence speed</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/the-elastic-axis-and-aerodynamic-centre-relationship.html"><span class="step-num">122</span><span class="step-title">The elastic-axis and aerodynamic-centre relationship</span><span class="step-tag ready">notes</span></a></li>
+          <li><a href="/theory/aeroelastic-coupling-static-vs-dynamic.html"><span class="step-num">120</span><span class="step-title">Aeroelastic coupling: static vs dynamic</span></a></li>
+          <li><a href="/theory/divergence-of-a-wing-section-and-the-divergence-speed.html"><span class="step-num">121</span><span class="step-title">Divergence of a wing section and the divergence speed</span></a></li>
+          <li><a href="/theory/the-elastic-axis-and-aerodynamic-centre-relationship.html"><span class="step-num">122</span><span class="step-title">The elastic-axis and aerodynamic-centre relationship</span></a></li>
         </ul>
       </div>
       <div class="stage">
         <div class="stage-dot">12</div>
         <p class="stage-title">Design and optimization methods</p>
         <ul class="stage-steps">
-          <li><a class="" href="/theory/design-of-experiments.html"><span class="step-num">123</span><span class="step-title">Design of Experiments</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/latin-hypercube-sampling.html"><span class="step-num">124</span><span class="step-title">Latin Hypercube Sampling</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/surrogate-models-and-gaussian-processes.html"><span class="step-num">125</span><span class="step-title">Surrogate models and Gaussian processes</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/bayesian-optimization-and-acquisition-functions.html"><span class="step-num">126</span><span class="step-title">Bayesian optimization and acquisition functions</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/active-learning.html"><span class="step-num">127</span><span class="step-title">Active learning</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/genetic-algorithms.html"><span class="step-num">128</span><span class="step-title">Genetic algorithms</span><span class="step-tag ready">notes</span></a></li>
-          <li><a class="" href="/theory/multi-objective-optimization-pareto-fronts-and-nsga-ii.html"><span class="step-num">129</span><span class="step-title">Multi-objective optimization, Pareto fronts and NSGA-II</span><span class="step-tag ready">notes</span></a></li>
+          <li><a href="/theory/design-of-experiments.html"><span class="step-num">123</span><span class="step-title">Design of Experiments</span></a></li>
+          <li><a href="/theory/latin-hypercube-sampling.html"><span class="step-num">124</span><span class="step-title">Latin Hypercube Sampling</span></a></li>
+          <li><a href="/theory/surrogate-models-and-gaussian-processes.html"><span class="step-num">125</span><span class="step-title">Surrogate models and Gaussian processes</span></a></li>
+          <li><a href="/theory/bayesian-optimization-and-acquisition-functions.html"><span class="step-num">126</span><span class="step-title">Bayesian optimization and acquisition functions</span></a></li>
+          <li><a href="/theory/active-learning.html"><span class="step-num">127</span><span class="step-title">Active learning</span></a></li>
+          <li><a href="/theory/genetic-algorithms.html"><span class="step-num">128</span><span class="step-title">Genetic algorithms</span></a></li>
+          <li><a href="/theory/multi-objective-optimization-pareto-fronts-and-nsga-ii.html"><span class="step-num">129</span><span class="step-title">Multi-objective optimization, Pareto fronts and NSGA-II</span></a></li>
         </ul>
       </div>
       </div>
