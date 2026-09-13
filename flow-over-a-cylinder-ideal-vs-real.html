@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flow over a cylinder: ideal vs real — Kármán Street</title>
+  <meta name="description" content="Flow over a cylinder: ideal vs real">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Flow over a cylinder: ideal vs real</h1>
+        <p class="article-meta">Theory · sources: A · thesis</p>
+
+        <p>A streamlined body carries the flow gently to its trailing edge. A bluff body cannot, and the flow separates, leaving a wide low-pressure wake behind it. That wake is where most of a bluff body's drag comes from, and the circular cylinder is the canonical case for studying it.</p>
+        <h2>Ideal theory versus what is measured</h2>
+        <p>Potential flow theory predicts that the flow around a cylinder stays attached all the way around, with separation nominally at θ = 90°, and — famously — predicts zero drag altogether. Reality is different. In the experimental study, reconstructing the pressure coefficient distribution from wind-tunnel measurements at Re = 10⁴–3×10⁴ and comparing against potential flow theory made the deviations obvious: viscous effects and wake formation dominate the rear half of the cylinder.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Pressure coefficient angular distribution for several freestream velocities<code>/assets/img/theory/cylinder-cp-theta.png</code></div>
+          <figcaption>Fig. 1 — θ vs. C<sub>p</sub> for experimental data at different freestream velocities.</figcaption>
+        </figure>
+        <h2>Separation and its cost</h2>
+        <p>Applying Thwaites' method to estimate boundary layer separation put it at around θ = 64° for the experimental data, against θ = 90° for the ideal inviscid case. That earlier detachment is a direct consequence of real viscous and surface effects, and it is what sets the size of the wake.</p>
+        <p>Numerically integrating the measured pressure distributions gives drag coefficients in the range C<sub>D</sub> = 1.18–2.85 and the corresponding drag forces, in strong agreement with literature trends and showing the expected quadratic dependence of drag on freestream velocity.</p>
+        <div class="note">The chain is worth stating plainly: earlier separation → wider wake → lower base pressure → higher pressure drag. Everything done to a bluff body to reduce its drag is, one way or another, an attempt to delay that separation point.</div>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/the-source-panel-method.html">‹ The source panel method</a><a href="/theory/what-cfd-is-its-role-vs-analysis-and-experiment.html" style="margin-left:auto;text-align:right;">What CFD is; its role vs analysis and experiment ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 62 of 129</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

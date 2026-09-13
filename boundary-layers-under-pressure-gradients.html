@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boundary layers under pressure gradients — Kármán Street</title>
+  <meta name="description" content="Boundary layers under pressure gradients">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Boundary layers under pressure gradients</h1>
+        <p class="article-meta">Theory · sources: A · thesis</p>
+
+        <p>A boundary layer never develops in isolation. The pressure imposed by the outer flow shapes it continuously, and whether that pressure is falling or rising along the surface is what separates attached flow from separated flow.</p>
+        <h2>Favorable and adverse</h2>
+        <p>Neglecting viscosity and gravity in the outer airflow, the momentum equation reduces to Dv/Dt = −∇p/ρ, which says plainly that <strong>favorable pressure gradients accelerate the flow, whereas adverse pressure gradients decelerate it</strong>. Inside the boundary layer, where the fluid already has reduced momentum, that deceleration is far more consequential than it is outside.</p>
+        <p>Under a favorable gradient the layer is thinned and energised and stays firmly attached. Under an adverse gradient it thickens, the near-wall flow decelerates, and if the gradient is strong enough the flow first stagnates and then reverses — separation.</p>
+        <h2>What a numerical study shows</h2>
+        <p>Simulating a flat-plate boundary layer under favorable, zero and adverse gradients with finite differences reproduces this behaviour directly. The governing equations are reformulated and discretized with a marching scheme in the streamwise direction, combining backward differences in x with centered schemes in y and iterative relaxation to resolve the nonlinear terms.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Boundary layer thickness versus streamwise position for β = 0 and β = 0.03<code>/assets/img/theory/bl-thickness-vs-x.png</code></div>
+          <figcaption>Fig. 1 — Boundary layer thickness δ vs. x, showing thickening under zero gradient and thinning under a favorable one.</figcaption>
+        </figure>
+        <p>The model captures the expected phenomena: the velocity profile evolution, the growth of the boundary layer thickness (δ at 99%), and the wall shear stress through the friction coefficient C<sub>f</sub>. Analysing the u and v velocity fields also confirms mass conservation through the development of the vertical velocity component.</p>
+        <figure class="fig-ph">
+          <div class="fig-box">Velocity profiles u and v at several streamwise stations<code>/assets/img/theory/bl-velocity-profiles.png</code></div>
+          <figcaption>Fig. 2 — u and v versus y at different x for β = 0.</figcaption>
+        </figure>
+        <h2>Where the model breaks</h2>
+        <p>The most instructive result is the failure case. Under a sufficiently strong adverse gradient, flow separation causes the breakdown of the parabolic formulation itself. The marching scheme assumes information travels only downstream, and once the flow reverses that assumption is violated. Capturing separated flow requires an elliptic treatment.</p>
+        <p>This is a compact lesson in why separation is the point where the simple models stop working, and why the CFD used for loaded, multi-element geometries has to solve the full equations rather than a boundary-layer approximation.</p>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/displacement-and-momentum-thickness.html">‹ Displacement and momentum thickness</a><a href="/theory/flow-separation.html" style="margin-left:auto;text-align:right;">Flow separation ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 40 of 129</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

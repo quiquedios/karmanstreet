@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reynolds averaging and the RANS equations — Kármán Street</title>
+  <meta name="description" content="Reynolds averaging and the RANS equations">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/"><svg width="60" height="34" viewBox="0 0 120 68" aria-hidden="true">
+          <g stroke="#c9c3b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9">
+            <path d="M2 14 H40"/><path d="M2 54 H40"/>
+            <path d="M2 26 C 20 26, 26 20, 34 26"/><path d="M2 42 C 20 42, 26 48, 34 42"/>
+          </g>
+          <circle cx="26" cy="34" r="11" fill="#1a2733"/>
+          <g fill="none" stroke-width="4.2" stroke-linecap="round">
+            <path d="M44 28 q9 -11 18 0" stroke="#2e6f8e"/><path d="M68 25 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M92 22 q9 -11 18 0" stroke="#2e6f8e"/>
+            <path d="M56 40 q9 11 18 0" stroke="#c25b3a"/><path d="M80 43 q9 11 18 0" stroke="#c25b3a"/>
+            <path d="M104 46 q9 11 18 0" stroke="#c25b3a"/>
+          </g>
+        </svg>
+        Kármán&nbsp;Street
+      </a>
+      <nav class="nav"><a href="/">Home</a><a href="/theory/" aria-current="page">Theory</a><a href="/projects/">Projects</a><a href="/papers/">Papers</a><a href="/literature/">Literature Review</a><a href="/about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back" href="/theory/">← Theory roadmap</a>
+      <article>
+        <h1 class="page-title">Reynolds averaging and the RANS equations</h1>
+        <p class="article-meta">Theory · sources: B · thesis</p>
+
+        <p>Computational Fluid Dynamics is the numerical resolution of the equations that govern fluid motion. Since the aerodynamic forces on a geometry as complex as a multi-element front wing cannot be obtained analytically, CFD is the tool used to quantify downforce and drag for every candidate design.</p>
+        <h2>The governing equations</h2>
+        <p>The governing set are the Navier–Stokes equations, expressing conservation of mass and momentum for a viscous fluid. For the incompressible regime found in motorsport (M &lt; 0.3) they read:</p>
+        <div class="eq">∇·u = 0<br>ρ ( ∂u/∂t + (u·∇)u ) = −∇p + µ∇²u</div>
+        <p>A direct resolution of these equations resolving every turbulent scale — Direct Numerical Simulation — is computationally prohibitive for an F1 wing at realistic Reynolds numbers with any reasonable development pace. Instead, the equations are time-averaged.</p>
+        <h2>Reynolds decomposition</h2>
+        <p>The idea, first introduced by Reynolds, is to decompose every instantaneous flow quantity into a mean and a fluctuating part:</p>
+        <div class="eq">u<sub>i</sub> = ū<sub>i</sub> + u′<sub>i</sub>  ,  p = p̄ + p′</div>
+        <p>where the overbar denotes the time-averaged component and the prime the turbulent fluctuation about that mean. By definition the time average of a fluctuation is zero, but <strong>the average of a product of two fluctuations is not</strong> — a subtlety that turns out to be the crux of the whole method.</p>
+        <p>Substituting this decomposition into the continuity and momentum equations and averaging over time yields the RANS equations. Continuity retains its form for the mean field. The momentum equation is almost identical to the original, but with one crucial addition: a term −ρ u′<sub>i</sub>u′<sub>j</sub>, which arises purely from averaging the non-linear convective term.</p>
+        <h2>The Reynolds stress tensor and the closure problem</h2>
+        <p>That term is the <strong>Reynolds stress tensor</strong>, a symmetric second-order tensor representing the mean momentum transport caused by turbulent fluctuations. Its three diagonal components are normal stresses and its six off-diagonal components shear stresses; symmetry reduces the nine components to six independent unknowns.</p>
+        <p>Physically, it accounts for the fact that turbulent eddies continuously exchange momentum between adjacent layers of fluid — an effect entirely absent from the mean-field description, but one that dominates the behaviour of the flow.</p>
+        <p>The appearance of these six new unknowns without any additional equations to determine them is the <strong>closure problem</strong> of turbulence. The averaging procedure has introduced more unknowns than equations, so the system cannot be solved as it stands. Bridging that gap is precisely the role of a turbulence model, which supplies the missing relations between the Reynolds stresses and the mean flow — at the cost of introducing empirical values.</p>
+        <nav class="prevnext" style="display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.2rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;">
+          <a href="/theory/what-cfd-is-its-role-vs-analysis-and-experiment.html">‹ What CFD is; its role vs analysis and experiment</a><a href="/theory/the-reynolds-stress-tensor-and-the-closure-problem.html" style="margin-left:auto;text-align:right;">The Reynolds stress tensor and the closure problem ›</a>
+        </nav>
+        <p style="margin-top:1rem;"><a class="back" href="/theory/">↑ Theory roadmap · 64 of 129</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span>© 2026 Enrique Dios Lázaro</span>
+      <span><a href="mailto:enriquedioslazaro@gmail.com">enriquedioslazaro@gmail.com</a> · <a href="https://www.linkedin.com/in/enriquedios/">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>
