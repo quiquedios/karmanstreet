@@ -10,6 +10,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 </head>
 <body>
   <header class="masthead">
@@ -43,7 +47,7 @@
         <p>Each evaluation of a design — in the thesis, a pair of CFD cases, one for C<sub>L</sub> in the cornering mode and one for C<sub>D</sub> in the straight-line mode — is far too costly to call repeatedly inside an optimizer. A <strong>surrogate model</strong> avoids this: it is a cheap-to-evaluate function fitted to the available data that approximates the true input-output relationship and replaces the simulation during the search. The optimizer can then call the surrogate thousands of times at negligible cost, while the expensive CFD evaluations are reserved exclusively for training it.</p>
         <h2>Gaussian processes</h2>
         <p>The surrogate adopted is a <strong>Gaussian Process</strong>, also known as Kriging. Unlike a model that returns a single predicted value, a GP returns at every unseen input a full predictive distribution with a mean µ(x) and a variance σ²(x):</p>
-        <div class="eq">µ(x*) = k*ᵀ K⁻¹ y  ,  σ²(x*) = k(x*,x*) − k*ᵀ K⁻¹ k*</div>
+        <div class="eq">$$\mu(x_*) = k_*^{\top} K^{-1} y, \qquad \sigma^2(x_*) = k(x_*,x_*) - k_*^{\top} K^{-1} k_*$$</div>
         <p>Despite their appearance, these carry a simple meaning. The predicted mean is nothing more than a weighted average of the observed responses, where the weights give most influence to the training points whose inputs are closest to x*. The prediction is therefore dominated by nearby data and barely affected by distant data, exactly the behaviour expected of a smooth interpolator.</p>
         <p>The variance has an equally intuitive reading: it starts from the prior uncertainty and subtracts a term representing how much the training data constrains the value at x*. When x* lies close to observed points that subtracted term is large and the variance collapses toward zero; when x* lies far from all data it vanishes and the variance returns to its full prior value. This is precisely why the model is confident near the data and uncertain in the gaps.</p>
         <h2>The kernel, and what it reveals</h2>

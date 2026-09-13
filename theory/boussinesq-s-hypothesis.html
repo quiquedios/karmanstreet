@@ -10,6 +10,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 </head>
 <body>
   <header class="masthead">
@@ -43,7 +47,7 @@
         <p>Closing the RANS equations means supplying a relationship between the Reynolds stresses and the mean flow. The most widespread family of closures, and the one adopted in the thesis work, relies on the <strong>Boussinesq hypothesis</strong>.</p>
         <h2>Boussinesq&#x27;s hypothesis</h2>
         <p>The hypothesis postulates that the Reynolds stresses are proportional to the mean strain-rate tensor, in direct analogy to how viscous stresses relate to strain in a Newtonian fluid:</p>
-        <div class="eq">−ρ u′<sub>i</sub>u′<sub>j</sub> = µ<sub>t</sub> ( ∂ū<sub>i</sub>/∂x<sub>j</sub> + ∂ū<sub>j</sub>/∂x<sub>i</sub> ) − (2/3) ρ k δ<sub>ij</sub></div>
+        <div class="eq">$$-\rho\,\overline{u_i' u_j'} = \mu_t\left(\frac{\partial \bar{u}_i}{\partial x_j} + \frac{\partial \bar{u}_j}{\partial x_i}\right) - \frac{2}{3}\rho k\,\delta_{ij}$$</div>
         <p>where µ<sub>t</sub> is the turbulent or eddy viscosity, k the turbulent kinetic energy and δ<sub>ij</sub> the Kronecker delta.</p>
         <p>The reasoning behind the analogy is physical. In a laminar Newtonian fluid, molecular viscosity arises because the random thermal motion of molecules carries momentum between adjacent layers moving at different speeds, smearing out their velocity differences. Boussinesq's proposal is that turbulence does something qualitatively identical, only through a different medium: momentum is transported not by individual molecules but by turbulent eddies — packets of fluid that detach, travel across the mean flow and mix momentum between layers.</p>
         <p>The final isotropic term is required for consistency. Taking the trace of each side shows why: the trace of the Reynolds stress tensor equals −2ρk, a nonzero quantity, while the strain-rate tensor is traceless for incompressible flow. The −⅔ρkδ<sub>ij</sub> term restores the correct normal-stress content without affecting the shear components.</p>

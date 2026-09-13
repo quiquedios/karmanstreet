@@ -10,6 +10,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 </head>
 <body>
   <header class="masthead">
@@ -43,7 +47,7 @@
         <h2>Latin Hypercube Sampling</h2>
         <p>Latin Hypercube Sampling is the canonical choice. It partitions each of the n input dimensions into equal-probability intervals and draws exactly one sample per interval per dimension, guaranteeing that every variable is uniformly covered while the joint samples spread evenly across the space. It is the standard way to generate the initial training set that seeds a surrogate model.</p>
         <p>Concretely, the construction proceeds one dimension at a time. For a single design variable, its normalised range [0,1] is divided into N equal sub-intervals. Within each, a single point is drawn at random, so there is exactly one candidate value per interval. These N values are then shuffled into random order and handed out to the N samples, one each. Repeating this independently for every dimension, and pairing the k-th value of each dimension to form sample k, yields the full design.</p>
-        <div class="eq">x<sub>k</sub><sup>(j)</sup> = ( π<sub>j</sub>(k) − 1 + U<sub>k</sub><sup>(j)</sup> ) / N</div>
+        <div class="eq">$$x_k^{(j)} = \frac{\pi_j(k) - 1 + U_k^{(j)}}{N}$$</div>
         <p>where π<sub>j</sub>(k) is the interval assigned to sample k in dimension j — the outcome of the shuffle — and U<sub>k</sub><sup>(j)</sup> is an independent uniform random number that offsets the point within its interval so it does not sit exactly on the edge. Because the shuffle is drawn independently for each dimension, every interval of every variable is occupied exactly once while the pairing across dimensions is randomised, which is what produces the characteristic even spread.</p>
         <figure class="fig-ph">
           <div class="fig-box">Purely random sampling compared with Latin Hypercube Sampling<code>/assets/img/theory/lhs-vs-random.png</code></div>

@@ -10,6 +10,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 </head>
 <body>
   <header class="masthead">
@@ -45,7 +49,7 @@
         <h2>The Newtonian interpretation</h2>
         <p>The Newtonian interpretation is sometimes understood as a momentum exchange in which air molecules collide with the wing, producing an action-reaction pair. The idea of an action-reaction pair is not wrong per se, but thinking that the air is deflected exclusively through molecular collisions misses information about the flow. It raises the question of how the flow is deflected downwards in a continuous fluid.</p>
         <p>The tendency of the flow to follow the curvature of the airfoil is governed by pressure gradients in the outer flow and by boundary-layer dynamics near the wall. As the flow moves along a curved surface, a pressure gradient normal to the streamline is required to provide the centripetal acceleration necessary to bend the flow:</p>
-        <div class="eq">∂p/∂n = ρ V² / R</div>
+        <div class="eq">$$\frac{\partial p}{\partial n} = \frac{\rho V^2}{R}$$</div>
         <p>where R is the local radius of curvature of the streamlines. Without such a normal pressure gradient, the streamlines simply could not bend around the airfoil.</p>
         <p>Near the wall, viscosity gives rise to a boundary layer within which the flow has reduced momentum. Whether the flow stays attached therefore depends on the streamwise pressure gradient. Neglecting viscosity and gravity in the outer airflow, the momentum equation reduces to Dv/Dt = −∇p/ρ, which shows that favorable pressure gradients accelerate the flow whereas adverse pressure gradients decelerate it.</p>
         <p>Now, because of mass conservation, a fluid arbitrarily close to a solid, non-porous surface must have zero perpendicular velocity, as no mass moves in or out. The velocity must therefore be completely tangent, which leaves three possible scenarios:</p>
@@ -57,7 +61,7 @@
         <p>Under a favorable pressure gradient the boundary layer remains attached and the flow follows the surface curvature. Conversely, sufficiently strong adverse pressure gradients lead first to stagnation and then to separation. Flow attachment is therefore not the result of a distinct effect, but of the balance between pressure gradients and viscous effects within the boundary layer.</p>
         <h2>Momentum exchange through Navier–Stokes</h2>
         <p>At this point it is understood how a cambered wing can orient the flow downwards, but the process by which momentum is exchanged still needs addressing. Taking the integral form of the momentum equation, with negligible body forces and a steady problem, and noting that there is no flux across the solid wing, the force exerted by the wing on the flow is:</p>
-        <div class="eq">F<sub>W→F</sub> = ∫<sub>S</sub> −p n dS + ∫<sub>S</sub> τ · n dS</div>
+        <div class="eq">$$\vec{F}_{W\to F} = \int_S -p\,\vec{n}\, dS + \int_S \vec{\tau}\cdot\vec{n}\, dS$$</div>
         <p>This states that the force must be congruent with the boundary conditions of the flow, and that it must be the sum of a pressure and a (typically smaller) viscous contribution at the surface of the wing. It explains why, looking at the wake, the horizontal velocity is lower and there is a downward component — showing drag and lift respectively.</p>
         <figure class="fig-ph">
           <div class="fig-box">Action-reaction pair and wake of a lift-generating wing<code>/assets/img/theory/action-reaction-wake.png</code></div>

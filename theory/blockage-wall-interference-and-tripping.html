@@ -10,6 +10,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 </head>
 <body>
   <header class="masthead">
@@ -42,7 +46,7 @@
         <p>A wind tunnel provides the experimental counterpart to CFD, measuring the aerodynamic forces on a physical model placed in a controlled airstream. Its role is to provide an independent point of validation for numerical results — which only works if the model flow genuinely represents the full-scale flow.</p>
         <h2>Dynamic similarity</h2>
         <p>The theoretical basis of all wind-tunnel testing is <strong>dynamic similarity</strong>: a scaled model reproduces the full-scale flow faithfully only if the relevant non-dimensional groups are matched between the two. For incompressible aerodynamics the governing group is the Reynolds number:</p>
-        <div class="eq">Re = ρ U c / µ = U c / ν</div>
+        <div class="eq">$$Re = \frac{\rho U c}{\mu} = \frac{U c}{\nu}$$</div>
         <p>where c is a reference length, in this case the effective wing chord. Matching Reynolds number for the same fluid at incompressible regime requires U<sub>model</sub> c<sub>model</sub> = U<sub>real</sub> c<sub>real</sub>. Since a scaled model has a smaller chord, the tunnel speed would have to exceed the real speed to compensate — which, for the very high speeds of a racing car, is unattainable in a small tunnel.</p>
         <p>Full dynamic similarity is typically only attainable for F1 teams with tremendously large and fast wind tunnels, and even their models are usually at 60% scale. In the thesis work, a 32.4% scale model in a tunnel reaching 50 m/s reproduces real speeds close to 60 km/h, which in F1 corresponds to a slow corner. Because the Reynolds number differs from the modelled speed, correlation is not exactly held — a compromise forced by tight constraints, and one worth stating openly rather than hiding.</p>
         <h2>Blockage and wall proximity</h2>

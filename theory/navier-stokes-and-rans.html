@@ -10,6 +10,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 </head>
 <body>
   <header class="masthead">
@@ -43,11 +47,11 @@
         <p>Computational Fluid Dynamics is the numerical resolution of the equations that govern fluid motion. Since the aerodynamic forces on a geometry as complex as a multi-element front wing cannot be obtained analytically, CFD is the tool used to quantify downforce and drag for every candidate design.</p>
         <h2>The governing equations</h2>
         <p>The governing set are the Navier–Stokes equations, expressing conservation of mass and momentum for a viscous fluid. For the incompressible regime found in motorsport (M &lt; 0.3) they read:</p>
-        <div class="eq">∇·u = 0<br>ρ ( ∂u/∂t + (u·∇)u ) = −∇p + µ∇²u</div>
+        <div class="eq">$$\nabla\cdot\vec{u} = 0 \qquad \rho\left(\frac{\partial \vec{u}}{\partial t} + (\vec{u}\cdot\nabla)\vec{u}\right) = -\nabla p + \mu\nabla^2 \vec{u}$$</div>
         <p>A direct resolution of these equations resolving every turbulent scale — Direct Numerical Simulation — is computationally prohibitive for an F1 wing at realistic Reynolds numbers with any reasonable development pace. Instead, the equations are time-averaged.</p>
         <h2>Reynolds decomposition</h2>
         <p>The idea, first introduced by Reynolds, is to decompose every instantaneous flow quantity into a mean and a fluctuating part:</p>
-        <div class="eq">u<sub>i</sub> = ū<sub>i</sub> + u′<sub>i</sub>  ,  p = p̄ + p′</div>
+        <div class="eq">$$u_i = \bar{u}_i + u_i', \qquad p = \bar{p} + p'$$</div>
         <p>where the overbar denotes the time-averaged component and the prime the turbulent fluctuation about that mean. By definition the time average of a fluctuation is zero, but <strong>the average of a product of two fluctuations is not</strong> — a subtlety that turns out to be the crux of the whole method.</p>
         <p>Substituting this decomposition into the continuity and momentum equations and averaging over time yields the RANS equations. Continuity retains its form for the mean field. The momentum equation is almost identical to the original, but with one crucial addition: a term −ρ u′<sub>i</sub>u′<sub>j</sub>, which arises purely from averaging the non-linear convective term.</p>
 

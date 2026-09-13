@@ -10,6 +10,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 </head>
 <body>
   <header class="masthead">
@@ -43,7 +47,7 @@
 <h2>The Bernoulli interpretation, and circulation</h2>
         <p>There is also a Bernoulli interpretation of lift, which is just as correct. The widely repeated version is right in relating the pressure imbalance to different velocities over the upper and lower surfaces, but it usually ignores <em>why</em> the velocities are different, which is the fundamental part.</p>
         <p>Neglecting the height term, since a fluid as light as air over the height variation of an airfoil causes insignificant pressure variation, Bernoulli's theorem reads:</p>
-        <div class="eq">p + ½ ρ v² = constant</div>
+        <div class="eq">$$p + \tfrac{1}{2}\rho v^2 = \text{constant}$$</div>
         <p>The direct interpretation is that regions of higher velocity have lower pressure, and vice versa. This is why the stagnant leading edge, where incoming flow has been slowed down, has a much higher pressure than the freestream. What remains is to explain why the flow is faster over the upper surface, and that is the role of <strong>circulation</strong> and the Kutta condition.</p>
         <p>According to circulation theory, the flow around an airfoil develops a net circulation Γ when the airfoil is cambered, at incidence, or both. This circulation arises as a consequence of the <strong>Kutta condition</strong>, which enforces a smooth flow departure at the trailing edge and selects a unique, physically realizable solution among the infinite inviscid possibilities. Adding that circulation to the incoming uniform freestream produces a velocity field in which the upper surface accelerates while the lower surface slows down — precisely the asymmetric distribution needed for the pressure difference predicted by Bernoulli.</p>
         <figure class="fig-ph">
